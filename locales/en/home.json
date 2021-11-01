@@ -1,0 +1,20 @@
+{
+    "second_title" : "More than 60 availables commands in french or english",
+    "add_to_server": "Add it to your server",
+    "browse_fonctionalities": "Browse functionalities",
+    "title_1": "Complete Level System",
+    "desc_1_1": "The level system allows you to identify and reward the most active members of your community! Give them the opportunity to show off their XP card and reach the first place in the leaderboard.",
+    "desc_1_2": "Rewards the most active members of your server with roles.",
+
+    "title_2": "Protect Your Server From Bad Guys",
+    "desc_2_1": "You can add a raid-protect to prevent for spam. Just setup the role with the channel and Eric will send a message for each member who join your server to give the role if the member react with the good emote.",
+    "desc_2_2": "You can also setup the warn command and use more than 10 moderation commands.",
+
+    "title_3": "Streamer Dream",
+    "desc_3_1": "Get a notification when you or your friends start a stream. Each minute Eric will watch if you stream and will send a special notification.",
+    "desc_3_2": "In few days, it will be able to display your statistics in all of your server.",
+
+    "title_4": "All lot of fun and various commands",
+    "desc_4_1": "Google search link creator, Emote collector, Users/Server informations and custom poll are a little options of the availables various commands.",
+    "desc_4_2": "You can display all availables command with the help command."
+}

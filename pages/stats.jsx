@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { LabelList, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend, Line, ComposedChart } from 'recharts';
 import dayjs from "dayjs";
 
-import NavBar from "../Components/Navbar";
+import NavBar from "../Views/navbar/Navbar";
 import { apibaseurl } from "../Service/constante";
 import Seo from "../Components/Seo";
 
@@ -29,7 +29,7 @@ function Charts(){
 
     return (
         <div>
-            <Seo title="Statitics of Eric" />
+            <Seo title="Statitics of Eric" description="Eric Discord bot statistics"/>
             <NavBar />
             <section className="Hero">
                 <ResponsiveContainer width="100%" height="100%">

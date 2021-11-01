@@ -1,11 +1,9 @@
 import React from "react";
-import NavBar from "../Components/Navbar";
 
 function NotFoundPage() {
 
     return (
         <div>
-            <NavBar />
             <div className="main">
                 <div className="not-found">
                 <h1>Can&apos;t find this page</h1>

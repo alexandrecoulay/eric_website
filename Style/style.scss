@@ -3,17 +3,41 @@
 
 :root {	
 	font-family: 'Open Sans', sans-serif;
+
+	font-size: 16px;
+
+	--bg-secondary: #3498db;
+	--bg-primary: #1e1e1e;
+	--bg-primary-opacity: #1e1e1e75;
 	--main-color: whitesmoke;
-	--second-color: #3498db;
+	--bg-secondary: #3498db;
 	--third-color: #969899;
-	--transition: 0.25s;
 	--header-height: 85px;
 	--text-normal: whitesmoke;
 	--text-normal-hover: #969899;
-	--background-color: #1e1e1e;
 	--fa-primary: #34b9ee;
 	--fa-secondary: #2ca1cf;
 	--fa-third: #268cb4;
+	--warning-color: #ea4646;
+	--good-color: #43b581;
+	--medium-color: #faa61a;
+	--off-color: #6e7985;
+	--color-blue: #1c9eff;
+	--color-blue-hover: #007ad6;
+	--color-red: #cc3300;
+	--color-green: #339900;
+	--color-yellow: #ffcc00
+
+	--nav-height: 80px;
+	--normal-text-font-size: 14px;
+	--transition-speed: 600ms;
+	--transition: 0.25s;
+	--border-radius: 8px;
+	
+	@media screen and (max-width: 800px) {
+		--nav-width: 1024px;
+		--nav-height: 50px;
+	};
 }
 
 *,
@@ -118,7 +142,7 @@ html {
 	color: var(--main-color);
 	scroll-behavior: smooth;
 	text-align: center;
-	background-color: var(--background-color);
+	background-color: var(--bg-primary);
 	padding-bottom: 5px;
 }
 
@@ -146,7 +170,7 @@ html {
 			width: 50vw;
 			padding: 10px;
 			margin: 1em;
-			border-bottom: 1px solid var(--second-color);
+			border-bottom: 1px solid var(--bg-secondary);
 			transform: translateY(0);
 			border-radius: 8px;
 			display: flex;
@@ -175,8 +199,8 @@ html {
 			.bottom-informations {
 				span {
 					transition: var(--transition);
-					color: var(--background-color);
-					background-color: var(--second-color);
+					color: var(--bg-primary);
+					background-color: var(--bg-secondary);
 					padding: 10px;
 					border-radius: 5px;
 					 
@@ -300,7 +324,7 @@ header {
 	height: 60px;
 	background: none;
 	border: 4px solid;
-	color: var(--second-color);
+	color: var(--bg-secondary);
 	font-weight: 700;
 	text-transform: uppercase;
 	cursor: pointer;

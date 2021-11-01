@@ -1,35 +1,37 @@
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
+import React, { useState, useEffect, useContext } from "react";
+import CreateLink from "../Components/Text/Link";
 
-import { apibaseurl, discordimageurl } from "../Service/constante";
+import { apibaseurl, baseapiurl, discordcdnurl, discordimageurl } from "../Service/constante";
 
-import CrownSvg from "../Svg/crown";
-import Loader from "../Components/Loader";
-import NavBar from "../Components/Navbar";
+import Svg from "../Components/Svg/Svg";
+import Loader from "../Components/Others/Loader";
+import NavBar from "../Views/navbar/Navbar";
+import { UserContext } from "../Context/AppContext";
+import Icon from "../Components/Assets/RoundedIcon";
 
 function DashBoardHome() {
 
     const [guilds, setGuilds] = useState([]);
+    const [user, setUser] = useContext(UserContext)
 
     useEffect(() => {
         async function getData() {
-            
-            const access_token = localStorage.getItem("access_token");
 
+            if(!user) return;
             const requestOptions = {
                 method: "GET",
                 headers: {
-                    'Authorization': `Bearer ${access_token}`
+                    'Authorization': `Bearer ${user.access_token}`
                 }
             };
             
-            let response = await fetch(`${apibaseurl}/servers`, requestOptions)
+            let response = await fetch(`${baseapiurl}/servers`, requestOptions)
             let res = await response.json();
 
             setGuilds(res);
         }
         getData();
-    }, []);
+    }, [user]);
 
     return (
         <div>
@@ -41,20 +43,18 @@ function DashBoardHome() {
                     guilds.length < 1 ? <Loader /> :
                     guilds.map((e, index) =>
                         e != null ?
-                        <Link key={index} href={`/dashboard/${e.guild_id}`}>
-                            <a>
-                                <div className="guild-info">
-                                    <div className="top-informations">
-                                        <img className="pdp-40" src={`${discordimageurl}/icons/${e.guild_id}/${e.icon}.webp`} alt={e.icon}/>
-                                        <span className="guild-name">{e.name}</span> 
-                                        { e.owner ? <CrownSvg setClass="fa-primary" /> : "" }
-                                    </div>
-                                    <div className="bottom-informations">
-                                        <span>Dashboard</span>
-                                    </div>
-                                </div> 
-                            </a>
-                        </Link>: e
+                        <CreateLink key={index} href={`/dashboard/${e.guild_id}`}>
+                            <div className="guild-info">
+                                <div className="top-informations">
+                                    <Icon size={40} src={`${discordcdnurl}/icons/${e.guild_id}/${e.icon}.webp`} />
+                                    <span className="guild-name">{e.name}</span> 
+                                    { e.owner && <Svg name="crown" size={22} /> }
+                                </div>
+                                <div className="bottom-informations">
+                                    <span>Dashboard</span>
+                                </div>
+                            </div> 
+                        </CreateLink>: e
                     )
                 }
                 </div>

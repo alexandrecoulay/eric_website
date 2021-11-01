@@ -1,6 +1,6 @@
 import React from "react";
 
-import NavBar from "../../Components/Navbar";
+import NavBar from "../../Views/navbar/Navbar";
 import fr from "../../Language/fr.json";
 import en from "../../Language/en.json";
 
@@ -135,12 +135,7 @@ function Commands(props) {
 
 
 export const getServerSideProps = ({ query }) => {
-
-    if(query === "fr") {
-        var file = fr;
-    } else {
-        var file = en;
-    }
+    var file = query.lang === "fr" ? fr : en;
 
     return {
         props: file

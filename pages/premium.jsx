@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 
 import { apibaseurl, cdnbaseurl } from "../Service/constante";
-import Loader from "../Components/Loader";
-import NavBar from "../Components/Navbar";
+import Loader from "../Components/Others/Loader";
+import NavBar from "../Views/navbar/Navbar";
 
 function Premium() {
 

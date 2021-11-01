@@ -1,9 +1,8 @@
 import React from 'react';
 import { useRouter } from "next/router";
 
-import Loader from '../../Components/Loader';
-import Navbar from '../../Components/Navbar';
-import DashBoard from '../../Components/Dashoard/Dashboard';
+import NavBar from '../../Views/navbar/Navbar';
+import DashBoard from '../../Views/Dashoard/Dashboard';
 
 function Callback() {
 
@@ -12,7 +11,7 @@ function Callback() {
 
   return (
     <div>
-        <Navbar />
+        <NavBar />
         <DashBoard guild_id={guild_id} />
     </div>
   );
