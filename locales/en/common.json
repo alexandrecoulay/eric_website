@@ -1,3 +1,10 @@
 {
-    "commands_help": "Commands help"
+    "commands_help": "Commands help",
+    "home": "home",
+    "commands": "commands",
+    "invite": "invite",
+    "dashboard": "dashboard",
+    "disconnect": "Disconnect from",
+    "login": "login",
+    "change_language": "English"
 }

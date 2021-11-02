@@ -70,60 +70,166 @@ function Help() {
                                     <span>{t("desc_1_7")}</span>
                                 </Boxe>
                             </div>
-                            <div className={`${styles.column}`} id="stream">
+                            <div style={{
+                                gap: 5
+                            }} className={`${styles.column}`} id="stream">
                             <span style={{
                                     fontWeight: 600,
                                     fontSize: 18,
                                     paddingBottom: 5,
                                     textDecoration: "underline"
                                 }} className={`${styles.text_left}`}>{t("title_2")}</span>
-                            <Boxe title="oui">
-                            
-                            </Boxe>
+                                <Boxe title={t("title_2_1")}>
+                                    <span>{t("desc_2_1")}</span>
+                                </Boxe>
+                                <Boxe title={t("title_2_2")}>
+                                    <span>{t("desc_2_2")}</span>
+                                </Boxe>
+                                <Boxe title={t("title_2_3")}>
+                                    <span>{t("desc_2_3")}</span>
+                                </Boxe>
+                                <Boxe title={t("title_2_4")}>
+                                    <span>{t("desc_2_4")}</span>
+                                </Boxe>
+                                <Boxe title={t("title_1_2")}>
+                                    <span>{t("desc_1_2")}</span>
+                                </Boxe>
+                                <Boxe title={t("title_2_5")}>
+                                    <span>{t("desc_2_5")}</span>
+                                </Boxe>
+                                <Boxe title={t("title_2_6")}>
+                                    <span>{t("desc_2_6")}</span>
+                                </Boxe>
+                                <Boxe title={t("title_2_7")}>
+                                    <span>{t("desc_2_7")}</span>
+                                </Boxe>
                             </div>
-                            <div className={`${styles.column}`} id="moderation">
+                            <div style={{
+                                gap: 5
+                            }} className={`${styles.column}`} id="moderation">
                             <span style={{
                                     fontWeight: 600,
                                     fontSize: 18,
                                     paddingBottom: 5,
                                     textDecoration: "underline"
                                 }} className={`${styles.text_left}`}>{t("title_3")}</span>
-                            <Boxe title="oui">
-                            
-                            </Boxe>
+                                <Boxe title={t("title_3_1")}>
+                                    <span>{t("desc_3_1")}</span>
+                                </Boxe>
+                                <Boxe title={t("title_3_2")}>
+                                    <span>{t("desc_3_2")}</span>
+                                </Boxe>
+                                <Boxe title={t("title_3_3")}>
+                                    <span>{t("desc_3_3")}</span>
+                                </Boxe>
+                                <Boxe title={t("title_3_4")}>
+                                    <span>{t("desc_3_4")}</span>
+                                </Boxe>
+                                <Boxe title={t("title_3_5")}>
+                                    <span>{t("desc_3_5")}</span>
+                                </Boxe>
+                                <Boxe title={t("title_3_6")}>
+                                    <span>{t("desc_3_6")}</span>
+                                </Boxe>
+                                <Boxe title={t("title_3_7")}>
+                                    <span>{t("desc_3_7")}</span>
+                                </Boxe>
+                                <Boxe title={t("title_3_8")}>
+                                    <span>{t("desc_3_8")}</span>
+                                </Boxe>
+                                <Boxe title={t("title_3_9")}>
+                                    <span>{t("desc_3_9")}</span>
+                                </Boxe>
+                                <Boxe title={t("title_3_10")}>
+                                    <span>{t("desc_3_10")}</span>
+                                </Boxe>
+                                <Boxe title={t("title_3_11")}>
+                                    <span>{t("desc_3_11")}</span>
+                                </Boxe>
                             </div>
-                            <div className={`${styles.column}`} id="various">
+                            <div style={{
+                                gap: 5
+                            }} className={`${styles.column}`} id="various">
                             <span style={{
                                     fontWeight: 600,
                                     fontSize: 18,
                                     paddingBottom: 5,
                                     textDecoration: "underline"
                                 }} className={`${styles.text_left}`}>{t("title_4")}</span>
-                            <Boxe title="oui">
-                            
-                            </Boxe>
+                                <Boxe title={t("title_4_1")}>
+                                    <span>{t("desc_4_1")}</span>
+                                </Boxe>
+                                <Boxe title={t("title_4_2")}>
+                                    <span>{t("desc_4_2")}</span>
+                                </Boxe>
+                                <Boxe title={t("title_4_3")}>
+                                    <span>{t("desc_4_3")}</span>
+                                </Boxe>
+                                <Boxe title={t("title_4_4")}>
+                                    <span>{t("desc_4_4")}</span>
+                                </Boxe>
+                                <Boxe title={t("title_4_5")}>
+                                    <span>{t("desc_4_5")}</span>
+                                </Boxe>
+                                <Boxe title={t("title_4_6")}>
+                                    <span>{t("desc_4_6")}</span>
+                                </Boxe>
+                                <Boxe title={t("title_4_7")}>
+                                    <span>{t("desc_4_7")}</span>
+                                </Boxe>
+                                <Boxe title={t("title_4_8")}>
+                                    <span>{t("desc_4_8")}</span>
+                                </Boxe>
+                                <Boxe title={t("title_4_9")}>
+                                    <span>{t("desc_3_9")}</span>
+                                </Boxe>
+                                <Boxe title={t("title_4_10")}>
+                                    <span>{t("desc_4_10")}</span>
+                                </Boxe>
+                                <Boxe title={t("title_4_11")}>
+                                    <span>{t("desc_4_11")}</span>
+                                </Boxe>
+                                <Boxe title={t("title_4_12")}>
+                                    <span>{t("desc_4_12")}</span>
+                                </Boxe>
                             </div>
-                            <div className={`${styles.column}`} id="fun">
+                            <div style={{
+                                gap: 5
+                            }} className={`${styles.column}`} id="fun">
                             <span style={{
                                     fontWeight: 600,
                                     fontSize: 18,
                                     paddingBottom: 5,
                                     textDecoration: "underline"
                                 }} className={`${styles.text_left}`}>{t("title_5")}</span>
-                            <Boxe title="oui">
-                            
-                            </Boxe>
+                                <Boxe title={t("title_5_1")}>
+                                    <span>{t("desc_5_1")}</span>
+                                </Boxe>
                             </div>
-                            <div className={`${styles.column}`} id="emotes">
+                            <div style={{
+                                gap: 5
+                            }} className={`${styles.column}`} id="emotes">
                             <span style={{
                                     fontWeight: 600,
                                     fontSize: 18,
                                     paddingBottom: 5,
                                     textDecoration: "underline"
                                 }} className={`${styles.text_left}`}>{t("title_6")}</span>
-                            <Boxe title="oui">
-                            
-                            </Boxe>
+                                <Boxe title={t("title_6_1")}>
+                                    <span>{t("desc_6_1")}</span>
+                                </Boxe>
+                                <Boxe title={t("title_6_2")}>
+                                    <span>{t("desc_6_2")}</span>
+                                </Boxe>
+                                <Boxe title={t("title_6_3")}>
+                                    <span>{t("desc_6_3")}</span>
+                                </Boxe>
+                                <Boxe title={t("title_6_4")}>
+                                    <span>{t("desc_6_4")}</span>
+                                </Boxe>
+                                <Boxe title={t("title_6_5")}>
+                                    <span>{t("desc_6_5")}</span>
+                                </Boxe>
                             </div>
                         </div>
                     </div>

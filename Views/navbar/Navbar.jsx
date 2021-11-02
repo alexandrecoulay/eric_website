@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
-import Link from "next/link";
+import useTranslation from 'next-translate/useTranslation'
+import Router from 'next/router'
 
 import { oauth2url } from "../../Service/constante";
 import { UserContext } from "../../Context/AppContext";
@@ -8,6 +9,8 @@ import CreateLink from "../../Components/Text/Link";
 function NavBar() {
 
     const [user, setUser] = useContext(UserContext);
+
+    const { t, lang } = useTranslation()
 
     const disconnect = (e) => {
         e.preventDefault();
@@ -40,13 +43,13 @@ function NavBar() {
                     </div>
                     <div className="mobile-container" id="mobile">
                         <div className="NavBar-mobile-links">                     
-                           <CreateLink href='/'>Home</CreateLink>
-                           { user && <CreateLink href="/dashboard">dashboard</CreateLink> }
-                           <CreateLink href="/help">commands</CreateLink>
-                           <CreateLink href="/stats">Statistics</CreateLink>
-                           <CreateLink href="/bot/invite">Invite</CreateLink>
+                           <CreateLink href='/'>{t("common:home")}</CreateLink>
+                           { user && <CreateLink href="/dashboard">{t("common:dashboard")}</CreateLink> }
+                           <CreateLink href="/help">{t("common:commands")}</CreateLink>
+                           <CreateLink href="/bot/invite">{t("common:invite")}</CreateLink>
+                           <a onClick={() => Router.push('/', undefined, { locale: lang === "fr" ? "en" : "fr" })}>{t("common:change_language")}</a>
                             {
-                                user ? <CreateLink onClick={disconnect} href="/">Disconnect from {user.username}<img className="pdp-40 avatar" src={user.avatar} alt="avatar" /></CreateLink> : <CreateLink href={`${oauth2url}`}>login</CreateLink>
+                                user ? <CreateLink onClick={disconnect} href="/">{t("common:disconnect")} {user.username}<img className="pdp-40 avatar" src={user.avatar} alt="avatar" /></CreateLink> : <CreateLink href={`${oauth2url}`}>{t("common:login")}</CreateLink>
                             }
                         </div>
                     </div>
@@ -54,16 +57,16 @@ function NavBar() {
                 </div>
                 <div className="header-web visible">
                     <div className="header-links">
-                        <CreateLink href='/'>Home</CreateLink>
-                        { user && <CreateLink href="/dashboard">dashboard</CreateLink> }
-                        <CreateLink href="/help">commands</CreateLink>
-                        <CreateLink href="/stats">Statistics</CreateLink>
-                        <CreateLink href="/bot/invite">Invite</CreateLink>
+                        <CreateLink href='/'>{t("common:home")}</CreateLink>
+                        { user && <CreateLink href="/dashboard">{t("common:dashboard")}</CreateLink> }
+                        <CreateLink href="/help">{t("common:commands")}</CreateLink>
+                        <CreateLink href="/bot/invite">{t("common:invite")}</CreateLink>
+                        <a onClick={() => Router.push('/', undefined, { locale: lang === "fr" ? "en" : "fr" })}>{t("common:change_language")}</a>
                     </div>
 
                     <div className="login">
                     {
-                        user ? <CreateLink onClick={disconnect} href="/">Disconnect from {user.username}<img className="pdp-40 avatar" src={user.avatar} alt="avatar" /></CreateLink> : <CreateLink href={`${oauth2url}`}>login</CreateLink>
+                        user ? <CreateLink onClick={disconnect} href="/">{t("common:disconnect")} {user.username}<img className="pdp-40 avatar" src={user.avatar} alt="avatar" /></CreateLink> : <CreateLink href={`${oauth2url}`}>{t("common:login")}</CreateLink>
                     }
                     </div>
                 </div>

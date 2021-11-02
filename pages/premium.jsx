@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { apibaseurl, cdnbaseurl } from "../Service/constante";
+import { baseapiurl, cdnbaseurl } from "../Service/constante";
 import Loader from "../Components/Others/Loader";
 import NavBar from "../Views/navbar/Navbar";
 
@@ -32,7 +32,7 @@ function Premium() {
                     method: "GET"
                 };
     
-                const res = await fetch(`${apibaseurl}/premium/${user.id}`, requestOptions);
+                const res = await fetch(`${baseapiurl}/premium/${user.id}`, requestOptions);
                 const res_1 = await res.json();
                 if (res_1.premium === true) {
                     if (res_1.images) {

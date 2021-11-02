@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router"
 
-import NavBar from "../../Components/Navbar";
-import Loader from "../../Components/Loader";
-import { apibaseurl } from "../../Service/constante";
+import NavBar from "../../Views/navbar/Navbar";
+import Loader from "../../Components/Others/Loader";
+import { baseapiurl } from "../../Service/constante";
 import Seo from "../../Components/Seo";
 
 function Leaderboard(props) {
@@ -18,7 +18,7 @@ function Leaderboard(props) {
                 method: "GET"
             };
             
-            let response = await fetch(`${apibaseurl}/leaderboard/${guild_id}/users`, requestOptions)
+            let response = await fetch(`${baseapiurl}/leaderboard/${guild_id}/users`, requestOptions)
             let res = await response.json();
 
             SetUsers(res);
@@ -70,7 +70,7 @@ export const getServerSideProps = async ({ query }) => {
 
     const guild_id = query.guild_id;
     
-    const request = await fetch(`${apibaseurl}/leaderboard/${guild_id}/guild`)
+    const request = await fetch(`${baseapiurl}/leaderboard/${guild_id}/guild`)
     const response = await request.json();
 
     return {

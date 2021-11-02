@@ -3,7 +3,7 @@ import { LabelList, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend, Line, Co
 import dayjs from "dayjs";
 
 import NavBar from "../Views/navbar/Navbar";
-import { apibaseurl } from "../Service/constante";
+import { baseapiurl } from "../Service/constante";
 import Seo from "../Components/Seo";
 
 function Charts(){
@@ -11,7 +11,7 @@ function Charts(){
 
     useEffect(() => {
         async function fetchData(){
-            const request = await fetch(`${apibaseurl}/stats/commands`);
+            const request = await fetch(`${baseapiurl}/stats/commands`);
             const response = await request.json();
             const result = response.map(item => {
                 const container = {};

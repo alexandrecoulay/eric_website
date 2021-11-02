@@ -1,3 +1,10 @@
 {
-    "commands_help": "Commandes d'aide"
+    "commands_help": "Commandes d'aide",
+    "home": "accueil",
+    "commands": "commandes",
+    "invite": "invite",
+    "dashboard": "configuration",
+    "disconnect": "Se déconnecter de ",
+    "login": "Se connecter",
+    "change_language": "Français"
 }

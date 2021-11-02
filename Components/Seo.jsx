@@ -21,8 +21,7 @@ function Seo({ children, title = "Eric, The Discord Bot 100% Free", description 
             <meta name="googlebot" content="index,follow,nosnippet" />
             <meta name="copyright" content="© boteric.fr 2021" />
             <meta name="publisher" content="ALEX_OFF" />
-            <meta name="Language" content="fr" />
-            <meta name="theme-color" content="#000000" />
+            <meta name="theme-color" content="#2F3136" />
             <meta name="msapplication-TileColor" content="#ffffff" />
             <meta name="author" content="Alex." />
             <meta name="Keywords" content="Discord, Bot, Eric, Dashboard, Twitch, Emoji’s, Leveling System, Mee6 Like" />
