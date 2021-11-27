@@ -6,5 +6,6 @@
     "dashboard": "configuration",
     "disconnect": "Se déconnecter de ",
     "login": "Se connecter",
-    "change_language": "Français"
+    "change_language": "Français",
+    "emotes": "emotes"
 }

@@ -46,6 +46,7 @@ function NavBar() {
                            <CreateLink href='/'>{t("common:home")}</CreateLink>
                            { user && <CreateLink href="/dashboard">{t("common:dashboard")}</CreateLink> }
                            <CreateLink href="/help">{t("common:commands")}</CreateLink>
+                           <CreateLink href="/emojis">{t("common:emotes")}</CreateLink>
                            <CreateLink href="/bot/invite">{t("common:invite")}</CreateLink>
                            <a onClick={() => Router.push('/', undefined, { locale: lang === "fr" ? "en" : "fr" })}>{t("common:change_language")}</a>
                             {
@@ -60,6 +61,7 @@ function NavBar() {
                         <CreateLink href='/'>{t("common:home")}</CreateLink>
                         { user && <CreateLink href="/dashboard">{t("common:dashboard")}</CreateLink> }
                         <CreateLink href="/help">{t("common:commands")}</CreateLink>
+                        <CreateLink href="/emojis">{t("common:emotes")}</CreateLink>
                         <CreateLink href="/bot/invite">{t("common:invite")}</CreateLink>
                         <a onClick={() => Router.push('/', undefined, { locale: lang === "fr" ? "en" : "fr" })}>{t("common:change_language")}</a>
                     </div>

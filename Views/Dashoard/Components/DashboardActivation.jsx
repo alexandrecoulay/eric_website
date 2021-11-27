@@ -109,6 +109,16 @@ function DashboardActivation({ commands, setCommands, guild}) {
                         <span>Enable all various commands of the bot</span>
                     </div>
                 </div>
+                <div className="element">
+                    <div className="top">
+                        <Svg name="grid-plus" size={26} />
+                        <div>{commands.emotes.activate ? <label>Activated</label> : ""}<input  id="s2" type="checkbox" name="emotes" className="switch" checked={commands.emotes.activate} onChange={(e) => changeActivation(e)} /></div>
+                    </div>
+                    <div className="content">
+                        <h3>Emotes commands</h3>
+                        <span>Enable all the emotes commands </span>
+                    </div>
+                </div>
             </div>
         </div>
     )
