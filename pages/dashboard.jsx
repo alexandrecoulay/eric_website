@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import CreateLink from "../Components/Text/Link";
 
-import { apibaseurl, baseapiurl, discordcdnurl, discordimageurl } from "../Service/constante";
+import { baseapiurl, discordcdnurl } from "../Service/constante";
 
 import Svg from "../Components/Svg/Svg";
 import Loader from "../Components/Others/Loader";

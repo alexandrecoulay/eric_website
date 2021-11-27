@@ -111,12 +111,12 @@ function DashboardActivation({ commands, setCommands, guild}) {
                 </div>
                 <div className="element">
                     <div className="top">
-                        <Svg name="grid-plus" size={26} />
+                        <Svg name="face-flushed" size={26} />
                         <div>{commands.emotes.activate ? <label>Activated</label> : ""}<input  id="s2" type="checkbox" name="emotes" className="switch" checked={commands.emotes.activate} onChange={(e) => changeActivation(e)} /></div>
                     </div>
                     <div className="content">
                         <h3>Emotes commands</h3>
-                        <span>Enable all the emotes commands </span>
+                        <span>Enable all the emotes commands (emote stealing possible) </span>
                     </div>
                 </div>
             </div>

@@ -4,6 +4,7 @@ import Svg from "../../Components/Svg/Svg";
 import Loader from "../../Components/Others/Loader";
 import DashboardTitle from "./Components/DashboardTitle";
 import RoleBox from "./Views/RoleBox";
+import styles from "../../Style/Global.module.scss";
 
 function DashboardSettings({ guild_id }) {
 
@@ -14,6 +15,9 @@ function DashboardSettings({ guild_id }) {
         "english"
     ]
 
+    if(typeof window !== "undefined") {
+        var access_token = localStorage.getItem("access_token");
+    }
     useEffect(() => {
 
         async function getData() {
@@ -31,42 +35,29 @@ function DashboardSettings({ guild_id }) {
             if(request.status === 400) return;
             let res = await request.json();
 
-            setInfo(res);
+            setInfo({
+                access: true,
+                language: res.language === "français" ? "français" : "english"
+            });
         }
         getData();
     }, [guild_id]);
 
-    useEffect(() => {
-        if(!info.access || !languages.some(e => e === info.language)) return;
+    const changeLanguage = async (lang) => {
 
-        async function getData() {
-            const access_token = localStorage.getItem("access_token");
-
-            const requestOptions = {
-                method: "PATCH",
-                headers: {
-                    "Content-Type": "application/json",
-                    'Authorization': `Bearer ${access_token}`
-                },
-                body: JSON.stringify({
-                    language: info.language.toLowerCase(),
-                    accepted_roles: info.accepted_roles
-                })
-            };
-            
-            const request = await fetch(`${baseapiurl}/servers/${guild_id}/settings`, requestOptions);
-
-            if(request.status === 400) return;
-            let res = await request.json();
-
-            setInfo(res);
-        }
-        getData();
-    }, [info])
-
-    const HandleChange = (e) => {
-        e.preventDefault();
-        setInfo({...info, [e.target.name]: e.target.value });
+        const requestOptions = {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                'Authorization': `Bearer ${access_token}`
+            },
+            body: JSON.stringify({
+                modif: lang.toLowerCase(),
+            })
+        };
+        setInfo({...info, language: lang });
+        await fetch(`${baseapiurl}/servers/${guild_id}/settings/language`, requestOptions);
+        
     }
 
     return (
@@ -79,18 +70,17 @@ function DashboardSettings({ guild_id }) {
                             <div className="title">
                                 <p>Choose the language :</p>
                             </div>
-                            <div className="description">  
-                                <input onChange={HandleChange} value={info.language} className="list" list="languages" name="language" id="language" />
-                                <datalist id="languages">
-                                    {
-                                        languages.map((l, index) => 
-                                            <option key={index} value={l} />
-                                        )
-                                    }
-                                </datalist>
+                            <div className={`${styles.row} description`}>
+                                {
+                                    languages.map((l, index) => 
+                                        <span onClick={() => changeLanguage(l)} className={`${info.language === l ? styles.muted : styles.a}`} key={index} >{l}</span>
+                                    )
+                                }
                             </div>
                         </div>
-                        <div className="boxe">
+                        {
+                            /**
+                             *                         <div className="boxe">
                             <div className="title">
                                 <p>Specials roles accepted to moderate the bot :</p>
                             </div>
@@ -118,6 +108,8 @@ function DashboardSettings({ guild_id }) {
                                 }
                             </div>
                         </div>
+                             */
+                        }
                     </div>
                 }
         </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import { useRouter } from "next/router"
 import Loader from "../../Components/Others/Loader";
 import DashBoardNav from "./Components/DashboardNav";
 import DashboardActivation from "./Components/DashboardActivation";
@@ -12,13 +12,15 @@ import DashboardReaction from "./Reaction";
 import DashboardWelcome from "./Welcome";
 import DashboardLevels from "./Levels";
 import DashboardModeration from "./Moderation";
-import { baseapiurl, discordcdnurl } from "../../Service/constante";
+import { baseapiurl, discordcdnurl, inviteboturl } from "../../Service/constante";
+import Seo from "../../Components/Seo";
 
 function DashBoard({ guild_id }) {
     
     const [info, setInfo] = useState({access: false});
     const [commands, setCommands] = useState({});
     const [page, setPage] = useState("Plugins");
+    const history = useRouter();
 
     if(typeof window !== "undefined") {
         var access_token = localStorage.getItem("access_token");
@@ -36,9 +38,12 @@ function DashBoard({ guild_id }) {
             };
             
             const request = await fetch(`${baseapiurl}/servers/${guild_id}`, requestOptions);
+            const res = await request.json();
 
-            if(request.status === 400) return;
-            let res = await request.json();
+            if(request.status === 400) {
+                if(res.redirect) return history.push(inviteboturl);
+                return;
+            }
             
             setCommands(res.to_send.commands)
             setInfo(res);
@@ -87,10 +92,11 @@ function DashBoard({ guild_id }) {
 
     return (
         <div className="main">
+            <Seo title={`${info?.to_send?.guild?.name ?? "Server"} - Dashboard`} description={`Dashboard of the guild ${info?.to_send?.guild?.name}`} image={`${discordcdnurl}/icons/${guild_id}/${info?.to_send?.guild?.icon}.webp?size=128`} />
             {
                 info.access ? 
                     <div className="dashboard">
-                        <DashBoardNav setPage={setPage} guild={{icon: `${discordcdnurl}/icons/${guild_id}/${info.to_send.guild.icon}.webp?size=128`, name: info.to_send.guild.name}} />
+                        <DashBoardNav setPage={setPage} guild={{icon: `${discordcdnurl}/icons/${guild_id}/${info.to_send.guild.icon}.webp?size=128`, name: info.to_send.guild.name }} />
                         <div className="dashboard-view">
                             { access_token ? view.find(p => p.name === page).page : ""}
                         </div>

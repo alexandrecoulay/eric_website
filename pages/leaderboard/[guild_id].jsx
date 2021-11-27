@@ -48,7 +48,7 @@ function Leaderboard(props) {
     )
     return (
         <div>
-            <Seo title={`${props.name} - Leaderboard`} description={`Leaderboard for the guild ${props.name}`} image={`${props.icon}`} url={`https://boteric.fr/leaderboard/${guild_id}`}/>
+            <Seo title={`${props.name} - Leaderboard`} description={`Leaderboard for the guild ${props.name}`} image={`${props.icon}`} url={`https://boteric.fr/leaderboard/${props.id}`}/>
             <NavBar />
             <section className="leaderboard">
                 <div className="leaderboardContainer">

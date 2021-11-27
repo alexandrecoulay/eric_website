@@ -12,21 +12,19 @@ function EmotesHome() {
     const [searchList, setSearch] = useState([])
     const [name, setName] = useState("")
     
-    useEffect(() => {
+    /*useEffect(() => {
         async function getData() {
             const request = await fetch(`${baseapiurl}/emotes`);
             const response = await request.json();
 
             setList(response);
-            setSearch(response)
         }
 
         getData()
-    }, [])
+    }, [])*/
     
     useEffect(() => {
         if(name.trim() === "") return setSearch(list)
-        list.map(e => console.log(e.name === new RegExp(/name/, "gi")));
         setSearch(list.filter(e => e.name.match(name)))
     }, [name])
 
@@ -41,8 +39,8 @@ function EmotesHome() {
                 <button><Svg name="magnify" className="fa-primary" size={20} /></button>
             </div>
             {
-                searchList.length > 0 ? 
-                searchList.map(emote => 
+                list.length > 0 ? 
+                list.map(emote => 
                     <div style={{
                         marginBottom: 10
                     }} className={`${styles.full_width} ${styles.radius_5} ${styles.second_background} ${styles.column} ${styles.align_start} ${styles.padding_5}`}>
@@ -59,7 +57,10 @@ function EmotesHome() {
                         </div>
                     </div> 
                 )
-                : <Loader />
+                : <div>
+                    <h1>Comming soon</h1>
+                    <Loader />
+                </div>
             }
         </div>
     )
