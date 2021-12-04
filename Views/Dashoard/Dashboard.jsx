@@ -4,8 +4,8 @@ import { baseapiurl, discordcdnurl, inviteboturl } from "../../Service/constante
 import Loader from "../../Components/Others/Loader";
 import Seo from "../../Components/Seo";
 import DashBoardNav from "./Components/DashboardNav";
-import DashboardActivation from "./Components/DashboardActivation";
 
+import DashboardActivation from "./DashboardActivation";
 import DashboardSettings from "./Settings";
 import DashboardVarious from "./Various";
 import DashboardTwitch from "./Twitch";
@@ -14,10 +14,11 @@ import DashboardReaction from "./Reaction";
 import DashboardWelcome from "./Welcome";
 import DashboardLevels from "./Levels";
 import DashboardModeration from "./Moderation";
+import commandContext from "./DashboardContext";
 
 function DashBoard({ guild_id, user }) {
     
-    const [info, setInfo] = useState({access: false});
+    const [info, setInfo] = useState({ access: false });
     const [commands, setCommands] = useState({});
     const [page, setPage] = useState("Plugins");
 
@@ -48,7 +49,7 @@ function DashBoard({ guild_id, user }) {
     const view = [
         {
             name: "Plugins",
-            page: <DashboardActivation user={user} commands={commands} setCommands={setCommands} guild={guild_id} />
+            page: <DashboardActivation user={user} guild={guild_id} />
         },
         {
             name: "Settings",
@@ -92,7 +93,9 @@ function DashBoard({ guild_id, user }) {
                     <div className="dashboard">
                         <DashBoardNav setPage={setPage} guild={{icon: `${discordcdnurl}/icons/${guild_id}/${info.to_send.guild.icon}.webp?size=128`, name: info.to_send.guild.name }} />
                         <div className="dashboard-view">
-                            { user?.access_token && view.find(p => p.name === page).page }
+                            <commandContext.Provider value={[commands, setCommands]}>
+                                { user?.access_token && view.find(p => p.name === page).page }
+                            </commandContext.Provider>
                         </div>
                     </div>
                 : <Loader />

@@ -8,8 +8,13 @@
     "music": "Music",
     "twitch": "Twitch",
     "various": "Various",
+
+    "modification_detected": "Modification no saved",
     
     "activate_plugins": "Activated Plugins",
+
+    "setting_title": "Bot configuration",
+    "setting_description": "Change the bot settings",
 
     "moderation_title": "Moderation commands",
     "moderation_description": "Moderate the server with commands and verifications",
@@ -17,21 +22,21 @@
     "level_title": "Levels commands",
     "level_description": "Let the members know they activities in the server",
     
-    "welcome_commands": "Welcome commands",
+    "welcome_title": "Welcome commands",
     "welcome_description": "Let the bot make a verification or send a message when a member join the guild",
 
-    "music_commands": "Music commands",
+    "music_title": "Music commands",
     "music_description": "Let your guild members listen musics in you server",
 
-    "reaction_commands": "Reaction role",
+    "reaction_title": "Reaction role",
     "reaction_description": "Beautify your server with the reactions roles commands",
 
-    "twitch_commands": "Twitch plugins",
+    "twitch_title": "Twitch plugins",
     "twitch_description": "View your or your friends Twitch statistics and send a message when someone start a stream",
 
-    "various_commands": "Various commands",
+    "various_title": "Various commands",
     "various_description": "Enable all various commands of the bot",
 
-    "emote_commands": "Emotes commands",
+    "emote_title": "Emotes commands",
     "emote_description": "Enable all the emotes commands"
 }

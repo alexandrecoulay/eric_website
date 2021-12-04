@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../../Style/Global.module.scss";
+import styles from "../../../Style/Global.module.scss";
 
 function Boxe({ children, title, className = null, onClick = null }) {
     return (

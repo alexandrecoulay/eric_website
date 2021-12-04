@@ -1,118 +1,66 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import useTranslation from 'next-translate/useTranslation'
+import { AlertContext } from "../../Context/AppContext";
+import { modificationContext } from "./DashboardContext";
+
 import { baseapiurl } from "../../Service/constante";
 import Svg from "../../Components/Svg/Svg";
 import Loader from "../../Components/Others/Loader";
 import DashboardTitle from "./Components/DashboardTitle";
 import RoleBox from "./Views/RoleBox";
-import styles from "../../Style/Global.module.scss";
+import ActivationContainer from "../../Components/Dashboard/ActivationContainer";
+import Boxe from "../../Components/Dashboard/Boxes/Boxe";
 
-function DashboardSettings({ guild_id }) {
+function DashboardSettings({ guild_id, user }) {
 
-    const [info, setInfo] = useState({ access: false });
-    const [modal, openModal] = useState(false);
-    const languages = [
-        "français",
-        "english"
-    ]
+    const [alert, setAlert] = useContext(AlertContext);
+    const [modification, setModification] = useState({
+        activated: false,
+        type: ""
+    });
 
-    if(typeof window !== "undefined") {
-        var access_token = localStorage.getItem("access_token");
-    }
+    const [settings, setSettings] = useState({});
+    const { t } = useTranslation('dashboard');
+
     useEffect(() => {
-
         async function getData() {
-            const access_token = localStorage.getItem("access_token");
-            
+
             const requestOptions = {
                 method: "GET",
                 headers: {
-                    'Authorization': `Bearer ${access_token}`
+                    'Authorization': `Bearer ${user?.access_token}`
                 }
             };
-            
-            const request = await fetch(`${baseapiurl}/servers/${guild_id}/settings`, requestOptions);
+            const request = await fetch(`${baseapiurl}/servers/${guild_id}/settings`, requestOptions)
 
-            if(request.status === 400) return;
-            let res = await request.json();
+            if(request.status !== 200) return setAlert({ display: true, type: "error", message: "Error !" })
+            const response = await request.json()
 
-            setInfo({
-                access: true,
-                language: res.language === "français" ? "français" : "english"
-            });
-        }
-        getData();
-    }, [guild_id]);
-
-    const changeLanguage = async (lang) => {
-
-        const requestOptions = {
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json",
-                'Authorization': `Bearer ${access_token}`
-            },
-            body: JSON.stringify({
-                modif: lang.toLowerCase(),
-            })
-        };
-        setInfo({...info, language: lang });
-        await fetch(`${baseapiurl}/servers/${guild_id}/settings/language`, requestOptions);
+            setSettings(response)
         
+        }
+        getData()
+
+    }, [guild_id, user])
+
+    useEffect(() => {
+        if(modification.type === "save") return setAlert({ display: true, type: "success", message: "Saved !" })
+        if(modification.type === "cancel") return setAlert({ display: true, type: "error", message: "Canceled !" })
+
+    }, [modification])
+
+    const sendChange = () => {
+        console.log("change");
     }
 
     return (
-        <div className="dashboard-activation">
-            <DashboardTitle title="Global Settings" />
-                {
-                    !info.access ? <Loader /> :
-                    <div className="settings-boxes">
-                        <div className="boxe">
-                            <div className="title">
-                                <p>Choose the language :</p>
-                            </div>
-                            <div className={`${styles.row} description`}>
-                                {
-                                    languages.map((l, index) => 
-                                        <span onClick={() => changeLanguage(l)} className={`${info.language === l ? styles.muted : styles.a}`} key={index} >{l}</span>
-                                    )
-                                }
-                            </div>
-                        </div>
-                        {
-                            /**
-                             *                         <div className="boxe">
-                            <div className="title">
-                                <p>Specials roles accepted to moderate the bot :</p>
-                            </div>
-                            <div className="description">
-                                <div className="roles">
-                                    {
-                                        info.accepted_roles.map((id, index) => 
-                                            <RoleBox role={info.roles.find(r => r.id === id)} key={index} />
-                                        )
-                                    }
-                                </div>
-                                <Svg name="circle-plus" onClick={() => openModal(!modal)}/>
-                                {
-                                    modal ? 
-                                    <div className="roles-modal">
-                                        <div className="roles">
-                                            {
-                                                info.roles.map((role, index) => 
-                                                    <RoleBox role={role} key={index} />
-                                                )
-                                            }
-                                        </div>
-                                    </div>
-                                    : ""
-                                }
-                            </div>
-                        </div>
-                             */
-                        }
-                    </div>
-                }
-        </div>
+        <modificationContext.Provider value={[modification, setModification]}>
+            <ActivationContainer sendModification={sendChange} text="setting" guild_id={guild_id} user={user} plugin="setting" noSwitch >
+                <Boxe title="Text here">
+                    <span>{guild_id}</span>
+                </Boxe>
+            </ActivationContainer>
+        </modificationContext.Provider>
     )
 }
 

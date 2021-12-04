@@ -10,5 +10,8 @@
     "emotes": "Emotes",
 
     "select_a_server": "Sélectionner un serveur",
-    "activated": "Activé"
+    "activated": "Activé",
+
+    "cancel": "Annuler",
+    "save": "Sauvegarder"
 }

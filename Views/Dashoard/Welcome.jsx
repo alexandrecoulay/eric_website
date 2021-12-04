@@ -1,13 +1,27 @@
-import React from "react";
-import DashboardTitle from "./Components/DashboardTitle";
+import React, { useState, useEffect, useContext } from "react";
+import useTranslation from 'next-translate/useTranslation'
 
-function DashboardWelcome({ guild_id }) {
+import { AlertContext } from "../../Context/AppContext";
+
+import { baseapiurl } from "../../Service/constante";
+import ActivationContainer from "../../Components/Dashboard/ActivationContainer";
+
+function DashboardWelcome({ guild_id, user }) {
+
+    const [alert, setAlert] = useContext(AlertContext);
+    const [modification, setModification] = useState(false);
+
+    const [settings, setSettings] = useState({});
+    const { t } = useTranslation('dashboard');
+
+    const sendChange = () => {
+        console.log("change");
+    }
+    
     return (
-        <div className="dashboard-activation">
-            <DashboardTitle title="Welcome Settings" />
-            <div className="boxes">
-            </div>
-        </div>
+        <ActivationContainer sendModification={sendChange} text="twitch" modification={modification} guild_id={guild_id} user={user} plugin="twitch">
+
+        </ActivationContainer>
     )
 }
 

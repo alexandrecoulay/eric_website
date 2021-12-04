@@ -30,7 +30,6 @@ function Seo({ children, title, description, image, url }) {
             <meta name="copyright" content="© boteric.fr 2021" />
             <meta name="publisher" content="ALEX_OFF" />
             <meta name="author" content="Alex." />
-            <meta name="Language" content="en" />
             <meta name="format-detection" content="telephone=yes" />
             <meta name="viewport" content="width = device-width, initial-scale=1, user-scalable=yes" />
             <meta httpEquiv="Cache-control" content="public" />

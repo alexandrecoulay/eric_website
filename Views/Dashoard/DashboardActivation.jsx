@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import useTranslation from 'next-translate/useTranslation'
 
-import { baseapiurl } from "../../../Service/constante";
+import { baseapiurl } from "../../Service/constante";
 
-import Svg from "../../../Components/Svg/Svg";
+import Svg from "../../Components/Svg/Svg";
 
-import DashboardTitle from "./DashboardTitle";
+import DashboardTitle from "./Components/DashboardTitle";
+import commandContext from "./DashboardContext";
 
-function DashboardActivation({ user, commands, setCommands, guild}) {
+function DashboardActivation({ user, guild }) {
+
+    const [commands, setCommands] = useContext(commandContext);
 
     const { t } = useTranslation('dashboard');
     
@@ -50,37 +53,37 @@ function DashboardActivation({ user, commands, setCommands, guild}) {
         {
             svg: "hand-wave",
             plugin: "joining",
-            h3: t("welcome_commands"),
+            h3: t("welcome_title"),
             span: t("welcome_description")
         },
         {
             svg: "music",
             plugin: "music",
-            h3: t("music_commands"),
+            h3: t("music_title"),
             span: t("music_description")
         },
         {
             svg: "emote-plus",
             plugin: "reaction",
-            h3: t("reaction_commands"),
+            h3: t("reaction_title"),
             span: t("reaction_description")
         },
         {
             svg: "twitch",
             plugin: "twitch",
-            h3: t("twitch_commands"),
+            h3: t("twitch_title"),
             span: t("twitch_description")
         },
         {
             svg: "grid-plus",
             plugin: "others",
-            h3: t("various_commands"),
+            h3: t("various_title"),
             span: t("various_description")
         },
         {
             svg: "face-flushed",
             plugin: "emotes",
-            h3: t("emote_commands"),
+            h3: t("emote_title"),
             span: t("emote_description")
         }
     ]

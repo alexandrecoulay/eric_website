@@ -1,16 +1,27 @@
-import React from "react";
-import Boxe from "../../Components/Dashboard/Boxe";
-import BoxeContainer from "../../Components/Dashboard/BoxeContainer";
+import React, { useState, useEffect, useContext } from "react";
+import useTranslation from 'next-translate/useTranslation'
 
-function DashboardTwitch({ guild_id }) {
+import { AlertContext } from "../../Context/AppContext";
+
+import { baseapiurl } from "../../Service/constante";
+import ActivationContainer from "../../Components/Dashboard/ActivationContainer";
+
+function DashboardTwitch({ guild_id, user }) {
+
+    const [alert, setAlert] = useContext(AlertContext);
+    const [modification, setModification] = useState(false);
+
+    const [settings, setSettings] = useState({});
+    const { t } = useTranslation('dashboard');
+
+    const sendChange = () => {
+        console.log("change");
+    }
+    
     return (
-        <BoxeContainer title="Twitch Plugins">
-            <Boxe title="1er plugin">
-                <textarea>
-                    
-                </textarea>
-            </Boxe>
-        </BoxeContainer>
+        <ActivationContainer sendModification={sendChange} text="twitch" modification={modification} guild_id={guild_id} user={user} plugin="twitch">
+
+        </ActivationContainer>
     )
 }
 

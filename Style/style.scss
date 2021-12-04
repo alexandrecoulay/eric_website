@@ -9,6 +9,7 @@
 	--bg-secondary: #3498db;
 	--bg-primary: #1e1e1e;
 	--bg-primary-opacity: #1e1e1e75;
+	--bg-third: #141414;
 	--main-color: whitesmoke;
 	--bg-secondary: #3498db;
 	--third-color: #969899;
@@ -97,21 +98,10 @@ a {
 	transition: var(--transition-speed);
 }
 
-.login {
-	.avatar {
-		vertical-align: middle;
-		margin-left: 10px;
-	}
+.red {
+	color: var(--warning-color);
 }
-.guild-info {
-	.top-informations {
-		.guild-name {
-			span {
-				align-items: center;
-			}
-		}
-	}
-}
+
 .reverse {
 	flex-direction: row-reverse;
 }
@@ -144,6 +134,67 @@ html {
 	text-align: center;
 	background-color: var(--bg-primary);
 	padding-bottom: 5px;
+}
+
+.send_info {
+	left: var(--nav-width);
+    z-index: 2000;
+    position: fixed;
+    bottom: 0px;
+    padding: 0px 40px 24px;    
+	right: 0px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+	animation: notyf-fadeinleft 0.3s forwards;
+
+	.bar {
+		border-radius: 4px;
+		background-color: var(--bg-third);
+		padding: 16px;
+		display: flex;
+		flex-flow: row wrap;
+		flex-grow: 1;
+		align-items: center;
+		justify-content: space-between;
+
+		.buttons {
+			
+			display: flex;
+			flex-flow: row wrap;
+			gap: 5px;
+
+			button {
+				transition: var(--transition) ease-in-out;
+				border: none;
+				background: none;
+				text-transform: capitalize;
+				cursor: pointer;
+				color: var(--text-normal);
+
+				&.cancel {
+					color: var(--warning-color);
+
+					&:hover {
+						text-decoration: underline;
+					}
+				}
+
+				&.save {
+					transition: var(--transition);
+					text-transform: uppercase;
+					font-weight: 800;
+					color: var(--good-color);
+
+					&:hover {
+						transition: var(--transition);
+						color: var(--text-normal);
+					}
+				}
+			}
+		}
+	}
 }
 
 .main {
@@ -535,6 +586,21 @@ section {
 	}
 }
 
+.login {
+	.avatar {
+		vertical-align: middle;
+		margin-left: 10px;
+	}
+}
+.guild-info {
+	.top-informations {
+		.guild-name {
+			span {
+				align-items: center;
+			}
+		}
+	}
+}
 
 @media (max-width: 800px) {
 

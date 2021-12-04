@@ -1,58 +1,27 @@
-import React, { useEffect, useState } from "react";
-import Boxe from "../../Components/Dashboard/Boxe";
-import BoxeContainer from "../../Components/Dashboard/BoxeContainer";
-import Loader from "../../Components/Others/Loader";
+import React, { useState, useEffect, useContext } from "react";
+import useTranslation from 'next-translate/useTranslation'
+
+import { AlertContext } from "../../Context/AppContext";
+
 import { baseapiurl } from "../../Service/constante";
-import styles from "../../Style/Global.module.scss";
+import ActivationContainer from "../../Components/Dashboard/ActivationContainer";
 
-function DashboardModeration({ guild_id }) {
+function DashboardModeration({ guild_id, user }) {
 
-    const [info, setInfo] = useState({
-        access: false
-    })
+    const [alert, setAlert] = useContext(AlertContext);
+    const [modification, setModification] = useState(false);
 
-    useEffect(() => {
-        async function getData() {
-            const access_token = localStorage.getItem("access_token");
-            
-            const requestOptions = {
-                method: "GET",
-                headers: {
-                    'Authorization': `Bearer ${access_token}`
-                }
-            };
+    const [settings, setSettings] = useState({});
+    const { t } = useTranslation('dashboard');
 
-            const request = await fetch(`${baseapiurl}/servers/${guild_id}/moderation`, requestOptions);
-            const response = await request.json();
-
-            setInfo(response)
-        }
-
-        getData()
-    }, [])
-
-    const addChannel = async (id) => {
-
+    const sendChange = () => {
+        console.log("change");
     }
-
+    
     return (
-        <div className="dashboard-activation">
-                {
-                    !info.access ? 
-                    <Loader /> :
-                    <BoxeContainer title="Moderation Settings">
-                        <Boxe title="Logs channel">
-                            <div className={`${styles.row} description`}>
-                                {
-                                    info.channels.map((c, index) =>
-                                        <span key={index} className={`${info.informations === c.id ? styles.muted : styles.a}`}>#{c.name}</span>
-                                    )
-                                }
-                            </div>
-                        </Boxe>
-                    </BoxeContainer>
-                }
-        </div>
+        <ActivationContainer sendModification={sendChange} text="moderation" modification={modification} guild_id={guild_id} user={user} plugin="moderation">
+
+        </ActivationContainer>
     )
 }
 
