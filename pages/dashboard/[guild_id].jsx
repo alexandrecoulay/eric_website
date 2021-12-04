@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useContext } from "react";
+
+import { UserContext } from "../../Context/AppContext";
 
 import NavBar from '../../Views/navbar/Navbar';
 import DashBoard from '../../Views/Dashoard/Dashboard';
+import Loader from "../../Components/Others/Loader";
 
 function Callback(props) {
+
+  const [user, setUser] = useContext(UserContext)
 
   return (
     <div>
         <NavBar />
-        <DashBoard guild_id={props.guild_id} />
+        { user ? <DashBoard user={user} guild_id={props.guild_id} /> : <Loader /> }
     </div>
   );
 }

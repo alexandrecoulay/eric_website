@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useRouter } from "next/router"
+import { baseapiurl, discordcdnurl, inviteboturl } from "../../Service/constante";
+
 import Loader from "../../Components/Others/Loader";
+import Seo from "../../Components/Seo";
 import DashBoardNav from "./Components/DashboardNav";
 import DashboardActivation from "./Components/DashboardActivation";
 
@@ -12,28 +14,20 @@ import DashboardReaction from "./Reaction";
 import DashboardWelcome from "./Welcome";
 import DashboardLevels from "./Levels";
 import DashboardModeration from "./Moderation";
-import { baseapiurl, discordcdnurl, inviteboturl } from "../../Service/constante";
-import Seo from "../../Components/Seo";
 
-function DashBoard({ guild_id }) {
+function DashBoard({ guild_id, user }) {
     
     const [info, setInfo] = useState({access: false});
     const [commands, setCommands] = useState({});
     const [page, setPage] = useState("Plugins");
-    const history = useRouter();
-
-    if(typeof window !== "undefined") {
-        var access_token = localStorage.getItem("access_token");
-    }
 
     useEffect(() => {
 
         async function getData() {
-            const access_token = localStorage.getItem("access_token");
             const requestOptions = {
                 method: "GET",
                 headers: {
-                    'Authorization': `Bearer ${access_token}`
+                    'Authorization': `Bearer ${user?.access_token}`
                 }
             };
             
@@ -41,7 +35,7 @@ function DashBoard({ guild_id }) {
             const res = await request.json();
 
             if(request.status === 400) {
-                if(res.redirect) return history.push(inviteboturl);
+                if(res.redirect) return window.open(inviteboturl);
                 return;
             }
             
@@ -54,39 +48,39 @@ function DashBoard({ guild_id }) {
     const view = [
         {
             name: "Plugins",
-            page: <DashboardActivation commands={commands} setCommands={setCommands} guild={guild_id} />
+            page: <DashboardActivation user={user} commands={commands} setCommands={setCommands} guild={guild_id} />
         },
         {
             name: "Settings",
-            page: <DashboardSettings guild_id={guild_id} />
+            page: <DashboardSettings user={user} guild_id={guild_id} />
         },
         {
             name: "Moderation",
-            page: <DashboardModeration guild_id={guild_id} />
+            page: <DashboardModeration user={user} guild_id={guild_id} />
         },
         {
             name: "Levels",
-            page: <DashboardLevels guild_id={guild_id} />
+            page: <DashboardLevels user={user} guild_id={guild_id} />
         },
         {
             name: "Welcome",
-            page: <DashboardWelcome guild_id={guild_id} />
+            page: <DashboardWelcome user={user} guild_id={guild_id} />
         },
         {
             name: "Reaction",
-            page: <DashboardReaction guild_id={guild_id} />
+            page: <DashboardReaction user={user} guild_id={guild_id} />
         },
         {
             name: "Music",
-            page: <DashboardMusic guild_id={guild_id} />
+            page: <DashboardMusic user={user} guild_id={guild_id} />
         },
         {
             name: "Twitch",
-            page: <DashboardTwitch guild_id={guild_id} />
+            page: <DashboardTwitch user={user} guild_id={guild_id} />
         },
         {
             name: "Various",
-            page: <DashboardVarious guild_id={guild_id} />
+            page: <DashboardVarious user={user} guild_id={guild_id} />
         }
     ]
 
@@ -98,7 +92,7 @@ function DashBoard({ guild_id }) {
                     <div className="dashboard">
                         <DashBoardNav setPage={setPage} guild={{icon: `${discordcdnurl}/icons/${guild_id}/${info.to_send.guild.icon}.webp?size=128`, name: info.to_send.guild.name }} />
                         <div className="dashboard-view">
-                            { access_token ? view.find(p => p.name === page).page : ""}
+                            { user?.access_token && view.find(p => p.name === page).page }
                         </div>
                     </div>
                 : <Loader />

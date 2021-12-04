@@ -1,0 +1,38 @@
+{
+    "dashboard": "Configuration",
+    "settings": "Paramètre",
+    "moderation": "Modération",
+    "welcome": "Bienvenue",
+    "level": "Niveau",
+    "reaction": "Réaction",
+    "music": "Musique",
+    "twitch": "Twitch",
+    "various": "Divers",
+    
+    "activate_plugins": "Activer des options",
+
+    "moderation_title": "Commandes de modération",
+    "moderation_description": "Modérer le serveur avec des commandes de modération",
+
+    "level_title": "Commandes de niveau",
+    "level_description": "Mesurer l'activiter de vos membres dans le serveur",
+    
+    "welcome_commands": "Commandes de bienvenue",
+    "welcome_description": "Vérifier ou envoyer un message lorsqu'un membre rejoint votre serveur",
+
+    "music_commands": "Commandes de musique",
+    "music_description": "Laisser vos membres écouter de la musique",
+
+    "reaction_commands": "Role sur réaction",
+    "reaction_description": "Améliorer votre serveur avec des rôles sur réaction",
+
+    "twitch_commands": "Options de Twitch",
+    "twitch_description": "Affichier les statistques et des streamers et notifier lors du lancement d'un live",
+
+    "various_commands": "Commandes diverses",
+    "various_description": "Activer les diverses commandes",
+
+    "emote_commands": "Commandes d'émote",
+    "emote_description": "Activer les commandes d'émote"
+    
+}

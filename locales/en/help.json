@@ -8,22 +8,15 @@
   "fun": "fun",
   "emotes": "emoji's",
   "The_available_help_commands": "The availables commands: ",
-  "more_info": "Optional parameter : <param>",
+  "connect_dashboard": "Connect to access to the dashboard ",
+  "require_param": "Require parameter : <param>",
+  "optional_param": "Optional parameter : {param}",
   "A_problem_with_the_bot_Join_the_support_server": "A problem with the bot ? Join the support server",
 
   "title_1": "Level commands help:",
 
-  "title_1_1": "level <@user#1234>",
+  "title_1_1": "level {@user#1234}",
   "desc_1_1": "Show your level",
-
-  "title_1_2": "setrole",
-  "desc_1_2": "Add a role in function of the level",
-
-  "title_1_3": "setchannel",
-  "desc_1_3": "Add a channel where you can't win XP, limited to 3 channels",
-
-  "title_1_4": "removechannel",
-  "desc_1_4": "Supprimer un salon ou on ne peut pas gagné d'Xp",
 
   "title_1_5": "disprole",
   "desc_1_5": "Display role when you level up",
@@ -31,126 +24,70 @@
   "title_1_6": "leaderboard",
   "desc_1_6": "Show leaderboard",
 
-  "title_1_7": "help level",
-  "desc_1_7": "To know how the level system works",
-
-  "title_2": "Stream commands help:",
-
-  "title_2_1": "twitchadd \"username\" \"<description>\"",
-  "desc_2_1": "Add a streamer (with the quotes)",
-
-  "title_2_2": "twitchdelete username",
-  "desc_2_2": "Delete a streamer",
-
-  "title_2_3": "twitchdescription the description",
-  "desc_2_3": "Change the stream notification",
-
-  "title_2_4": "twitchchannel",
-  "desc_2_4": "Modify notification channel (do it in the new channel)",
-
-  "title_2_5": "twitchuser",
-  "desc_2_5": "Display streamers with a notification",
-
-  "title_2_6": "twitchstatsadd username",
-  "desc_2_6": "Create a category with your Twitch stats",
-
-  "title_2_7": "twitchstatsdelete username",
-  "desc_2_7": "Delete the category with your Twitch stats",
-
   "title_3": "Moderation commands help:",
-
-  "title_3_1": "setjoin @role",
-  "desc_3_1": "Add a reaction verification when a member joins the server to give a special role",
-
-  "title_3_2": "dispjoin",
-  "desc_3_2": "Display the role and the channel after doing a *setjoin",
-
-  "title_3_3": "deletejoin",
-  "desc_3_3": "Delete the member verification (delete the *setjoin)",
 
   "title_3_4": "Come Back Soon",
   "desc_3_4": "Send a message in a specific channel when a member leaves the server",
 
-  "title_3_5": "ban @user#1234 <reason>",
+  "title_3_5": "ban <@user#1234> {reason}",
   "desc_3_5": "Ban a member",
 
-  "title_3_6": "kick @user#1234 <reason>",
+  "title_3_6": "kick <@user#1234> {reason}",
   "desc_3_6": "Kick a member",
 
-  "title_3_7": "clear x <@user#1234>",
-  "desc_3_7": "Delete messages \"x\" the number of messages to delete",
-
-  "title_3_8": "warn @user#1234 reason",
+  "title_3_8": "warn <@user#1234> reason",
   "desc_3_8": "Warn a member",
 
-  "title_3_9": "crole nom_du_role",
-  "desc_3_9": "Create a role",
-
-  "title_3_10": "grole @user#1234",
-  "desc_3_10": "Give a role",
-
-  "title_3_11": "rrole @user#123",
-  "desc_3_11": "Enlever un rôle a un utilisateur",
+  "title_3_7": "clear <x> {@user#1234}",
+  "desc_3_7": "Delete messages \"x\" the number of messages to delete",
 
   "title_4": "Various commands help:",
-
-  "title_4_1": "setlanguage",
-  "desc_4_1": "Change the bot language",
 
   "title_4_2": "server",
   "desc_4_2": "Display server information",
 
-  "title_4_3": "avatar <@user#1234>",
+  "title_4_3": "avatar {@user#1234}",
   "desc_4_3": "Display avatar",
 
-  "title_4_4": "uinfo <@user#1234>",
+  "title_4_4": "uinfo {@user#1234}",
   "desc_4_4": "Display user informations",
 
   "title_4_5": "face",
   "desc_4_5": "Send an ASCII face",
 
-  "title_4_6": "poll \"question\"",
-  "desc_4_6": "Make a poll with the choices yes/no",
+  "title_4_6": "poll <\"question\"> {\"option1\" \"option2\" ... \"option20\"}",
+  "desc_4_6": "Make a poll with the choices yes/no with or without options",
 
-  "title_4_7": "poll  \"question\" \"choice1\" \"choice2\" ... \"choice20\"",
-  "desc_4_7": "Make a poll with custom choices",
-
-  "title_4_8": "google research",
+  "title_4_8": "google <research>",
   "desc_4_8": "Display a google link",
 
-  "title_4_9": "encode message",
+  "title_4_9": "encode <message>",
   "desc_4_9": "Encode a message in Base64",
 
-  "title_4_10": "decode bWVzc2FnZQ==",
+  "title_4_10": "decode <base64 message>",
   "desc_4_10": "Decode a Base64 message",
 
-  "title_4_12": "ms",
-  "desc_4_12": "Voir le ping du bot",
+  "title_4_11": "ms",
+  "desc_4_11": "Show bot ping",
 
-  "title": "Research nodejs wrapper",
-  "desc": "npm wrapper name",
+  "title_4_12": "npm <wrapper name>",
+  "desc_4_12": "Search a nodejs wrapper/module",
 
   "title_5": "Fun commands help:",
 
-  "title_5_1": "compatibilite x y",
-  "desc_5_1": "Name Compatibilty (English comming soon)",
+  "title_5_1": "compatibilite <x> <y>",
+  "desc_5_1": "Name Compatibilty (French only)",
 
   "title_6": "Emoji's commands help:",
 
   "title_6_1": "emote",
   "desc_6_1": "Display random emoji",
 
-  "title_6_2": "emote emoji_name",
+  "title_6_2": "emote <emoji_name>",
   "desc_6_2": "Display emoji with the name",
-
-  "title_6_3": "guide",
-  "desc_6_3": "Show the guide about available emoji's",
 
   "title_6_4": "guide random",
   "desc_6_4": "Display informations about a random emoji",
-
-  "title_6_5": "guide search",
-  "desc_6_5": "Research if an emoji is available",
 
   "face": [
     "( .-. )",

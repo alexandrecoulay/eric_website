@@ -1,11 +1,14 @@
 {
     "commands_help": "Commands help",
-    "home": "home",
-    "commands": "commands",
-    "invite": "invite",
-    "dashboard": "dashboard",
+    "home": "Home",
+    "commands": "Commands",
+    "invite": "Invite",
+    "dashboard": "Dashboard",
     "disconnect": "Disconnect from",
-    "login": "login",
+    "login": "Login",
     "change_language": "English",
-    "emotes": "emojis"
+    "emotes": "Emojis",
+
+    "select_a_server": "Select a server",
+    "activated": "Activated"
 }

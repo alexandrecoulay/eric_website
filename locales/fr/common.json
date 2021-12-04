@@ -1,11 +1,14 @@
 {
     "commands_help": "Commandes d'aide",
-    "home": "accueil",
-    "commands": "commandes",
-    "invite": "invite",
+    "home": "Accueil",
+    "commands": "Commandes",
+    "invite": "Invite",
     "dashboard": "configuration",
     "disconnect": "Se déconnecter de ",
     "login": "Se connecter",
     "change_language": "Français",
-    "emotes": "emotes"
+    "emotes": "Emotes",
+
+    "select_a_server": "Sélectionner un serveur",
+    "activated": "Activé"
 }

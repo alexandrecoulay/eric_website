@@ -1,4 +1,5 @@
 import React from "react";
+import useTranslation from 'next-translate/useTranslation'
 
 import { baseapiurl } from "../../../Service/constante";
 
@@ -6,7 +7,9 @@ import Svg from "../../../Components/Svg/Svg";
 
 import DashboardTitle from "./DashboardTitle";
 
-function DashboardActivation({ commands, setCommands, guild}) {
+function DashboardActivation({ user, commands, setCommands, guild}) {
+
+    const { t } = useTranslation('dashboard');
     
     const changeActivation = async (e) => {
 
@@ -14,15 +17,11 @@ function DashboardActivation({ commands, setCommands, guild}) {
         const newObject = {...commands};
         newObject[name].activate = !newObject[name].activate;
 
-        if(typeof window !== "undefined") {
-            var access_token = localStorage.getItem("access_token");
-        }
-
         const to_send = {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
-                'Authorization': `Bearer ${access_token}`
+                'Authorization': `Bearer ${user?.access_token}`
             },
             body: JSON.stringify({
                 commands
@@ -35,90 +34,77 @@ function DashboardActivation({ commands, setCommands, guild}) {
         if(status === 200) return setCommands(newObject);
     };
 
+    const plugins_element = [
+        {
+            svg: "gavel",
+            plugin: "moderation",
+            h3: t("moderation_title"),
+            span: t("moderation_description")
+        },
+        {
+            svg: "trophy",
+            plugin: "leveling",
+            h3: t("level_title"),
+            span: t("level_description")
+        },
+        {
+            svg: "hand-wave",
+            plugin: "joining",
+            h3: t("welcome_commands"),
+            span: t("welcome_description")
+        },
+        {
+            svg: "music",
+            plugin: "music",
+            h3: t("music_commands"),
+            span: t("music_description")
+        },
+        {
+            svg: "emote-plus",
+            plugin: "reaction",
+            h3: t("reaction_commands"),
+            span: t("reaction_description")
+        },
+        {
+            svg: "twitch",
+            plugin: "twitch",
+            h3: t("twitch_commands"),
+            span: t("twitch_description")
+        },
+        {
+            svg: "grid-plus",
+            plugin: "others",
+            h3: t("various_commands"),
+            span: t("various_description")
+        },
+        {
+            svg: "face-flushed",
+            plugin: "emotes",
+            h3: t("emote_commands"),
+            span: t("emote_description")
+        }
+    ]
+
+    const title = t("activate_plugins");
+
     return (
         <div className="dashboard-activation">
-            <DashboardTitle title="Activated Plugins" />
+            <DashboardTitle title={title} />
             <div className="boxes">
-                <div className="element">
-                    <div className="top">
-                        <Svg name="gavel" size={26} />
-                        <div>{commands.moderation.activate ? <label>Activated</label> : ""}<input  id="s2" type="checkbox" name="moderation" className="switch" checked={commands.moderation.activate} onChange={(e) => changeActivation(e)} /></div>
-                    </div>
-                    <div className="content">
-                        <h3>Moderation commands</h3>
-                        <span>Moderate the server with commands and verifications</span>
-                    </div>
-                </div>
-                <div className="element">
-                    <div className="top">
-                        <Svg name="trophy" size={26} />
-                        <div>{commands.leveling.activate ? <label>Activated</label> : ""}<input id="s2" type="checkbox" name="leveling" className="switch" checked={commands.leveling.activate} onChange={(e) => changeActivation(e)} /></div>
-                    </div>
-                    <div className="content">
-                        <h3>Levels commands</h3>
-                        <span>Let the members know they activities in the server</span>
-                    </div>
-                </div>
-                <div className="element">
-                    <div className="top">
-                        <Svg name="hand-wave" size={26} />
-                        <div>{commands.joining.activate ? <label>Activated</label> : ""}<input  id="s2" type="checkbox" name="joining" className="switch" checked={commands.joining.activate} onChange={(e) => changeActivation(e)} /></div>
-                    </div>
-                    <div className="content">
-                        <h3>Welcome command</h3>
-                        <span>Let the bot make a verification or send a message when a member join the guild</span>
-                    </div>
-                </div>
-                <div className="element">
-                    <div className="top">
-                        <Svg name="music" size={26} />
-                        <div>{commands.music.activate ? <label>Activated</label> : ""}<input  id="s2" type="checkbox" name="music" className="switch" checked={commands.music.activate} onChange={(e) => changeActivation(e)} /></div>
-                    </div>
-                    <div className="content">
-                        <h3>Music system</h3>
-                        <span>Let your guild members listen musics in you server</span>
-                    </div>
-                </div>
-                <div className="element">
-                    <div className="top">
-                        <Svg name="emote-plus" size={26} />
-                        <div>{commands.reaction.activate ? <label>Activated</label> : ""}<input  id="s2" type="checkbox" name="reaction" className="switch" checked={commands.reaction.activate} onChange={(e) => changeActivation(e)} /></div>
-                    </div>
-                    <div className="content">
-                        <h3>Reaction role</h3>
-                        <span>Beautify your server with the reactions roles commands</span>
-                    </div>
-                </div>
-                <div className="element">
-                    <div className="top">
-                        <Svg name="twitch" size={26} />
-                        <div>{commands.twitch.activate ? <label>Activated</label> : ""}<input  id="s2" type="checkbox" name="twitch" className="switch" checked={commands.twitch.activate} onChange={(e) => changeActivation(e)} /></div>
-                    </div>
-                    <div className="content">
-                        <h3>Twitch commands</h3>
-                        <span>View your or your friends Twitch statistics or send a message when someone start a stream</span>
-                    </div>
-                </div>
-                <div className="element">
-                    <div className="top">
-                        <Svg name="grid-plus" size={26} />
-                        <div>{commands.others.activate ? <label>Activated</label> : ""}<input  id="s2" type="checkbox" name="others" className="switch" checked={commands.others.activate} onChange={(e) => changeActivation(e)} /></div>
-                    </div>
-                    <div className="content">
-                        <h3>Others commands</h3>
-                        <span>Enable all various commands of the bot</span>
-                    </div>
-                </div>
-                <div className="element">
-                    <div className="top">
-                        <Svg name="face-flushed" size={26} />
-                        <div>{commands.emotes.activate ? <label>Activated</label> : ""}<input  id="s2" type="checkbox" name="emotes" className="switch" checked={commands.emotes.activate} onChange={(e) => changeActivation(e)} /></div>
-                    </div>
-                    <div className="content">
-                        <h3>Emotes commands</h3>
-                        <span>Enable all the emotes commands (emote stealing possible) </span>
-                    </div>
-                </div>
+                {
+                    plugins_element.map((p, index) => 
+                        <div key={index} className="element">
+                            <div className="top">
+                                <Svg name={p.svg} size={26} />
+                                <div>{commands[p.plugin].activate ? <label>{t("common:activated")}</label> : ""}<input  id="s2" type="checkbox" name={p.plugin} className="switch" checked={commands[p.plugin].activate} onChange={(e) => changeActivation(e)} /></div>
+                            </div>
+                            <div className="content">
+                                <h3>{p.h3}</h3>
+                                <span>{p.span}</span>
+                            </div>
+                        </div>
+                    )
+                }
             </div>
         </div>
     )

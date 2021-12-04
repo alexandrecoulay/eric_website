@@ -5,6 +5,7 @@
       "*": ["common"],
       "/": ["home"],
       "/help": ["help"],
-      "/help#*": ["help"]
+      "/help#*": ["help"],
+      "/dashboard/[guild_id]": ["dashboard"]
     }
 }

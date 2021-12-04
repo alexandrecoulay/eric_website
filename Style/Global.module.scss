@@ -14,20 +14,6 @@
   }
 }
 
-.not_mobile {
-  @media screen and (max-width: 800px) {
-    display: none;
-  }
-}
-
-.not_web {
-  display: none;
-
-  @media screen and (max-width: 800px) {
-    display: block;
-  }
-}
-
 .fa_primary {
   color: $fa-primary;
 }
@@ -123,6 +109,10 @@
   border-radius: 100%;
 }
 
+.underline {
+  text-decoration: underline;
+}
+
 .row {
   display: flex;
   flex-direction: row;
@@ -186,7 +176,7 @@
 }
 
 .uppercase {
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
 }
 
@@ -255,5 +245,19 @@
   &:hover {
     transition: $transition;
     filter: grayscale(50%) opacity(0.5);
+  }
+}
+
+.not_mobile {
+  @media screen and (max-width: 800px) {
+    display: none;
+  }
+}
+
+.not_web {
+  display: none;
+
+  @media screen and (max-width: 800px) {
+    display: flex;
   }
 }

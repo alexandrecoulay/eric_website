@@ -31,6 +31,10 @@ function DashboardModeration({ guild_id }) {
         getData()
     }, [])
 
+    const addChannel = async (id) => {
+
+    }
+
     return (
         <div className="dashboard-activation">
                 {
