@@ -16,6 +16,9 @@
     "setting_title": "Configuration de base",
     "setting_description": "Modifier la configuration de base du bot",
 
+    "change_language": "Langue du bot",
+    "change_prefix": "Changer le préfix du bot",
+    
     "moderation_title": "Commandes de modération",
     "moderation_description": "Modérer le serveur avec des commandes de modération",
 

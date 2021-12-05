@@ -175,6 +175,9 @@ html {
 
 				&.cancel {
 					color: var(--warning-color);
+					svg {
+						animation: loading 1000ms linear infinite;
+					}
 
 					&:hover {
 						text-decoration: underline;
@@ -187,12 +190,116 @@ html {
 					font-weight: 800;
 					color: var(--good-color);
 
+					&.loader {
+						svg {
+							animation: loading 1000ms linear infinite;
+						}
+					}
+
 					&:hover {
 						transition: var(--transition);
 						color: var(--text-normal);
 					}
 				}
 			}
+		}
+	}
+}
+
+.list-boxe {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+
+	.input {
+		transition: var(--transition);
+		min-height: 45px;
+		max-width: 33%;
+		width: 100%;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin: 0px;
+		background: var(--bg-third);
+		border-radius: 5px;
+		padding: 10px 15px;
+		border: 1px solid transparent;
+		outline: none;
+
+		&:hover {
+			transition: var(--transition);
+			border: 1px solid var(--bg-secondary);
+		}
+
+		input {
+			color: var(--text-normal);
+			width: 100%;
+			outline: 0;
+			background: var(--bg-third);
+			border-radius: 5px;
+			border: 1px solid transparent;
+			outline: none;
+
+		}
+	}
+
+	.options {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		background: var(--bg-third);
+		max-width: 33%;
+		border-radius: 5px;
+		padding: 10px 15px;
+
+		.option {
+			cursor: pointer;
+			transition: var(--transition);
+			padding: 5px;
+			border-radius: 5px;
+
+			&.selected {
+
+				background: var(--bg-secondary);
+
+				&:hover {
+					transition: var(--transition);
+					background: var(--bg-secondary);
+				}
+			}
+			&:hover {
+				transition: var(--transition);
+				background: var(--bg-primary-opacity);
+			}
+		}
+	}
+}
+
+.input-boxe {
+	width: 100%;
+
+	input {
+		color: var(--text-normal);
+		min-height: 45px;
+		width: 33%;
+		outline: 0;
+		background: var(--bg-third);
+		font-weight: 900;
+		border-radius: 5px;
+		padding: 10px 15px;
+		border: 1px solid transparent;
+		outline: none;
+
+		&:hover {
+			transition: var(--transition);
+			border: 1px solid var(--bg-secondary);
+		}
+		
+		&:focus {
+			transition: var(--transition);
+			border: 1px solid var(--bg-secondary);
 		}
 	}
 }
@@ -737,4 +844,8 @@ section {
 		border: none;
 	}
 
+}
+
+@keyframes loading {
+	100% { transform: rotate(360deg); }
 }

@@ -5,9 +5,10 @@ import { baseapiurl } from "../../Service/constante";
 
 import styles from "../../Style/Global.module.scss"
 import commandContext, { modificationContext } from "../../Views/Dashoard/DashboardContext";
+import Svg from "../Svg/Svg";
 
 
-function ActivationContainer({ children, plugin, text, user, guild_id, sendModification, noSwitch }) {
+function ActivationContainer({ children, plugin, text, user, guild_id, noSwitch, sendModification }) {
 
     const [commands, setCommands] = useContext(commandContext);
     const [modification, setModification] = useContext(modificationContext);
@@ -49,8 +50,14 @@ function ActivationContainer({ children, plugin, text, user, guild_id, sendModif
                                 <div className="bar">
                                     <div>{t("modification_detected")} !</div>
                                     <div className="buttons">
-                                        <button onClick={() => setModification({ ...modification, type: "cancel" })} className="cancel">{t("common:cancel")}</button>
-                                        <button onClick={() => setModification({ ...modification, type: "save" })} className="save">{t("common:save")}</button>
+                                        <button onClick={() => {
+                                            sendModification("cancel")
+                                            return setModification({ ...modification, type: "cancel" })
+                                        }} className={`cancel ${modification.type === "cancel" && "loader"}`}>{modification.loading && modification.type === "cancel" ? <Svg size={20} color="#F5F5F5" name="arrows-rotate" /> : t("common:cancel")}</button>
+                                        <button onClick={() => {
+                                            sendModification("save")
+                                            return setModification({ ...modification, type: "save" })
+                                        }} className={`save ${modification.type === "save" && "loader"}`}>{modification.loading && modification.type === "save" ? <Svg size={20} color="#F5F5F5" name="arrows-rotate" /> : t("common:save")}</button>
                                     </div>
                                 </div>
                             </div>

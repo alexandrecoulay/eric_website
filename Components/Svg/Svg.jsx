@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "../../Style/Global.module.scss";
 import svgList from "./SvgList";
 
-function Svg({ className = undefined, onClick = undefined, name, size, margin }) {
+function Svg({ className = undefined, onClick = undefined, name, size, margin, color }) {
 
     const [svg, setSvg] = useState({
         w: 512,
@@ -25,7 +25,7 @@ function Svg({ className = undefined, onClick = undefined, name, size, margin })
         }} onClick={onClick ? onClick : null} className={`${styles.fa_secondary} ${className && className}` } xmlns="http://www.w3.org/2000/svg" viewBox={`0 0 ${svg.w} ${svg.h}`}>
             {
                 svg.d.map((path, index) => 
-                    <path key={index} fill="currentcolor" d={path} />
+                    <path key={index} fill={color ?? "currentcolor"} d={path} />
                 )
             }
             

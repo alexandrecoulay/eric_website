@@ -10,7 +10,7 @@ function Boxe({ children, title, className = null, onClick = null }) {
                     fontSize: "18px"
                 }}>{title} :</p>
             </div>
-            <div className={`${styles.row} ${styles.no_wrap}`}>  
+            <div className={`${styles.row} ${styles.no_wrap} ${styles.full_width} `}>  
                 { children }
             </div>
         </div>

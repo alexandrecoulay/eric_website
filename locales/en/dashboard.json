@@ -10,11 +10,14 @@
     "various": "Various",
 
     "modification_detected": "Modification no saved",
-    
+
     "activate_plugins": "Activated Plugins",
 
     "setting_title": "Bot configuration",
     "setting_description": "Change the bot settings",
+    
+    "change_language": "Bot language",
+    "change_prefix": "Change the bot prefix",
 
     "moderation_title": "Moderation commands",
     "moderation_description": "Moderate the server with commands and verifications",

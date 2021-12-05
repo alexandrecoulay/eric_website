@@ -1,4 +1,4 @@
-const languages = [
+export const languages = [
     {
         local: "fr_FR",
         language: "Français"
