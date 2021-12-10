@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useRouter } from "next/router";
 import useTranslation from 'next-translate/useTranslation'
 
 import NavBar from "../Views/navbar/Navbar";
 import Seo from "../Components/Seo";
-import { basecdnurl } from "../Service/constante";
+import { basecdnurl, oauth2url } from "../Service/constante";
+import { UserContext } from "../Context/AppContext";
 
 function Home() {
 
     const router = useRouter();
     const { t } = useTranslation('home')
+    const [user, setUser] = useContext(UserContext)
 
     const fonctionalities = () => {
       if(typeof window !== "undefined") {
@@ -20,6 +22,14 @@ function Home() {
     
     const add_bot = () => {
       router.push("/bot/invite")
+    }
+
+    const connect = () => {
+        router.push(oauth2url)
+    }
+
+    const dashboard = () => {
+        router.push("/dashboard")
     }
 
     return(
@@ -35,8 +45,10 @@ function Home() {
                     
                     <div className="HeroButtons">
                         <div className="HeroButtonWrapper">
-                            <button className="btn_index" onClick={add_bot}>{t("add_to_server")}</button>
-                            <button className="btn_index" onClick={fonctionalities}>{t("browse_fonctionalities")}</button>
+                            { user ? <button className="btn_index" onClick={() => dashboard()}>{t("go_dashboard")}</button> : <button className="btn_index" onClick={() => connect()}>{t("connect")}</button> }
+                            
+                            <button className="btn_index" onClick={() => add_bot()}>{t("add_to_server")}</button>
+                            <button className="btn_index" onClick={() => fonctionalities()}>{t("browse_fonctionalities")}</button>
                         </div>
                     </div>
                 </section>
