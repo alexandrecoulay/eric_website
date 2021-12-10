@@ -38,6 +38,11 @@ function ActivationContainer({ children, plugin, text, user, guild_id, noSwitch,
         if(status === 200) return setCommands(newObject);
     };
 
+    const sendClick = (type) => {
+        sendModification(type);
+        setModification({ ...modification, type: type });
+    }
+
     return (
         <div className={`${styles.column} ${styles.align_start}`}>
             <div className={`${styles.row} ${styles.space_between} ${styles.full_width}`}>
@@ -50,14 +55,8 @@ function ActivationContainer({ children, plugin, text, user, guild_id, noSwitch,
                                 <div className="bar">
                                     <div>{t("modification_detected")} !</div>
                                     <div className="buttons">
-                                        <button onClick={() => {
-                                            sendModification("cancel")
-                                            return setModification({ ...modification, type: "cancel" })
-                                        }} className={`cancel ${modification.type === "cancel" && "loader"}`}>{modification.loading && modification.type === "cancel" ? <Svg size={20} color="#F5F5F5" name="arrows-rotate" /> : t("common:cancel")}</button>
-                                        <button onClick={() => {
-                                            sendModification("save")
-                                            return setModification({ ...modification, type: "save" })
-                                        }} className={`save ${modification.type === "save" && "loader"}`}>{modification.loading && modification.type === "save" ? <Svg size={20} color="#F5F5F5" name="arrows-rotate" /> : t("common:save")}</button>
+                                        <button onClick={() => sendClick("cancel")} className={`cancel ${modification.type === "cancel" ? "loader" : ""}`}>{modification.loading && modification.type === "cancel" ? <Svg size={20} color="#F5F5F5" name="arrows-rotate" /> : t("common:cancel")}</button>
+                                        <button onClick={() => sendClick("save")} className={`save ${modification.type === "save" ? "loader" : ""}`}>{modification.loading && modification.type === "save" ? <Svg size={20} color="#F5F5F5" name="arrows-rotate" /> : t("common:save")}</button>
                                     </div>
                                 </div>
                             </div>

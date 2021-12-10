@@ -216,6 +216,10 @@ html {
 		transition: var(--transition);
 		min-height: 45px;
 		max-width: 33%;
+		
+		@media (max-width: 800px) {
+			max-width: 100%;
+		}
 		width: 100%;
 		cursor: pointer;
 		display: flex;
@@ -246,11 +250,17 @@ html {
 	}
 
 	.options {
+		position: relative;
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;
 		background: var(--bg-third);
 		max-width: 33%;
+
+		@media (max-width: 800px) {
+			max-width: 100%;
+		}
+
 		border-radius: 5px;
 		padding: 10px 15px;
 
@@ -271,7 +281,7 @@ html {
 			}
 			&:hover {
 				transition: var(--transition);
-				background: var(--bg-primary-opacity);
+				background: var(--bg-primary);
 			}
 		}
 	}
@@ -283,7 +293,11 @@ html {
 	input {
 		color: var(--text-normal);
 		min-height: 45px;
-		width: 33%;
+		max-width: 33%;
+		
+		@media (max-width: 800px) {
+			max-width: 100%;
+		}
 		outline: 0;
 		background: var(--bg-third);
 		font-weight: 900;

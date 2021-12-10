@@ -7,6 +7,7 @@
   "various": "divers",
   "fun": "fun",
   "emotes": "emotes",
+  "music": "musique",
   "The_available_help_commands": "Voici les commandes d'aide disponibles: ",
   "connect_dashboard": "Se connecter pour configurer le bot !",
   "require_param": "Paramètre obligatoire : <param>",
@@ -26,8 +27,8 @@
 
   "title_3": "Aides pour les commandes de modération:",
 
-  "title_3_4": "Temporairement indisponible",
-  "desc_3_4": "Envoyer un message dans un salon spécifique quand une personne quitte le serveur",
+  "title_3_4": "getwarn <@user#1234>",
+  "desc_3_4": "Récupere les 20 derniers warn de l'utilisateur",
 
   "title_3_5": "ban <@user#1234> {raison}",
   "desc_3_5": "Bannir un membre",
@@ -89,6 +90,11 @@
   "title_6_4": "guide random",
   "desc_6_4": "Afficher des informations sur une emote aléatoire",
 
+  "title_7": "Aide pour les commandes de musique",
+  
+  "title_7_1": "play",
+  "desc_7_1": "Jouer une musique",
+  
   "face": [
     "( .-. )",
     "( .o.)",

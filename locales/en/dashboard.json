@@ -1,6 +1,6 @@
 {
     "dashboard": "Dashboard",
-    "settings": "Setting",
+    "settings": "Settings",
     "moderation": "Moderation",
     "welcome": "Welcome",
     "level": "Level",
@@ -9,24 +9,34 @@
     "twitch": "Twitch",
     "various": "Various",
 
-    "modification_detected": "Modification no saved",
+    "role_bot_higher_than_role_hierarchy" : "The bot's role must be higher than the other roles in the role hierarchy",
+
+    "modification_detected": "Modifications no saved",
 
     "activate_plugins": "Activated Plugins",
 
     "setting_title": "Bot configuration",
     "setting_description": "Change the bot settings",
-    
+
     "change_language": "Bot language",
     "change_prefix": "Change the bot prefix",
 
     "moderation_title": "Moderation commands",
     "moderation_description": "Moderate the server with commands and verifications",
 
+    "logs_channel": "Moderation logs channel",
+
     "level_title": "Levels commands",
     "level_description": "Let the members know they activities in the server",
     
+    "banned_channels": "Channels where your can't receive experiences",
+    "roles_to_give": "Roles to give when member level up",
+
     "welcome_title": "Welcome commands",
     "welcome_description": "Let the bot make a verification or send a message when a member join the guild",
+
+    "verification_channel": "Verification channel",
+    "verification_role": "Role of verified members",
 
     "music_title": "Music commands",
     "music_description": "Let your guild members listen musics in you server",

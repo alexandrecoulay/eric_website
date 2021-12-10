@@ -26,8 +26,8 @@
 
   "title_3": "Moderation commands help:",
 
-  "title_3_4": "Come Back Soon",
-  "desc_3_4": "Send a message in a specific channel when a member leaves the server",
+  "title_3_4": "getwarn <@user#1234>",
+  "desc_3_4": "Get last 20th warns of the user",
 
   "title_3_5": "ban <@user#1234> {reason}",
   "desc_3_5": "Ban a member",

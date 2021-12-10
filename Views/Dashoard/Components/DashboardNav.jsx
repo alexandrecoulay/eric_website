@@ -49,14 +49,14 @@ function DashBoardNav({ setPage, guild = {icon: "", name: ""} }) {
             name: "music",
             text: t("music")
             
-        },*/
+        },
         {
             page: "Twitch",
             name: "twitch",
             text: t("twitch")
             
         },
-        /*{
+        {
             page: "Various",
             name: "grid-plus",
             text: t("various")

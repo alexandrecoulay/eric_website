@@ -261,3 +261,22 @@
     display: flex;
   }
 }
+
+.input {
+  input[type="text"], input[type="number"] {
+    color: var(--text-normal);
+    border: none;
+    background: none;
+    margin-top: 10px;
+    padding: 10px;
+    width: 100%;
+    outline: 0;
+    border-bottom: 1px solid var(--text-normal-hover);
+
+    &:focus {
+      border-width: 1px;
+      border-image: linear-gradient(90deg, var(--fa-third),var(--fa-primary));
+      border-image-slice: 1;
+    }
+  }
+}

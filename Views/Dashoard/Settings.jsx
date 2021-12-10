@@ -4,11 +4,8 @@ import { AlertContext } from "../../Context/AppContext";
 import { modificationContext } from "./DashboardContext";
 
 import { baseapiurl, basecdnurl } from "../../Service/constante";
-import Svg from "../../Components/Svg/Svg";
 import Loader from "../../Components/Others/Loader";
-import DashboardTitle from "./Components/DashboardTitle";
 import ActivationContainer from "../../Components/Dashboard/ActivationContainer";
-import Boxe from "../../Components/Dashboard/Boxes/Boxe";
 import ListBoxe from "../../Components/Dashboard/Boxes/ListBoxe";
 import { languages } from "../../Service/Languages";
 import Icon from "../../Components/Assets/RoundedIcon";
@@ -118,7 +115,7 @@ function DashboardSettings({ guild_id, user }) {
                 !settings ? <Loader /> :
                 <ActivationContainer sendModification={sendModification} text="setting" guild_id={guild_id} user={user} plugin="setting" noSwitch >
                     <InputBoxe value={settings.prefix} onChange={(e) => setChange("prefix", e.target.value)} name="prefix" title={t("change_prefix")} />
-                    <ListBoxe title={t("change_language")} input={<input placeholder="Select" type="text" onChange={(e) => setFilter(e.target.value)} />} text={<span className={`${styles.row}`}><Icon size={22} src={`${basecdnurl}/assets/flags/${settings?.language ?? "en_UK"}.png`} /> {languages.find(l => l.local === settings?.language ?? "en_UK")?.language}</span>}>
+                    <ListBoxe title={t("change_language")} input={<input placeholder={t("common:research")} type="text" onChange={(e) => setFilter(e.target.value)} />} text={<span className={`${styles.row}`}><Icon size={22} src={`${basecdnurl}/assets/flags/${settings?.language ?? "en_UK"}.png`} /> {languages.find(l => l.local === settings?.language ?? "en_UK")?.language}</span>}>
                         {
                             languages.filter(l => l.language.match(new RegExp(filter, "gi"))).map((l, index) => 
                                 <div onClick={() => {

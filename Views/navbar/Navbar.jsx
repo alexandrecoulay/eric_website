@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import useTranslation from 'next-translate/useTranslation'
-import Router from 'next/router'
+import Router, { useRouter } from 'next/router'
 
 
 import styles from "../../Style/Global.module.scss";
 
-import { oauth2url } from "../../Service/constante";
+import { oauth2url, websitebaseurl } from "../../Service/constante";
 import { UserContext } from "../../Context/AppContext";
 import CreateLink from "../../Components/Text/Link";
 import NavbarElement from "../../Components/Navbar/NavbarElement";
@@ -15,6 +15,9 @@ import NavbarLink from "../../Components/Navbar/NavbarLink";
 function NavBar() {
 
     const [user, setUser] = useContext(UserContext);
+    const router = useRouter();
+
+    const pathname = router.asPath;
 
     const { t, lang } = useTranslation()
 
@@ -33,7 +36,7 @@ function NavBar() {
                 <NavbarLink href="/help">{t("common:commands")}</NavbarLink>
                 <NavbarLink href="/emojis">{t("common:emotes")}</NavbarLink>
                 <NavbarLink href="/bot/invite">{t("common:invite")}</NavbarLink>
-                <a className={`${styles.uppercase} ${styles.padding_15}`} onClick={() => Router.push('/', undefined, { locale: lang === "fr" ? "en" : "fr" })}>{t("common:change_language")}</a>
+                <a className={`${styles.uppercase} ${styles.padding_15}`} onClick={() => router.push(`${websitebaseurl}/${pathname}`, undefined, { locale: lang === "fr" ? "en" : "fr" })}>{t("common:change_language")}</a>
         </NavbarElement>
     );
 }

@@ -4,7 +4,7 @@
     "commands": "Commands",
     "invite": "Invite",
     "dashboard": "Dashboard",
-    "disconnect": "Disconnect from",
+    "disconnect": "Disconnect from ",
     "login": "Login",
     "change_language": "English",
     "emotes": "Emojis",
@@ -13,5 +13,7 @@
     "activated": "Activated",
 
     "cancel": "Cancel",
-    "save": "Save"
+    "save": "Save",
+
+    "research": "Search ..."
 }

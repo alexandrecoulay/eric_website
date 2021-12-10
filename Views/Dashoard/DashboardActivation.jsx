@@ -56,24 +56,24 @@ function DashboardActivation({ user, guild }) {
             h3: t("welcome_title"),
             span: t("welcome_description")
         },
-        {
+        /*{
             svg: "music",
             plugin: "music",
             h3: t("music_title"),
             span: t("music_description")
-        },
+        },*/
         /*{
             svg: "emote-plus",
             plugin: "reaction",
             h3: t("reaction_title"),
             span: t("reaction_description")
         },*/
-        {
+        /*{
             svg: "twitch",
             plugin: "twitch",
             h3: t("twitch_title"),
             span: t("twitch_description")
-        },
+        },*/
         {
             svg: "grid-plus",
             plugin: "others",

@@ -1,6 +1,6 @@
 {
     "dashboard": "Configuration",
-    "settings": "Paramètre",
+    "settings": "Paramètres",
     "moderation": "Modération",
     "welcome": "Bienvenue",
     "level": "Niveau",
@@ -8,8 +8,10 @@
     "music": "Musique",
     "twitch": "Twitch",
     "various": "Divers",
+
+    "role_bot_higher_than_role_hierarchy" : "Le rôle du bot doit être plus haut que les autres rôles dans la hiérachie des rôles",
     
-    "modification_detected": "Modification non enregistré",
+    "modification_detected": "Modifications non enregistré",
 
     "activate_plugins": "Activer des options",
 
@@ -18,15 +20,23 @@
 
     "change_language": "Langue du bot",
     "change_prefix": "Changer le préfix du bot",
-    
+
     "moderation_title": "Commandes de modération",
     "moderation_description": "Modérer le serveur avec des commandes de modération",
 
+    "logs_channel": "Salon des logs de modération",
+
     "level_title": "Commandes de niveau",
     "level_description": "Mesurer l'activiter de vos membres dans le serveur",
+
+    "banned_channels": "Salons ou les membres ne peuvent pas recevoir d'expérience",
+    "roles_to_give": "Roles à donner lors d'un level up",
     
     "welcome_title": "Commandes de bienvenue",
     "welcome_description": "Vérifier ou envoyer un message lorsqu'un membre rejoint votre serveur",
+
+    "verification_channel": "Salon des vérifications",
+    "verification_role": "Rôle des membres vérifié",
 
     "music_title": "Commandes de musique",
     "music_description": "Laisser vos membres écouter de la musique",
