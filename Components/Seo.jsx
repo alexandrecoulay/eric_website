@@ -3,7 +3,7 @@ import Head from 'next/head';
 
 function Seo({ children, title, description, image, url }) {
 
-    const meta_description = description ?? "Official Eric Discord Bot Website with Dashboard, Twitch commands, Emoji’s, Leveling System and more than 60 commands completly free !";
+    const meta_description = description ?? "Official Eric Discord Bot Website with Dashboard, Twitch commands, Emoji’s, Leveling System and more than 60 commands completely free !";
     const meta_title = title ?? "Eric, The Discord Bot 100% Free";
     const meta_image = image ?? "https://cdn.boteric.fr/assets/favicons/favicon.ico";
     const meta_url = url ?? "https://boteric.fr";
@@ -52,13 +52,13 @@ function Seo({ children, title, description, image, url }) {
 
             { children }
 
-            <script async src="https://www.googletagmanager.com/gtag/js?id=G-7GR7G4764X"></script>
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-45LV4VEEB5"></script>
             <script async dangerouslySetInnerHTML={{
                 __html: `window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
               
-                gtag('config', "G-7GR7G4764X");`
+                gtag('config', "G-45LV4VEEB5");`
               }}
             />
 
