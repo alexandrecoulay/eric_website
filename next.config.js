@@ -8,6 +8,5 @@ module.exports = nextTranslate({
       'cdn.boteric.fr',
       "cdn.discordapp.com"
     ],
-  },
-  distDir: 'build'
+  }
 })
