@@ -8,6 +8,9 @@ import Loader from "../../Components/Others/Loader";
 import ActivationContainer from "../../Components/Dashboard/ActivationContainer";
 import ListBoxe from "../../Components/Dashboard/Boxes/ListBoxe";
 import styles from "../../Style/Global.module.scss";
+import Boxe from "../../Components/Dashboard/Boxes/Boxe";
+import LittleListBoxe from "../../Components/Dashboard/Boxes/LittleListBoxe";
+import Svg from "../../Components/Svg/Svg";
 
 function DashboardModeration({ guild_id, user }) {
 
@@ -55,7 +58,8 @@ function DashboardModeration({ guild_id, user }) {
                         'Authorization': `Bearer ${user?.access_token}`
                     },
                     body: JSON.stringify({
-                        channel_id: settings.channel_id
+                        channel_id: settings.channel_id,
+                        words: settings.words
                     })
                 };
 
@@ -65,7 +69,6 @@ function DashboardModeration({ guild_id, user }) {
     
                 if(request.status !== 200) return setAlert({ display: true, type: "error", message: "Error !" })
 
-                console.log("save");
                 setAlert({ display: true, type: "success", message: "Saved !" })
                 setModification({ activated: false, type: "", loading: false })
             
@@ -90,7 +93,6 @@ function DashboardModeration({ guild_id, user }) {
 
                 setSettings(response)
                 
-                console.log("cancel");
                 setAlert({ display: true, type: "error", message: "Canceled !" })
                 setModification({ activated: false, type: "", loading: false })
             
@@ -102,6 +104,13 @@ function DashboardModeration({ guild_id, user }) {
     const setChange = (name, value) => {
         setSettings({ ...settings, [name]: value })
         setModification({ type: "", activated: true })
+    }
+
+    const changeWordsInput = (verif, value, field) => {
+        var index = settings.words.findIndex(w => w.word === verif);
+        var array = settings.words
+        array[index][field] = value
+        return setChange("words", array)
     }
 
     return (
@@ -121,6 +130,25 @@ function DashboardModeration({ guild_id, user }) {
                             )
                         }
                     </ListBoxe>
+                    <Boxe title={<span className={`${styles.row} ${styles.full_width}`}>{t("auto_moderation_text")} <Svg className={`${styles.pointer} ${styles.hover}`} onClick={() => {
+                        return setChange("words", [ { word: "word", to_do: "warn" }, ...settings.words ])
+                    }} name="circle-plus" /></span>}>
+                        <div className={`${styles.column} ${styles.full_width}`}>
+                            {
+                                settings.words.map(words => 
+                                    <LittleListBoxe title={<span className={`${styles.row}`}><Svg className={`${styles.pointer} ${styles.hover}`} onClick={() => {
+                                        return setChange("words", settings.words.filter(w => w.word !== words.word))
+                                    }} size={18} name="circle-close" /><input onChange={(e) => changeWordsInput(words.word, e.target.value, "word")} type="text" value={words.word} /></span>} input={<input placeholder={t("common:research")} type="text" onChange={(e) => setFilter(e.target.value)} />} text={"Warn"}>
+                                        <div onClick={() => {
+                                            changeWordsInput(words.word, "warn", "to_do")
+                                        }} className={`option`}>
+                                            <span className={`${styles.row}`}>Warn</span>
+                                        </div>
+                                    </LittleListBoxe>    
+                                )
+                            }
+                        </div>
+                    </Boxe>
                 </ActivationContainer> 
             }
         </modificationContext.Provider>

@@ -45,6 +45,18 @@ function DashboardActivation({ user, guild }) {
             span: t("moderation_description")
         },
         {
+            svg: "robot",
+            plugin: "auto_moderation",
+            h3: t("auto_moderation_title"),
+            span: t("auto_moderation_description")
+        },
+        {
+            svg: "brain-circuits",
+            plugin: "artificial_intelligence",
+            h3: "Artificial inteligence",
+            span: "Comming soon ... you will be able to ask me some help, if you want to search something on google I will search it for you by example but you can do more. Currently in test prod"
+        },
+        {
             svg: "trophy",
             plugin: "leveling",
             h3: t("level_title"),

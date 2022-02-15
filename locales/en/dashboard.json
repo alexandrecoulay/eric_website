@@ -24,6 +24,9 @@
     "moderation_title": "Moderation commands",
     "moderation_description": "Moderate the server with commands and verifications",
 
+    "auto_moderation_title": "Auto moderation commands",
+    "auto_moderation_description": "Let the bot manage your server automatically in function of the detection of some words in the messages",
+
     "logs_channel": "Moderation logs channel",
 
     "level_title": "Levels commands",

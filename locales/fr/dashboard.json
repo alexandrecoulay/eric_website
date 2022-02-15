@@ -10,6 +10,8 @@
     "various": "Divers",
 
     "role_bot_higher_than_role_hierarchy" : "Le rôle du bot doit être plus haut que les autres rôles dans la hiérachie des rôles",
+
+    "auto_moderation_text": "Words list",
     
     "modification_detected": "Modifications non enregistré",
 
@@ -23,6 +25,9 @@
 
     "moderation_title": "Commandes de modération",
     "moderation_description": "Modérer le serveur avec des commandes de modération",
+
+    "auto_moderation_title": "Commandes d'auto modération",
+    "auto_moderation_description": "Laisser le bot gérer automatiquement le serveur en détectant les mots dans les messages",
 
     "logs_channel": "Salon des logs de modération",
 
