@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from 'react';
 import { useRouter } from "next/router";
 
-import Loader from "../../Components/Others/Loader";
-import { UserContext } from '../../Context/AppContext';
-import { baseapiurl, discordcdnurl, oauth2url } from '../../Service/constante';
+import Loader from "../../../Components/Others/Loader";
+import { UserContext } from '../../../Context/AppContext';
+import { baseapiurl, discordcdnurl, oauth2url } from '../../../Service/constante';
 
 function Callback() {
     
