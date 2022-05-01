@@ -1,17 +1,17 @@
 import React, { useContext } from "react";
 import { useRouter } from "next/router";
-import useTranslation from 'next-translate/useTranslation'
 
 import NavBar from "../Views/navbar/Navbar";
 import Seo from "../Components/Seo";
 import { basecdnurl, oauth2url } from "../Service/constante";
 import { UserContext } from "../Context/AppContext";
+import { useTranslation } from "../Context/Localization";
 
 function Home() {
 
     const router = useRouter();
-    const { t } = useTranslation('home')
-    const [user, setUser] = useContext(UserContext)
+    const { t } = useTranslation();
+    const {user, setUser} = useContext(UserContext)
 
     const fonctionalities = () => {
       if(typeof window !== "undefined") {
@@ -55,9 +55,9 @@ function Home() {
                 <section className="Section" id="fonctionalities">
                     <div className="SectionInner">
                         <div className="SectionText">
-                            <h2>{t("title_1")}</h2>
-                            <p>{t("desc_1_1")}</p>
-                            <p>{t("desc_1_2")}</p>
+                            <h2>{t("home_title_1")}</h2>
+                            <p>{t("home_desc_1_1")}</p>
+                            <p>{t("home_desc_1_2")}</p>
                         </div>
                         <div className="SectionImg">
                             <img src={`${basecdnurl}/assets/home/level.png`} alt="Leveling system" />
@@ -67,9 +67,9 @@ function Home() {
                 <section className="Section">
                     <div className="SectionInner reverse">
                         <div className="SectionText">
-                            <h2>{t("title_2")}</h2>
-                            <p>{t("desc_2_1")}</p>
-                            <p>{t("desc_2_2")}</p>
+                            <h2>{t("home_title_2")}</h2>
+                            <p>{t("home_desc_2_1")}</p>
+                            <p>{t("home_desc_2_2")}</p>
                         </div>
                         <div className="SectionImg">
                             <img src={`${basecdnurl}/assets/home/moderation.png`} alt="Raid protect" />
@@ -79,9 +79,9 @@ function Home() {
                 <section className="Section">
                     <div className="SectionInner">
                         <div className="SectionText">
-                            <h2>{t("title_3")}</h2>
-                            <p>{t("desc_3_1")}</p>
-                            <p>{t("desc_3_2")}</p>
+                            <h2>{t("home_title_3")}</h2>
+                            <p>{t("home_desc_3_1")}</p>
+                            <p>{t("home_desc_3_2")}</p>
                         </div>
                         <div className="SectionImg">
                             <img src={`${basecdnurl}/assets/home/stream_2.png`} alt="twitch notifications" />
@@ -91,9 +91,9 @@ function Home() {
                 <section className="Section">
                     <div className="SectionInner reverse">
                         <div className="SectionText">
-                            <h2>{t("title_4")}</h2>
-                            <p>{t("desc_4_1")}</p>
-                            <p>{t("desc_4_2")}</p>
+                            <h2>{t("home_title_4")}</h2>
+                            <p>{t("home_desc_4_1")}</p>
+                            <p>{t("home_desc_4_2")}</p>
                         </div>
                         <div className="SectionImg">
                             <img src={`${basecdnurl}/assets/home/various.png`} alt="various commands" />

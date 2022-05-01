@@ -5,7 +5,7 @@ import AlertCross from "./Alert/Components/AlertCross";
 import AlertIcon from "./Alert/Components/AlertIcon";
 
 function Alert() {
-    const [alert, setAlert] = useContext(AlertContext);
+    const {alert, setAlert} = useContext(AlertContext);
     const color = alert.type === "error" ? "#ED3D3D" : alert.type === "success" ? "#339900" : "#007ad6";
 
     useEffect(() => {

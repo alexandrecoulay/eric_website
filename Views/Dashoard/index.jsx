@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
-import useTranslation from 'next-translate/useTranslation'
 
 import { baseapiurl, discordcdnurl } from "../../Service/constante";
 
-import CreateLink from "../../Components/Text/Link";
-import Svg from "../../Components/Svg/Svg";
-import Loader from "../../Components/Others/Loader";
-import Icon from "../../Components/Assets/RoundedIcon";
+import { CreateLink } from "../../Components/Text";
+import { Svg } from "../../Components/Svg";
+import { Loader } from "../../Components/Others";
+import { RoundedIcon } from "../../Components/Assets";
+import { useTranslation } from "../../Context/Localization";
 
 function DashboardIndex({ user }) {
 
     const [guilds, setGuilds] = useState([]);
 
-    const { t } = useTranslation('common')
+    const { t } = useTranslation()
 
     useEffect(() => {
         async function getData() {
@@ -43,7 +43,7 @@ function DashboardIndex({ user }) {
                     <CreateLink key={index} href={`/dashboard/${e.guild_id}`}>
                         <div className="guild-info">
                             <div className="top-informations">
-                                <Icon size={40} src={`${discordcdnurl}/icons/${e.guild_id}/${e.icon}.webp`} />
+                                <RoundedIcon size={40} src={`${discordcdnurl}/icons/${e.guild_id}/${e.icon}.webp`} />
                                 <span className="guild-name">{e.name}</span> 
                                 { e.owner && <Svg name="crown" size={22} /> }
                             </div>

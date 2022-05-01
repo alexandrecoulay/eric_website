@@ -1,11 +1,11 @@
 import React from "react";
-import useTranslation from 'next-translate/useTranslation'
 
 import Svg from "../../../Components/Svg/Svg";
+import { useTranslation } from "../../../Context/Localization";
 
 function DashBoardNav({ setPage, guild = {icon: "", name: ""} }) {
 
-    const { t } = useTranslation('dashboard');
+    const { t } = useTranslation();
 
     const links = [
         {
@@ -38,13 +38,13 @@ function DashBoardNav({ setPage, guild = {icon: "", name: ""} }) {
             text: t("level")
             
         },
-        /*{
+        {
             page: "Reaction",
             name: "emote-plus",
             text: t("reaction")
             
         },
-        {
+        /*{
             page: "Music",
             name: "music",
             text: t("music")

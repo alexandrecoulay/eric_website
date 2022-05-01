@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { useRouter } from "next/router";
 
-import Loader from "../../../Components/Others/Loader";
+import { Loader } from "../../../Components/Others";
 import { UserContext } from '../../../Context/AppContext';
 import { baseapiurl, discordcdnurl, oauth2url } from '../../../Service/constante';
 
@@ -9,7 +9,7 @@ function Callback() {
     
   const router = useRouter();
   const { token } = router.query;
-  const [user, setUser] = useContext(UserContext)
+  const { setUser } = useContext(UserContext)
 
   useEffect(() => {
     async function getData() {

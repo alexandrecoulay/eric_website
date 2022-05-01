@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { baseapiurl, discordcdnurl, inviteboturl } from "../../Service/constante";
 
-import Loader from "../../Components/Others/Loader";
+import { Loader } from "../../Components/Others";
 import Seo from "../../Components/Seo";
 import DashBoardNav from "./Components/DashboardNav";
 

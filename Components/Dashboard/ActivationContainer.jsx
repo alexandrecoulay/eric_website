@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import useTranslation from 'next-translate/useTranslation'
+import { useTranslation } from "../../Context/Localization";
 
 import { baseapiurl } from "../../Service/constante";
 
@@ -13,7 +13,7 @@ function ActivationContainer({ children, plugin, text, user, guild_id, noSwitch,
     const [commands, setCommands] = useContext(commandContext);
     const [modification, setModification] = useContext(modificationContext);
 
-    const { t } = useTranslation('dashboard');
+    const { t } = useTranslation();
 
     const changeActivation = async (e) => {
 
@@ -55,14 +55,14 @@ function ActivationContainer({ children, plugin, text, user, guild_id, noSwitch,
                                 <div className="bar">
                                     <div>{t("modification_detected")} !</div>
                                     <div className="buttons">
-                                        <button onClick={() => sendClick("cancel")} className={`cancel ${modification.type === "cancel" ? "loader" : ""}`}>{modification.loading && modification.type === "cancel" ? <Svg size={20} color="#F5F5F5" name="arrows-rotate" /> : t("common:cancel")}</button>
-                                        <button onClick={() => sendClick("save")} className={`save ${modification.type === "save" ? "loader" : ""}`}>{modification.loading && modification.type === "save" ? <Svg size={20} color="#F5F5F5" name="arrows-rotate" /> : t("common:save")}</button>
+                                        <button onClick={() => sendClick("cancel")} className={`cancel ${modification.type === "cancel" ? "loader" : ""}`}>{modification.loading && modification.type === "cancel" ? <Svg size={20} color="#F5F5F5" name="arrows-rotate" /> : t("cancel")}</button>
+                                        <button onClick={() => sendClick("save")} className={`save ${modification.type === "save" ? "loader" : ""}`}>{modification.loading && modification.type === "save" ? <Svg size={20} color="#F5F5F5" name="arrows-rotate" /> : t("save")}</button>
                                     </div>
                                 </div>
                             </div>
                     }
                 </div>
-                { noSwitch ? "" : <div>{commands[plugin].activate && <label>{t("common:activated")} </label>}<input  id="s2" type="checkbox" name={plugin} className="switch" checked={commands[plugin].activate} onChange={(e) => changeActivation(e)} /></div> }  
+                { noSwitch ? "" : <div>{commands[plugin].activate && <label>{t("activated")} </label>}<input  id="s2" type="checkbox" name={plugin} className="switch" checked={commands[plugin].activate} onChange={(e) => changeActivation(e)} /></div> }  
             </div>
             <div style={{ gap: "20px" }} className={`${styles.column} ${styles.align_start} ${styles.full_width}`}>
                 { children }

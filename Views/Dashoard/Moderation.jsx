@@ -1,20 +1,20 @@
 import React, { useState, useEffect, useContext } from "react";
-import useTranslation from 'next-translate/useTranslation'
 import { AlertContext } from "../../Context/AppContext";
 import { modificationContext } from "./DashboardContext";
 
 import { baseapiurl } from "../../Service/constante";
-import Loader from "../../Components/Others/Loader";
+import { Loader } from "../../Components/Others";
 import ActivationContainer from "../../Components/Dashboard/ActivationContainer";
 import ListBoxe from "../../Components/Dashboard/Boxes/ListBoxe";
 import styles from "../../Style/Global.module.scss";
 import Boxe from "../../Components/Dashboard/Boxes/Boxe";
 import LittleListBoxe from "../../Components/Dashboard/Boxes/LittleListBoxe";
 import Svg from "../../Components/Svg/Svg";
+import { useTranslation } from "../../Context/Localization";
 
 function DashboardModeration({ guild_id, user }) {
 
-    const [alert, setAlert] = useContext(AlertContext);
+    const {alert, setAlert} = useContext(AlertContext);
     const [modification, setModification] = useState({
         activated: false,
         type: "",
@@ -23,7 +23,7 @@ function DashboardModeration({ guild_id, user }) {
 
     const [filter, setFilter] = useState("")
     const [settings, setSettings] = useState();
-    const { t } = useTranslation('dashboard');
+    const { t } = useTranslation();
 
     useEffect(() => {
         async function getData() {
@@ -118,7 +118,7 @@ function DashboardModeration({ guild_id, user }) {
             {
                 !settings ? <Loader /> :
                 <ActivationContainer sendModification={sendModification} text="moderation" guild_id={guild_id} user={user} plugin="moderation" >
-                    <ListBoxe title={t("logs_channel")} input={<input placeholder={t("common:research")} type="text" onChange={(e) => setFilter(e.target.value)} />} text={<span className={`${styles.row}`}># {settings.channels.find(c => c.id === settings.channel_id)?.name ?? ""}</span>}>
+                    <ListBoxe title={t("logs_channel")} input={<input placeholder={t("research")} type="text" onChange={(e) => setFilter(e.target.value)} />} text={<span className={`${styles.row}`}># {settings.channels.find(c => c.id === settings.channel_id)?.name ?? ""}</span>}>
                         {
                             settings.channels.filter(l => l.name.match(new RegExp(filter, "gi"))).map((l, index) => 
                                 <div onClick={() => {
@@ -138,7 +138,7 @@ function DashboardModeration({ guild_id, user }) {
                                 settings.words.map(words => 
                                     <LittleListBoxe title={<span className={`${styles.row}`}><Svg className={`${styles.pointer} ${styles.hover}`} onClick={() => {
                                         return setChange("words", settings.words.filter(w => w.word !== words.word))
-                                    }} size={18} name="circle-close" /><input onChange={(e) => changeWordsInput(words.word, e.target.value, "word")} type="text" value={words.word} /></span>} input={<input placeholder={t("common:research")} type="text" onChange={(e) => setFilter(e.target.value)} />} text={"Warn"}>
+                                    }} size={18} name="circle-close" /><input onChange={(e) => changeWordsInput(words.word, e.target.value, "word")} type="text" value={words.word} /></span>} input={<input placeholder={t("research")} type="text" onChange={(e) => setFilter(e.target.value)} />} text={"Warn"}>
                                         <div onClick={() => {
                                             changeWordsInput(words.word, "warn", "to_do")
                                         }} className={`option`}>

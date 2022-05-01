@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
 
-import NavBar from "../Views/navbar/Navbar";
-import { UserContext } from "../Context/AppContext";
-import Seo from "../Components/Seo";
-import DashboardIndex from "../Views/Dashoard";
+import NavBar from "../../Views/navbar/Navbar";
+import { UserContext } from "../../Context/AppContext";
+import Seo from "../../Components/Seo";
+import DashboardIndex from "../../Views/Dashoard";
 
 function DashBoardHome() {
 
-    const [user, setUser] = useContext(UserContext)
+    const {user, setUser} = useContext(UserContext)
 
     return (
         <div>

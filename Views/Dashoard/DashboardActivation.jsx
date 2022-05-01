@@ -1,18 +1,17 @@
 import React, { useContext } from "react";
-import useTranslation from 'next-translate/useTranslation'
-
 import { baseapiurl } from "../../Service/constante";
 
 import Svg from "../../Components/Svg/Svg";
 
 import DashboardTitle from "./Components/DashboardTitle";
 import commandContext from "./DashboardContext";
+import { useTranslation } from "../../Context/Localization";
 
 function DashboardActivation({ user, guild }) {
 
     const [commands, setCommands] = useContext(commandContext);
 
-    const { t } = useTranslation('dashboard');
+    const { t } = useTranslation();
     
     const changeActivation = async (e) => {
 
@@ -74,12 +73,12 @@ function DashboardActivation({ user, guild }) {
             h3: t("music_title"),
             span: t("music_description")
         },*/
-        /*{
+        {
             svg: "emote-plus",
             plugin: "reaction",
             h3: t("reaction_title"),
             span: t("reaction_description")
-        },*/
+        },
         /*{
             svg: "twitch",
             plugin: "twitch",
@@ -111,7 +110,7 @@ function DashboardActivation({ user, guild }) {
                         <div key={index} className="element">
                             <div className="top">
                                 <Svg name={p.svg} size={26} />
-                                <div>{commands[p.plugin].activate ? <label>{t("common:activated")}</label> : ""}<input  id="s2" type="checkbox" name={p.plugin} className="switch" checked={commands[p.plugin].activate} onChange={(e) => changeActivation(e)} /></div>
+                                <div>{commands[p.plugin].activate ? <label>{t("activated")}</label> : ""}<input  id="s2" type="checkbox" name={p.plugin} className="switch" checked={commands[p.plugin].activate} onChange={(e) => changeActivation(e)} /></div>
                             </div>
                             <div className="content">
                                 <h3>{p.h3}</h3>

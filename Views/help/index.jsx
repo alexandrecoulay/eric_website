@@ -1,5 +1,4 @@
 import React from "react";
-import useTranslation from 'next-translate/useTranslation'
 
 import styles from "../../Style/Global.module.scss";
 
@@ -7,11 +6,12 @@ import Boxe from "../../Components/Dashboard/Boxes/Boxe";
 import BoxeContainer from "../../Components/Dashboard/BoxeContainer";
 import CreateLink from "../../Components/Text/Link";
 import { oauth2url } from "../../Service/constante";
+import { useTranslation } from "../../Context/Localization";
 
 
 function HelpScreen({ pathname }) {
 
-    const { t } = useTranslation('help')
+    const { t } = useTranslation()
 
     return (
         <BoxeContainer title={`${t("The_available_help_commands")}`}>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router"
 
 import NavBar from "../../Views/navbar/Navbar";
-import Loader from "../../Components/Others/Loader";
+import { Loader } from "../../Components/Others";
 import { baseapiurl } from "../../Service/constante";
 import Seo from "../../Components/Seo";
 

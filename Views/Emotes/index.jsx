@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Loader from "../../Components/Others/Loader";
+import { Loader } from "../../Components/Others";
 import CreateLink from "../../Components/Text/Link";
 import { baseapiurl } from "../../Service/constante";
 import Icon from "../../Components/Assets/RoundedIcon";

@@ -1,18 +1,18 @@
 import React, { useState, useEffect, useContext } from "react";
-import useTranslation from 'next-translate/useTranslation'
 import { AlertContext } from "../../Context/AppContext";
 import { modificationContext } from "./DashboardContext";
 
 import { baseapiurl } from "../../Service/constante";
-import Loader from "../../Components/Others/Loader";
+import { Loader } from "../../Components/Others";
 import ActivationContainer from "../../Components/Dashboard/ActivationContainer";
 import ListBoxe from "../../Components/Dashboard/Boxes/ListBoxe";
 import styles from "../../Style/Global.module.scss";
 import Svg from "../../Components/Svg/Svg";
+import { useTranslation } from "../../Context/Localization";
 
 function DashboardWelcome({ guild_id, user }) {
 
-    const [alert, setAlert] = useContext(AlertContext);
+    const {alert, setAlert} = useContext(AlertContext);
     const [modification, setModification] = useState({
         activated: false,
         type: "",
@@ -21,7 +21,7 @@ function DashboardWelcome({ guild_id, user }) {
 
     const [filter, setFilter] = useState("")
     const [settings, setSettings] = useState();
-    const { t } = useTranslation('dashboard');
+    const { t } = useTranslation();
 
     useEffect(() => {
         async function getData() {
@@ -113,7 +113,7 @@ function DashboardWelcome({ guild_id, user }) {
             {
                 !settings ? <Loader /> :
                 <ActivationContainer sendModification={sendModification} text="welcome" guild_id={guild_id} user={user} plugin="joining" >
-                    <ListBoxe title={t("verification_channel")} input={<input placeholder={t("common:research")} type="text" onChange={(e) => setFilter(e.target.value)} />} text={<span className={`${styles.row}`}># {settings.guild_channels.find(c => c.id === settings.verification.channel_id)?.name ?? ""}</span>}>
+                    <ListBoxe title={t("verification_channel")} input={<input placeholder={t("research")} type="text" onChange={(e) => setFilter(e.target.value)} />} text={<span className={`${styles.row}`}># {settings.guild_channels.find(c => c.id === settings.verification.channel_id)?.name ?? ""}</span>}>
                         {
                             settings.guild_channels.filter(l => l.name.match(new RegExp(filter, "gi"))).map((l, index) => 
                                 <div onClick={() => {
@@ -125,7 +125,7 @@ function DashboardWelcome({ guild_id, user }) {
                             )
                         }
                     </ListBoxe>
-                    <ListBoxe title={<span>{t("verification_role")} (<span className={`${styles.muted}`}>{t("role_bot_higher_than_role_hierarchy")}</span>)</span>} input={<input placeholder={t("common:research")} type="text" onChange={(e) => setFilter(e.target.value)} />} text={<span className={`${styles.row}`}><Svg size={10} name="circle" color={settings.guild_roles.find(c => c.id === settings.verification.role_id)?.color} /> {settings.guild_roles.find(c => c.id === settings.verification.role_id)?.name ?? ""}</span>}>
+                    <ListBoxe title={<span>{t("verification_role")} (<span className={`${styles.muted}`}>{t("role_bot_higher_than_role_hierarchy")}</span>)</span>} input={<input placeholder={t("research")} type="text" onChange={(e) => setFilter(e.target.value)} />} text={<span className={`${styles.row}`}><Svg size={10} name="circle" color={settings.guild_roles.find(c => c.id === settings.verification.role_id)?.color} /> {settings.guild_roles.find(c => c.id === settings.verification.role_id)?.name ?? ""}</span>}>
                         {
                             settings.guild_roles.filter(l => l.name.match(new RegExp(filter, "gi"))).map((l, index) => 
                                 <div onClick={() => {

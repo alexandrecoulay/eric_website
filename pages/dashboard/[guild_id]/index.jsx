@@ -1,14 +1,14 @@
 import React, { useContext } from "react";
 
-import { UserContext } from "../../Context/AppContext";
+import { UserContext } from "../../../Context/AppContext";
 
-import NavBar from '../../Views/navbar/Navbar';
-import DashBoard from '../../Views/Dashoard/Dashboard';
-import Loader from "../../Components/Others/Loader";
+import NavBar from '../../../Views/navbar/Navbar';
+import DashBoard from '../../../Views/Dashoard/Dashboard';
+import { Loader } from "../../../Components/Others";
 
 function Callback(props) {
 
-  const [user, setUser] = useContext(UserContext)
+  const {user} = useContext(UserContext)
 
   return (
     <div>

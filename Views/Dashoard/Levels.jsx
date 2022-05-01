@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
-import useTranslation from 'next-translate/useTranslation'
 import { AlertContext } from "../../Context/AppContext";
 import { modificationContext } from "./DashboardContext";
 
 import { baseapiurl } from "../../Service/constante";
-import Loader from "../../Components/Others/Loader";
+import { Loader } from "../../Components/Others";
 import ActivationContainer from "../../Components/Dashboard/ActivationContainer";
 import ListBoxe from "../../Components/Dashboard/Boxes/ListBoxe";
 import styles from "../../Style/Global.module.scss";
@@ -12,10 +11,11 @@ import Svg from "../../Components/Svg/Svg";
 import Boxe from "../../Components/Dashboard/Boxes/Boxe";
 import LittleListBoxe from "../../Components/Dashboard/Boxes/LittleListBoxe";
 import CheckListBoxe from "../../Components/Dashboard/Boxes/CheckListBoxe";
+import { useTranslation } from "../../Context/Localization";
 
 function DashboardLevel({ guild_id, user }) {
 
-    const [alert, setAlert] = useContext(AlertContext);
+    const {alert, setAlert} = useContext(AlertContext);
     const [modification, setModification] = useState({
         activated: false,
         type: "",
@@ -24,7 +24,7 @@ function DashboardLevel({ guild_id, user }) {
 
     const [filter, setFilter] = useState("")
     const [settings, setSettings] = useState();
-    const { t } = useTranslation('dashboard');
+    const { t } = useTranslation();
 
     useEffect(() => {
         async function getData() {
@@ -121,7 +121,7 @@ function DashboardLevel({ guild_id, user }) {
             {
                 !settings ? <Loader /> :
                 <ActivationContainer sendModification={sendModification} text="level" guild_id={guild_id} user={user} plugin="leveling" >
-                    <CheckListBoxe list={settings.channels.map(c => `# ${settings.guild_channels.find(e => e.id === c)?.name ?? "-"}`)} title={t("banned_channels")} input={<input placeholder={t("common:research")} type="text" onChange={(e) => setFilter(e.target.value)} />} text={<span className={`${styles.row}`}>{t("common:research")}</span>}>
+                    <CheckListBoxe list={settings.channels.map(c => `# ${settings.guild_channels.find(e => e.id === c)?.name ?? "-"}`)} title={t("banned_channels")} input={<input placeholder={t("research")} type="text" onChange={(e) => setFilter(e.target.value)} />} text={<span className={`${styles.row}`}>{t("research")}</span>}>
                         {
                             settings.guild_channels.filter(l => l.name.match(new RegExp(filter, "gi"))).map((l, index) => 
                                 <div onClick={() => {
@@ -142,7 +142,7 @@ function DashboardLevel({ guild_id, user }) {
                                 settings.roles.map(role => 
                                     <LittleListBoxe title={<span className={`${styles.row}`}><Svg className={`${styles.pointer} ${styles.hover}`} onClick={() => {
                                         return setChange("roles", settings.roles.filter(r => r.level !== role.level))
-                                    }} size={18} name="circle-close" /><input onChange={(e) => changeInput(role.level, e.target.value, "level")} type="number" value={role.level} /></span>} input={<input placeholder={t("common:research")} type="text" onChange={(e) => setFilter(e.target.value)} />} text={<span className={`${styles.row}`}><Svg size={10} name="circle" color={settings.guild_roles.find(c => c.id === role.role_id)?.color} /> {settings.guild_roles.find(c => c.id === role.role_id)?.name ?? ""}</span>}>
+                                    }} size={18} name="circle-close" /><input onChange={(e) => changeInput(role.level, e.target.value, "level")} type="number" value={role.level} /></span>} input={<input placeholder={t("research")} type="text" onChange={(e) => setFilter(e.target.value)} />} text={<span className={`${styles.row}`}><Svg size={10} name="circle" color={settings.guild_roles.find(c => c.id === role.role_id)?.color} /> {settings.guild_roles.find(c => c.id === role.role_id)?.name ?? ""}</span>}>
                                         {
                                             settings.guild_roles.filter(l => l.name.match(new RegExp(filter, "gi"))).map((l, index) => 
                                                 <div onClick={() => {

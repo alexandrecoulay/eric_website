@@ -10,6 +10,7 @@ import "../Style/error.scss";
 import "../Style/loader.scss";
 import "../Style/style.scss";
 import "../Style/alert.scss";
+import { LanguageProvider } from "../Context/Localization";
 
 function MyApp({ Component, pageProps }) {
   const [user, setUser] = useState(null);
@@ -53,10 +54,12 @@ function MyApp({ Component, pageProps }) {
   }, [])
   
   return (
-    <AlertContextProvider value={[alert, setAlert]}>
-      <UserContextProvider value={[user, setUser]}>
-        <Alert />
-        <Component {...pageProps} />
+    <AlertContextProvider value={{alert, setAlert}}>
+      <UserContextProvider value={{user, setUser}}>
+        <LanguageProvider>
+          <Alert />
+          <Component {...pageProps} />
+        </LanguageProvider>
       </UserContextProvider>
     </AlertContextProvider>
   )

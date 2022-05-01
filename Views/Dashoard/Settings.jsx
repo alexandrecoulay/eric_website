@@ -1,29 +1,30 @@
 import React, { useState, useEffect, useContext } from "react";
-import useTranslation from 'next-translate/useTranslation'
-import { AlertContext } from "../../Context/AppContext";
+import { AlertContext, UserContext } from "../../Context/AppContext";
 import { modificationContext } from "./DashboardContext";
 
 import { baseapiurl, basecdnurl } from "../../Service/constante";
-import Loader from "../../Components/Others/Loader";
+import { Loader } from "../../Components/Others";
 import ActivationContainer from "../../Components/Dashboard/ActivationContainer";
 import ListBoxe from "../../Components/Dashboard/Boxes/ListBoxe";
 import { languages } from "../../Service/Languages";
 import Icon from "../../Components/Assets/RoundedIcon";
 import styles from "../../Style/Global.module.scss";
 import InputBoxe from "../../Components/Dashboard/Boxes/InputBoxe";
+import { useTranslation } from "../../Context/Localization";
 
-function DashboardSettings({ guild_id, user }) {
+function DashboardSettings({ guild_id }) {
 
-    const [alert, setAlert] = useContext(AlertContext);
+    const {setAlert} = useContext(AlertContext);
     const [modification, setModification] = useState({
         activated: false,
         type: "",
         loading: false
     });
+    const { user } = useContext(UserContext)
 
     const [filter, setFilter] = useState("")
     const [settings, setSettings] = useState();
-    const { t } = useTranslation('dashboard');
+    const { t } = useTranslation();
 
     useEffect(() => {
         async function getData() {
@@ -115,7 +116,7 @@ function DashboardSettings({ guild_id, user }) {
                 !settings ? <Loader /> :
                 <ActivationContainer sendModification={sendModification} text="setting" guild_id={guild_id} user={user} plugin="setting" noSwitch >
                     <InputBoxe value={settings.prefix} onChange={(e) => setChange("prefix", e.target.value)} name="prefix" title={t("change_prefix")} />
-                    <ListBoxe title={t("change_language")} input={<input placeholder={t("common:research")} type="text" onChange={(e) => setFilter(e.target.value)} />} text={<span className={`${styles.row}`}><Icon size={22} src={`${basecdnurl}/assets/flags/${settings?.language ?? "en_UK"}.png`} /> {languages.find(l => l.local === settings?.language ?? "en_UK")?.language}</span>}>
+                    <ListBoxe title={t("dashboard_change_language")} input={<input placeholder={t("research")} type="text" onChange={(e) => setFilter(e.target.value)} />} text={<span className={`${styles.row}`}><Icon size={22} src={`${basecdnurl}/assets/flags/${settings?.language ?? "en_UK"}.png`} /> {languages.find(l => l.local === settings?.language ?? "en_UK")?.language}</span>}>
                         {
                             languages.filter(l => l.language.match(new RegExp(filter, "gi"))).map((l, index) => 
                                 <div onClick={() => {

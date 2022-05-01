@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../../Style/Global.module.scss";
-import CreateLink from "../Text/Link";
+import { CreateLink } from "../Text";
 
 function NavbarLink({ children, text, href, className = null, onClick = null }) {
 
