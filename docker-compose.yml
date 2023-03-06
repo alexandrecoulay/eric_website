@@ -1,0 +1,41 @@
+version: "3"
+
+services:
+  boteric_web:
+    restart: always
+    image: boteric-web:staging
+    container_name: boteric-web
+    hostname: web-production.local
+    networks:
+      - botericproxy
+    environment:
+      - NEXT_PUBLIC_BASE_API_URL
+      - NEXT_PUBLIC_CDN_URL
+      - NEXT_PUBLIC_WEBSITE_URL
+      - NEXT_PUBLIC_DISCORD_CDN_URL
+      - NEXT_PUBLIC_DISCORD_API_URL
+      - NEXT_PUBLIC_CLIENT_ID
+      - NEXT_PUBLIC_SCOPES
+      - NEXT_PUBLIC_PERMISSIONS
+      - NEXT_PUBLIC_DISCORD_REDIRECT_URI
+      - NEXT_PUBLIC_TWITCH_REDIRECT_URI
+      - NEXT_PUBLIC_TWITCH_SCOPES
+      - NEXT_PUBLIC_TWITCH_CLIENT_ID
+      - NEXT_PUBLIC_TWITCH_OAUTH2_URI
+    env_file:
+      - .env
+    expose:
+      - 3000
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.boteric_web.rule=Host(`boteric.fr`)"
+      - "traefik.http.routers.boteric_web.entrypoints=websecure"
+      - "traefik.http.routers.boteric_web.tls=true"
+      - "traefik.http.routers.boteric_web.tls.certresolver=boteric_fr_cert"
+      - "traefik.http.routers.boteric_web.service=boteric_web_service"
+      - "traefik.http.services.boteric_web_service.loadbalancer.server.port=3000"
+    entrypoint: ["yarn", "start"]  
+
+networks:
+  botericproxy:
+    external: true
