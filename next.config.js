@@ -28,7 +28,8 @@ module.exports = {
   images: {
     domains: [
       'cdn.boteric.fr',
-      "cdn.discordapp.com"
+      "cdn.discordapp.com",
+      "cdn.trenderapp.com"
     ],
   }
 };

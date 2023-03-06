@@ -5,7 +5,7 @@ function Seo({ children, title, description, image, url }) {
 
     const meta_description = description ?? "Official Eric Discord Bot Website with Dashboard, Twitch commands, Emoji’s, Leveling System and more than 60 commands completely free !";
     const meta_title = title ?? "Eric, The Discord Bot 100% Free";
-    const meta_image = image ?? "https://cdn.boteric.fr/assets/favicons/favicon.ico";
+    const meta_image = image ?? "/assets/favicons/favicon.ico";
     const meta_url = url ?? "https://boteric.fr";
     
     return (
