@@ -15,6 +15,7 @@ import DashboardWelcome from "./Welcome";
 import DashboardLevels from "./Levels";
 import DashboardModeration from "./Moderation";
 import commandContext from "./DashboardContext";
+import ArtificialInteligence from "./ArtificialInterligence";
 
 function DashBoard({ guild_id, user }) {
     
@@ -76,9 +77,13 @@ function DashBoard({ guild_id, user }) {
             page: <DashboardMusic user={user} guild_id={guild_id} />
         },
         {
+            name: "IA",
+            page: <ArtificialInteligence user={user} guild_id={guild_id} />
+        },
+       /* {
             name: "Twitch",
             page: <DashboardTwitch user={user} guild_id={guild_id} />
-        },
+        },*/
         {
             name: "Various",
             page: <DashboardVarious user={user} guild_id={guild_id} />

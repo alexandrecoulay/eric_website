@@ -11,7 +11,7 @@ function CheckListBoxe({ children, title, text, input, list = [] }) {
             <div className="list-boxe">
                 <div className={`${styles.row} ${styles.padding_5}`} >
                     {
-                        list.map(e => <span className={`${styles.padding_5}`}>{e}</span>)
+                        list.map((e, index) => <span key={index} className={`${styles.padding_5}`}>{e}</span>)
                     }
                 </div>
             {

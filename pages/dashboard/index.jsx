@@ -7,7 +7,7 @@ import DashboardIndex from "../../Views/Dashoard";
 
 function DashBoardHome() {
 
-    const {user, setUser} = useContext(UserContext)
+    const {user} = useContext(UserContext)
 
     return (
         <div>

@@ -32,7 +32,7 @@ function MyApp({ Component, pageProps }) {
                 }
             };
 
-            const request = await fetch(`${baseapiurl}/userinfo/`, requestOptions);
+            const request = await fetch(`${baseapiurl}/discord/userinfo/`, requestOptions);
             if(request.status !== 200) {
               localStorage.clear()
               return setAlert({ display: true, type: "error", message: "Se reconnecter" })

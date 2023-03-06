@@ -4,3 +4,4 @@ export const websitebaseurl = process.env.NEXT_PUBLIC_WEBSITE_URL
 export const discordcdnurl = "https://cdn.discordapp.com"
 export const inviteboturl = `https://discord.com/oauth2/authorize?client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}&scope=bot&permissions=${process.env.NEXT_PUBLIC_PERMISSIONS}`
 export const oauth2url = `${process.env.NEXT_PUBLIC_DISCORD_API_URL}/oauth2/authorize?client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}&redirect_uri=${baseapiurl}/discord/callback&response_type=code&scope=${process.env.NEXT_PUBLIC_SCOPES}`
+export const twitchoauth2url = `https://id.twitch.tv/oauth2/authorize?client_id=${process.env.NEXT_PUBLIC_TWITCH_CLIENT_ID}&redirect_uri=${process.env.NEXT_PUBLIC_TWITCH_REDIRECT_URI}&response_type=token&scope=${process.env.NEXT_PUBLIC_TWITCH_SCOPES}&state=fessesdepoulet`

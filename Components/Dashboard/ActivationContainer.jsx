@@ -15,7 +15,7 @@ function ActivationContainer({ children, plugin, text, user, guild_id, noSwitch,
 
     const { t } = useTranslation();
 
-    const changeActivation = async (e) => {
+    const changeActivation = async () => {
 
         const name = plugin;
         const newObject = {...commands};
@@ -62,7 +62,7 @@ function ActivationContainer({ children, plugin, text, user, guild_id, noSwitch,
                             </div>
                     }
                 </div>
-                { noSwitch ? "" : <div>{commands[plugin].activate && <label>{t("activated")} </label>}<input  id="s2" type="checkbox" name={plugin} className="switch" checked={commands[plugin].activate} onChange={(e) => changeActivation(e)} /></div> }  
+                { noSwitch ? "" : <div>{commands[plugin].activate && <label>{t("activated")} </label>}<input  id="s2" type="checkbox" name={plugin} className="switch" checked={commands[plugin].activate} onChange={() => changeActivation()} /></div> }  
             </div>
             <div style={{ gap: "20px" }} className={`${styles.column} ${styles.align_start} ${styles.full_width}`}>
                 { children }

@@ -3,46 +3,45 @@ import { useRouter } from "next/router";
 
 import { Loader } from "../../../Components/Others";
 import { UserContext } from '../../../Context/AppContext';
-import { baseapiurl, discordcdnurl, oauth2url } from '../../../Service/constante';
+import { baseapiurl, discordcdnurl, oauth2url, websitebaseurl } from '../../../Service/constante';
 
 function Callback() {
     
   const router = useRouter();
-  const { token } = router.query;
   const {user, setUser} = useContext(UserContext)
 
   useEffect(() => {
     async function getData() {
 
-      if (token) {
-          const requestOptions = {
-              method: "GET",
-              headers: {
-                  'Authorization': `Bearer ${token}`
-              }
-          };
+      const access_token = new URL(`${websitebaseurl}/${router.asPath.replace("#", "?")}`).searchParams.get("access_token")
 
-          const request = await fetch(`${baseapiurl}/userinfo/`, requestOptions);
-          
-          if(request.status !== 200) return router.push(oauth2url);
+      if (access_token) {
+        const requestOptions = {
+            method: "GET",
+            headers: {
+                'Authorization': `Bearer ${access_token}`,
+                'client-id': 'zkf5e0vjda2onqkg8iydeda2hdd25r'
+            }
+        };
 
-          const res = await request.json();
+        const request = await fetch(`https://api.twitch.tv/helix/users`, requestOptions);
+        
+        if(request.status !== 200) return;
 
-          let items = {
-              avatar: `${discordcdnurl}/avatars/${res.id}/${res.avatar}.png`,
-              user_id: res.id,
-              username: `${res.username}`,
-              access_token: token
-          }
+        const res = await request.json();
 
-          localStorage.setItem("access_token", token);
-          setUser(items);
-          
-          router.push("/")
-      }
+        setUser({ ...user, twitch: res.data[0] });
+
+        console.log(user);
+
+        setTimeout(() => {
+          router.push("/dashboard/me")
+        }, 1000)
+        
+    }
   }
   getData()
-  }, [token])
+  }, [])
 
   return (
     <div>

@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 
 import { Loader } from "../../../Components/Others";
 import { UserContext } from '../../../Context/AppContext';
-import { baseapiurl, discordcdnurl, oauth2url } from '../../../Service/constante';
+import { baseapiurl, discordcdnurl } from '../../../Service/constante';
 
 function Callback() {
     
@@ -22,9 +22,9 @@ function Callback() {
               }
           };
 
-          const request = await fetch(`${baseapiurl}/userinfo/`, requestOptions);
+          const request = await fetch(`${baseapiurl}/discord/userinfo/`, requestOptions);
           
-          if(request.status !== 200) return router.push(oauth2url);
+          if(request.status !== 200) return;
 
           const res = await request.json();
 

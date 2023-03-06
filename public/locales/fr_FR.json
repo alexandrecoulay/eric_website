@@ -26,6 +26,7 @@
   "music": "Musique",
   "twitch": "Twitch",
   "various": "Divers",
+  "artificial_inteligence": "IA",
 
   "role_bot_higher_than_role_hierarchy" : "Le rôle du bot doit être plus haut que les autres rôles dans la hiérachie des rôles",
 
@@ -75,6 +76,17 @@
 
   "emote_title": "Commandes d'émote",
   "emote_description": "Activer les commandes d'émote",
+
+  "ai_title": "Intélligence artificiel",
+  "ai_description": "Améliore ton serveur avec des IA",
+
+  "todo_on_nsfw_detect": "A faire en cas de detection NSFW",
+  "nsfw_allowed_channel": "NSFW autorisé dans les salons",
+
+  "nsfw_todo_kick": "Expulser",
+  "nsfw_todo_warn": "Avertir",
+  "nsfw_todo_ban": "Bannir",
+  "nsfw_todo_nothing": "Ne rien faire",
 
   "create_reaction_role": "Créer un message avec des rôles sur réactions",
 

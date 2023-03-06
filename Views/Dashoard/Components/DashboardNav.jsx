@@ -39,12 +39,18 @@ function DashBoardNav({ setPage, guild = {icon: "", name: ""} }) {
             
         },
         {
+            page: "IA",
+            name: "brain-circuits",
+            text: t("ai_title")
+            
+        },
+         /*{
             page: "Reaction",
             name: "emote-plus",
             text: t("reaction")
             
         },
-        /*{
+        {
             page: "Music",
             name: "music",
             text: t("music")

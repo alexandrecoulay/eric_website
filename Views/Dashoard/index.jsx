@@ -36,6 +36,21 @@ function DashboardIndex({ user }) {
     return (
         <div className="dashboard-home">
             <h2>{t("select_a_server")}</h2>
+            {
+                /**
+                 *             <CreateLink href={`/dashboard/me`}>
+                <div className="guild-info">
+                    <div className="top-informations">
+                        <RoundedIcon size={40} src={`${user?.avatar}`} />
+                        <span className="guild-name">{user?.username}</span>
+                    </div>
+                    <div className="bottom-informations">
+                        <span>{t("dashboard")}</span>
+                    </div>
+                </div> 
+            </CreateLink>
+                 */
+            }
             { 
                 guilds.length < 1 ? <Loader /> :
                 guilds.map((e, index) =>

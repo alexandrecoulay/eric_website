@@ -52,8 +52,8 @@ function DashboardActivation({ user, guild }) {
         {
             svg: "brain-circuits",
             plugin: "artificial_intelligence",
-            h3: "Artificial inteligence",
-            span: "Comming soon ... you will be able to ask me some help, if you want to search something on google I will search it for you by example but you can do more. Currently in test prod"
+            h3: t("ai_title"),
+            span: t("ai_description")
         },
         {
             svg: "trophy",
