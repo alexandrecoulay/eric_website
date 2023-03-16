@@ -28,7 +28,7 @@ services:
       - 3000
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.boteric_web.rule=Host(`boteric.fr`)"
+      - "traefik.http.routers.boteric_web.rule=Host(`boteric.fr`, `www.boteric.fr`)"
       - "traefik.http.routers.boteric_web.entrypoints=websecure"
       - "traefik.http.routers.boteric_web.tls=true"
       - "traefik.http.routers.boteric_web.tls.certresolver=boteric_fr_cert"
