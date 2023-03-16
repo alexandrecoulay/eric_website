@@ -3,8 +3,9 @@
   "version": "3.0.1",
   "private": true,
   "scripts": {
+    "install": "yum install libuuid-devel libmount-devel && cp /lib64/{libuuid,libmount,libblkid}.so.1 node_modules/canvas/build/Release/ && yarn",
     "dev": "next dev",
-    "build": "yum install libuuid-devel libmount-devel && cp /lib64/{libuuid,libmount,libblkid}.so.1 node_modules/canvas/build/Release/ && next build",
+    "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
     "serve": "pm2 start npm --name \"website\" -- start",
@@ -13,7 +14,6 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
-    "canvas": "^2.9.1",
     "dayjs": "^1.11.1",
     "loader-utils": "^3.2.0",
     "next": "12.1.5",
