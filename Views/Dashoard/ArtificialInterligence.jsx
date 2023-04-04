@@ -187,7 +187,9 @@ function ArtificialInteligence({ guild_id }) {
                             )
                         }
                     </CheckListBoxe>
-                    <SwitchBox title={t("chatbot_activation_title")} name={"chatbot"} value={settings?.activated?.chatbot} onChange={() => changeActivation("chatbot")} />
+                    <SwitchBox title={t("chatbot_activation_title")} name={"chatbot"} value={settings?.activated?.chatbot} onChange={() => changeActivation("chatbot")}>
+                        @Eric send me 3 reason to start playing piano
+                    </SwitchBox>
                 </ActivationContainer> 
             }
         </modificationContext.Provider>
