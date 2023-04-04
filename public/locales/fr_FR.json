@@ -83,6 +83,9 @@
   "todo_on_nsfw_detect": "A faire en cas de detection NSFW",
   "nsfw_allowed_channel": "NSFW autorisé dans les salons",
 
+  "nsfw_activation_title": "Activer la détection NSFW",
+  "chatbot_activation_title": "Activer le Chatbot",
+
   "nsfw_todo_kick": "Expulser",
   "nsfw_todo_warn": "Avertir",
   "nsfw_todo_ban": "Bannir",

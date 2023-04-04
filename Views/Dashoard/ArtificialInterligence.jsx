@@ -7,9 +7,9 @@ import { Loader } from "../../Components/Others";
 import ActivationContainer from "../../Components/Dashboard/ActivationContainer";
 import ListBoxe from "../../Components/Dashboard/Boxes/ListBoxe";
 import styles from "../../Style/Global.module.scss";
-import InputBoxe from "../../Components/Dashboard/Boxes/InputBoxe";
 import { useTranslation } from "../../Context/Localization";
 import CheckListBoxe from "../../Components/Dashboard/Boxes/CheckListBoxe";
+import { SwitchBox } from "../../Components/Dashboard/Boxes";
 
 function ArtificialInteligence({ guild_id }) {
 
@@ -78,7 +78,8 @@ function ArtificialInteligence({ guild_id }) {
                     },
                     body: JSON.stringify({
                         activated: {
-                            nsfw: true
+                            nsfw: settings.activated.nsfw,
+                            chatbot: settings.activated.chatbot
                         },
                         nsfw_settings: {
                             excepted_channels: settings.nsfw_settings.excepted_channels,
@@ -87,15 +88,12 @@ function ArtificialInteligence({ guild_id }) {
                     })
                 };
 
-                console.log(requestOptions.body);
-
                setModification({ ...modification, loading: true })
 
                 const request = await fetch(`${baseapiurl}/servers/${guild_id}/ai`, requestOptions)
     
                 if(request.status !== 200) return setAlert({ display: true, type: "error", message: "Error !" })
 
-                console.log("save");
                 setAlert({ display: true, type: "success", message: "Saved !" })
                 setModification({ activated: false, type: "", loading: false })
             
@@ -138,6 +136,17 @@ function ArtificialInteligence({ guild_id }) {
         setModification({ type: "", activated: true })
     }
 
+    const changeActivation = (value) => {
+        setSettings({ 
+            ...settings, 
+            activated: {
+                ...settings.activated,
+                [value]: settings?.activated[value] ? false : true
+            }
+        })
+        setModification({ type: "", activated: true })
+    }
+
     const changeNSFWExceptChannels = (value) => {
         if(settings.nsfw_settings.excepted_channels.some(i => i === value)) return;
         setSettings({ ...settings, nsfw_settings: {
@@ -151,7 +160,8 @@ function ArtificialInteligence({ guild_id }) {
         <modificationContext.Provider value={[modification, setModification]}>
             {
                 !settings ? <Loader /> :
-                <ActivationContainer sendModification={sendModification} text="ai" guild_id={guild_id} user={user} plugin="artificial_intelligence" >
+                <ActivationContainer sendModification={sendModification} text="ai" guild_id={guild_id} user={user} plugin="artificial_intelligence">
+                    <SwitchBox title={t("nsfw_activation_title")} name={"nsfw"} value={settings?.activated?.nsfw} onChange={() => changeActivation("nsfw")} />
                     <ListBoxe title={t("todo_on_nsfw_detect")} input={<input placeholder={t("research")} type="text" onChange={(e) => setFilter(e.target.value)} />} text={<span className={`${styles.row}`}>{nsfw_todo.find(l => l.id === settings?.nsfw_settings?.todo ?? "nothing")?.text}</span>}>
                         {
                             nsfw_todo.filter(l => l.text.match(new RegExp(filter, "gi"))).map((l, index) => 
@@ -177,6 +187,7 @@ function ArtificialInteligence({ guild_id }) {
                             )
                         }
                     </CheckListBoxe>
+                    <SwitchBox title={t("chatbot_activation_title")} name={"chatbot"} value={settings?.activated?.chatbot} onChange={() => changeActivation("chatbot")} />
                 </ActivationContainer> 
             }
         </modificationContext.Provider>

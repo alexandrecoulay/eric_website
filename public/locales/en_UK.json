@@ -82,6 +82,9 @@
 
   "todo_on_nsfw_detect": "Todo on NSFW detect",
   "nsfw_allowed_channel": "NSFW allowed channels",
+  
+  "nsfw_activation_title": "Enable NSFW Detection",
+  "chatbot_activation_title": "Enable Chatbot",
 
   "nsfw_todo_kick": "Kick",
   "nsfw_todo_warn": "Warn",
