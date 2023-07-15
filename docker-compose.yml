@@ -7,7 +7,7 @@ services:
     container_name: boteric-web
     hostname: web-production.local
     networks:
-      - botericproxy
+      - trenderproxy
     environment:
       - NEXT_PUBLIC_BASE_API_URL
       - NEXT_PUBLIC_CDN_URL
@@ -37,5 +37,5 @@ services:
     entrypoint: ["yarn", "start"]  
 
 networks:
-  botericproxy:
+  trenderproxy:
     external: true
