@@ -12,4 +12,5 @@ RUN yarn install --production=true
 
 # Copy all usefull files
 COPY ./ ./
+CMD ["yarn", "build"]
 CMD ["yarn", "start"]
