@@ -1,16 +1,23 @@
+# Utiliser une image Node.js stable
 FROM node:18
 
-# In docker container
+# Définir le répertoire de travail dans le conteneur
 WORKDIR /app
 
-# Install require dependencies
-RUN mkdir ./logs
-RUN touch ./logs/access.log
-RUN npm i -g yarn --force
-COPY ./package*.json ./
-RUN yarn install --production=true
+# Copier les fichiers nécessaires pour installer les dépendances
+COPY package.json yarn.lock ./
 
-# Copy all usefull files
-COPY ./ ./
-CMD ["yarn", "build"]
+# Installer toutes les dépendances (production et développement)
+RUN yarn install
+
+# Copier tout le code source dans le conteneur
+COPY . .
+
+# Construire l'application Next.js
+RUN yarn build
+
+# Exposer le port 3000 (facultatif, mais utile pour documentation)
+EXPOSE 3000
+
+# Démarrer l'application
 CMD ["yarn", "start"]
