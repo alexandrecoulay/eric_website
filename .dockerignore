@@ -12,14 +12,8 @@ README.md
 .env.production
 .env.development
 
+build
 node_modules
-Views
-Style
-Service
-pages
-logs
-Context
-Components
 build_sitemap
 
 yarn.lock
