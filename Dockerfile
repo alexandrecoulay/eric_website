@@ -4,14 +4,11 @@ FROM node:18
 # Définir le répertoire de travail dans le conteneur
 WORKDIR /app
 
-# Copier les fichiers nécessaires pour installer les dépendances
-COPY package.json yarn.lock ./
+# Copier tout le code source dans le conteneur
+COPY . .
 
 # Installer toutes les dépendances (production et développement)
 RUN yarn install
-
-# Copier tout le code source dans le conteneur
-COPY . .
 
 # Construire l'application Next.js
 RUN yarn build
