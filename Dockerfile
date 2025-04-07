@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . .
 
 # Installer toutes les dépendances (production et développement)
-RUN yarn install
+RUN yarn install ---production=true
 
 # Construire l'application Next.js
 RUN yarn build
