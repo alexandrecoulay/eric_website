@@ -7,9 +7,7 @@ LICENSE
 pm2_config.json
 README.md
 
-.env
 .env.test
-.env.production
 .env.development
 
 build
