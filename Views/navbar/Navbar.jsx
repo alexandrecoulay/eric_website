@@ -26,6 +26,7 @@ function NavBar() {
             { user && <NavbarLink href="/dashboard">{t("dashboard")}</NavbarLink> }
             <NavbarLink href="/help">{t("commands")}</NavbarLink>
             <NavbarLink href="/bot/invite">{t("invite")}</NavbarLink>
+            <NavbarLink href="/privacy">{t("privacy")}</NavbarLink>
             <ChangeLanguages size={22} />
         </NavbarElement>
     );
