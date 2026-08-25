@@ -107,9 +107,7 @@ function DashboardModeration({ guild_id, user }) {
     }
 
     const changeWordsInput = (verif, value, field) => {
-        var index = settings.words.findIndex(w => w.word === verif);
-        var array = settings.words
-        array[index][field] = value
+        const array = settings.words.map(entry => entry.word === verif ? { ...entry, [field]: value } : entry);
         return setChange("words", array)
     }
 
@@ -136,7 +134,7 @@ function DashboardModeration({ guild_id, user }) {
                         <div className={`${styles.column} ${styles.full_width}`}>
                             {
                                 settings.words.map(words => 
-                                    <LittleListBoxe title={<span className={`${styles.row}`}><Svg className={`${styles.pointer} ${styles.hover}`} onClick={() => {
+                                    <LittleListBoxe key={words.word} title={<span className={`${styles.row}`}><Svg className={`${styles.pointer} ${styles.hover}`} onClick={() => {
                                         return setChange("words", settings.words.filter(w => w.word !== words.word))
                                     }} size={18} name="circle-close" /><input onChange={(e) => changeWordsInput(words.word, e.target.value, "word")} type="text" value={words.word} /></span>} input={<input placeholder={t("research")} type="text" onChange={(e) => setFilter(e.target.value)} />} text={"Warn"}>
                                         <div onClick={() => {

@@ -12,7 +12,6 @@ README.md
 
 build
 node_modules
-build_sitemap
 
 .yarn/cache
 .yarn/unplugged

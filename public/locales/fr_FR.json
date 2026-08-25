@@ -4,20 +4,18 @@
   "commands": "Commandes",
   "invite": "Ajouter le bot",
   "privacy": "Confidentialité",
+  "guides": "Guides",
+  "compare": "Comparatifs",
   "disconnect": "Se déconnecter de ",
   "login": "Se connecter",
   "change_language": "Français",
   "emotes": "Emotes",
   "language": "Langage",
-
   "select_a_server": "Sélectionner un serveur",
   "activated": "Activé",
-
   "cancel": "Annuler",
   "save": "Sauvegarder",
-
   "research": "Chercher ...",
-
   "dashboard": "Configuration",
   "settings": "Paramètres",
   "moderation": "Modération",
@@ -28,94 +26,65 @@
   "twitch": "Twitch",
   "various": "Divers",
   "artificial_inteligence": "IA",
-
-  "role_bot_higher_than_role_hierarchy" : "Le rôle du bot doit être plus haut que les autres rôles dans la hiérachie des rôles",
-
+  "role_bot_higher_than_role_hierarchy": "Le rôle du bot doit être plus haut que les autres rôles dans la hiérachie des rôles",
   "auto_moderation_text": "Liste des mots à bannir",
-  
   "modification_detected": "Modifications non enregistré",
-
   "activate_plugins": "Activer des options",
-
   "setting_title": "Configuration de base",
   "setting_description": "Modifier la configuration de base du bot",
-
   "dashboard_change_language": "Langue du bot",
   "change_prefix": "Changer le préfix du bot",
-
   "moderation_title": "Commandes de modération",
   "moderation_description": "Modérer le serveur avec des commandes de modération",
-
   "auto_moderation_title": "Commandes d'auto modération",
   "auto_moderation_description": "Laisser le bot gérer automatiquement le serveur en détectant les mots dans les messages",
-
   "logs_channel": "Salon des logs de modération",
-
   "level_title": "Commandes de niveau",
   "level_description": "Mesurer l'activiter de vos membres dans le serveur",
-
   "banned_channels": "Salons ou les membres ne peuvent pas recevoir d'expérience",
   "roles_to_give": "Roles à donner lors d'un level up",
-  
   "welcome_title": "Commandes de bienvenue",
   "welcome_description": "Vérifier ou envoyer un message lorsqu'un membre rejoint votre serveur",
-
   "verification_channel": "Salon des vérifications",
   "verification_role": "Rôle des membres vérifié",
-
   "music_title": "Commandes de musique",
   "music_description": "Laisser vos membres écouter de la musique",
-
   "reaction_title": "Role sur réaction",
   "reaction_description": "Améliorer votre serveur avec des rôles sur réaction",
-
   "twitch_title": "Options de Twitch",
   "twitch_description": "Affichier les statistques et des streamers et notifier lors du lancement d'un live",
-
   "various_title": "Commandes diverses",
   "various_description": "Activer les diverses commandes",
-
   "emote_title": "Commandes d'émote",
   "emote_description": "Activer les commandes d'émote",
-
   "ai_title": "Intélligence artificiel",
   "ai_description": "Améliore ton serveur avec des IA",
-
   "todo_on_nsfw_detect": "A faire en cas de detection NSFW",
   "nsfw_allowed_channel": "NSFW autorisé dans les salons",
-
   "nsfw_activation_title": "Activer la détection NSFW",
   "chatbot_activation_title": "Activer le Chatbot",
-
   "nsfw_todo_kick": "Expulser",
   "nsfw_todo_warn": "Avertir",
   "nsfw_todo_ban": "Bannir",
   "nsfw_todo_nothing": "Ne rien faire",
-
   "create_reaction_role": "Créer un message avec des rôles sur réactions",
-
-  "second_title" : "Plus de 60 commandes disponibles en français ou en anglais",
+  "second_title": "Plus de 60 commandes disponibles en français ou en anglais",
   "add_to_server": "Ajoutez-le à votre serveur",
   "browse_fonctionalities": "Parcourir les fonctionnalités",
   "go_dashboard": "Accéder au dashboard",
   "connect": "Se connecter avec Discord",
-
   "home_title_1": "Système de niveau complet",
   "home_desc_1_1": "Le système de niveaux vous permet d'identifier et de récompenser les membres les plus actifs de votre communauté ! Donnez-leur l'opportunité de montrer leur carte XP et d'atteindre la première place du classement.",
   "home_desc_1_2": "Récompense les membres les plus actifs de votre serveur avec des rôles.",
-
   "home_title_2": "Protégez votre serveur des méchants",
   "home_desc_2_1": "Vous pouvez ajouter une protection contre les raids pour empêcher le spam. Configurez simplement le rôle avec le canal et Eric enverra un message à chaque membre qui rejoint votre serveur pour donner le rôle si le membre réagit avec la bonne emote.",
   "home_desc_2_2": "Vous pouvez également configurer la commande warn et utiliser plus de 10 commandes de modération.",
-
   "home_title_3": "Rêve des streamers",
   "home_desc_3_1": "Recevez une notification lorsque vous ou vos amis démarrez une diffusion. Chaque minute, Eric regardera si vous diffusez et enverra une notification spéciale.",
   "home_desc_3_2": "Dans quelques jours, il pourra afficher vos statistiques sur l'ensemble de votre serveur.",
-
   "home_title_4": "Beaucoup de plaisir et diverses commandes",
   "home_desc_4_1": "Le créateur de liens de recherche Google, le collecteur d'émotes, les informations sur les utilisateurs/serveurs et le sondage personnalisé sont quelques options des différentes commandes disponibles.",
   "home_desc_4_2": "Vous pouvez afficher toutes les commandes disponibles avec la commande help.",
-
   "prefix": "*",
   "Bot_prefix": "Préfix du bot: ",
   "stream": "stream",
@@ -125,88 +94,58 @@
   "require_param": "Paramètre obligatoire : <param>",
   "optional_param": "Paramètre optionnel : {param}",
   "A_problem_with_the_bot_Join_the_support_server": "Un problème avec le bot ? Rejoindre le serveur support ",
-
   "title_1": "Aide pour les commandes de niveau :",
-
   "title_1_1": "level {@user#1234}",
   "desc_1_1": "Afficher votre niveau",
-
   "title_1_5": "disprole",
   "desc_1_5": "Afficher les rôles automatique des niveaux",
-
   "title_1_6": "classement",
   "desc_1_6": "Voir le classement",
-
   "title_3": "Aides pour les commandes de modération:",
-
   "title_3_4": "getwarn <@user#1234>",
   "desc_3_4": "Récupere les 20 derniers warn de l'utilisateur",
-
   "title_3_5": "ban <@user#1234> {raison}",
   "desc_3_5": "Bannir un membre",
-
   "title_3_6": "kick <@user#1234> {raison}",
   "desc_3_6": "Expulser un membre",
-
   "title_3_8": "warn <@user#1234> raison",
   "desc_3_8": "Avertir un membre",
-
   "title_3_7": "purge <x> {@user#1234}",
   "desc_3_7": "Supprimer des messages avec \"x\" le nombre de message à supprimer",
-
   "title_4": "Aides pour les diverses commandes:",
-
   "title_4_2": "serveur",
   "desc_4_2": "Afficher les informations du serveur",
-
   "title_4_3": "avatar {@user#1234}",
   "desc_4_3": "Afficher un avatar",
-
   "title_4_4": "uinfo {@user#1234}",
   "desc_4_4": "Afficher des informations",
-
   "title_4_5": "face",
   "desc_4_5": "Envoyer un face en ASCII",
-
   "title_4_6": "sondage <\"question\"> {\"choix1\" \"choix2\" ... \"choix20\"}",
   "desc_4_6": "Faire un sondage avec les choix oui/non avec ou sans options",
-
   "title_4_8": "google <recherche>",
   "desc_4_8": "Afficher un lien d'une recherche google",
-
   "title_4_9": "encode <message>",
   "desc_4_9": "Encoder un message en Base64",
-
   "title_4_10": "decode <message en base64>",
   "desc_4_10": "Decoder un message Base64",
-
   "title_4_11": "ms",
   "desc_4_11": "Voir le ping du bot",
-
   "title_4_12": "npm <nom du module>",
   "desc_4_12": "Rechercher un wrapper nodejs",
-
   "title_5": "Aides pour les commandes fun:",
-
   "title_5_1": "compatibilite <x> <y>",
   "desc_5_1": "Compatibilité des prénoms avec x et y les prénoms",
-
   "title_6": "Aides pour les commandes des emotes:",
-
   "title_6_1": "emote",
   "desc_6_1": "Afficher une emote aléatoire",
-
   "title_6_2": "emote <nom de l'émote>",
   "desc_6_2": "Afficher une emote avec le nom",
-
   "title_6_4": "guide random",
   "desc_6_4": "Afficher des informations sur une emote aléatoire",
-
   "title_7": "Aide pour les commandes de musique",
-  
   "title_7_1": "play",
   "desc_7_1": "Jouer une musique",
-  
   "face": [
     "( .-. )",
     "( .o.)",

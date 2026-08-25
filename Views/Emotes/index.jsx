@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Loader } from "../../Components/Others";
 import CreateLink from "../../Components/Text/Link";
 import { baseapiurl } from "../../Service/constante";
@@ -9,7 +9,6 @@ import Svg from "../../Components/Svg/Svg";
 function EmotesHome() {
     
     const [list, setList] = useState([]);
-    const [searchList, setSearch] = useState([])
     const [name, setName] = useState("")
     
     /*useEffect(() => {
@@ -23,10 +22,9 @@ function EmotesHome() {
         getData()
     }, [])*/
     
-    useEffect(() => {
-        if(name.trim() === "") return setSearch(list)
-        setSearch(list.filter(e => e.name.match(name)))
-    }, [name])
+    // La liste filtree se calcule au rendu : un state et un effet supplementaires
+    // n'apportaient rien et declenchaient un rendu en cascade a chaque frappe.
+    const searchList = name.trim() === "" ? list : list.filter(e => e.name.match(name));
 
     const searchEmote = (e) => {
         e.preventDefault()
@@ -40,8 +38,8 @@ function EmotesHome() {
             </div>
             {
                 list.length > 0 ? 
-                list.map(emote => 
-                    <div style={{
+                searchList.map(emote => 
+                    <div key={emote.name} style={{
                         marginBottom: 10
                     }} className={`${styles.full_width} ${styles.radius_5} ${styles.second_background} ${styles.column} ${styles.align_start} ${styles.padding_5}`}>
                         <div className={`${styles.row} ${styles.no_wrap} ${styles.space_between}`}>
