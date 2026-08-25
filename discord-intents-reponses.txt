@@ -1,0 +1,308 @@
+========================================================================
+ERIC — DEMANDE DE RÉAUTORISATION DES PRIVILEGED GATEWAY INTENTS
+Réponses à copier-coller dans le formulaire Discord
+========================================================================
+
+
+========================================================================
+SECTION 1 — DÉTAILS DE L'APPLICATION
+========================================================================
+
+--- Que fait ton application ? ---
+
+Eric est un bot francophone de gestion et d'animation de communauté
+Discord, utilisé principalement par des serveurs de gaming et de
+streaming. Il regroupe plusieurs modules, chacun activable et
+configurable indépendamment par les administrateurs du serveur depuis un
+tableau de bord web (https://boteric.fr).
+
+ACCUEIL ET VÉRIFICATION DES NOUVEAUX MEMBRES
+À l'arrivée d'un membre, le bot envoie un message de bienvenue
+personnalisé dans le salon choisi par l'administrateur. Si le module de
+vérification est activé, il poste dans le salon de vérification une
+demande adressée au nouvel arrivant : réagir avec un emoji précis, tiré
+au hasard par le bot parmi plusieurs, pour obtenir le rôle d'accès. Une
+mauvaise réaction entraîne l'expulsion. Seule la personne visée peut
+déclencher l'action.
+
+SYSTÈME DE NIVEAUX ET D'XP
+Les membres gagnent de l'XP en participant aux discussions. Le bot
+génère une carte de profil en image (avatar, pseudo, niveau, barre de
+progression), un classement du serveur et un classement global. Les
+administrateurs peuvent configurer des rôles attribués automatiquement à
+certains paliers de niveau.
+
+MODÉRATION
+Système d'avertissements avec historique et motif, commandes d'expulsion
+et de bannissement, suppression de messages en masse, et automodération
+par liste de mots interdits définie par chaque serveur. Un module
+optionnel de détection d'images à caractère explicite analyse les images
+postées grâce à un modèle de vision et alerte les modérateurs.
+
+ASSISTANT IA
+Les membres peuvent mentionner le bot pour lui poser une question et
+obtenir une réponse générée par un modèle de langage, uniquement dans
+les serveurs où un administrateur a activé cette fonctionnalité.
+
+UTILITAIRES ET DIVERTISSEMENT
+Sondages, informations sur un membre ou sur le serveur, affichage
+d'avatars et d'émojis en grand format, encodage et décodage de texte,
+recherche, et diverses commandes ludiques.
+
+INTÉGRATION TWITCH
+Notification automatique dans un salon Discord quand une chaîne Twitch
+suivie par le serveur passe en direct.
+
+Le bot fonctionne en français et en anglais, avec des messages traduits
+selon la langue configurée sur le serveur.
+
+Documentation et démonstration : https://boteric.fr
+
+Démonstrations vidéo :
+- Arrivée d'un membre et vérification :
+  https://boteric.fr/assets/verif/guildMemberAddIntent.mp4
+- Automodération par mots interdits :
+  https://boteric.fr/assets/verif/messageIntent.mp4
+
+Serveur de support : https://discord.gg/p3Sj432
+
+
+--- As-tu une Politique de Confidentialité publique ? ---
+
+RÉPONSE : Oui
+
+Notre politique de confidentialité est publique et accessible à
+l'adresse https://boteric.fr/privacy. Elle est également liée depuis la
+page de notre bot et depuis notre tableau de bord.
+
+[À VÉRIFIER : cette page doit exister et être accessible sans connexion
+avant l'envoi du dossier. Voir la section 4 de ce fichier pour le
+contenu qu'elle doit couvrir.]
+
+
+========================================================================
+SECTION 2 — SERVER MEMBERS INTENT
+========================================================================
+
+--- Pourquoi as-tu besoin du Guild Members Intent ? ---
+
+Eric est un bot de gestion de communauté. Il a besoin du Guild Members
+Intent pour trois fonctionnalités :
+
+1) MESSAGES DE BIENVENUE ET VÉRIFICATION À L'ARRIVÉE
+Le bot écoute l'événement guildMemberAdd. Quand un nouveau membre
+rejoint le serveur, il envoie un message de bienvenue personnalisé dans
+le salon configuré par l'administrateur, et peut lancer une procédure de
+vérification : le bot poste dans le salon de vérification une demande
+adressée nommément au nouvel arrivant, lui indiquant l'emoji avec lequel
+réagir pour obtenir le rôle d'accès. Cet emoji est tiré au hasard à
+chaque arrivée parmi plusieurs, et le bot ajoute également un emoji de
+refus. Le bot vérifie que l'auteur de la réaction est bien la personne
+visée : une bonne réaction attribue le rôle et supprime la demande, une
+mauvaise entraîne l'expulsion du serveur.
+
+C'est un mécanisme anti-automatisation : comme l'emoji change à chaque
+arrivée, un script qui réagit à tout ou qui a appris un emoji fixe tombe
+sur celui de refus et se fait éliminer. Sans cet intent, le bot ne reçoit
+jamais l'événement d'arrivée et cette fonctionnalité est totalement
+inopérante.
+
+2) SYSTÈME DE NIVEAUX ET D'XP
+Les membres gagnent de l'XP en participant. Le bot génère une carte de
+profil en image (pseudo, avatar, niveau, XP) et un classement du
+serveur. Il a besoin d'accéder à la liste des membres de la guilde pour
+résoudre les identifiants en membres (pseudo, surnom, avatar, rôles) et
+construire le classement.
+
+3) COMMANDES DE MODÉRATION ET D'INFORMATION
+Les commandes d'avertissement (warn), d'information sur un membre et
+d'attribution de rôles ont besoin de récupérer l'objet membre de la
+guilde (rôles, date d'arrivée, surnom) pour fonctionner.
+
+Le bot n'utilise ces données que pour ces fonctionnalités, à l'intérieur
+du serveur où elles sont déclenchées.
+
+
+--- Liens vers captures d'écran / vidéos ---
+
+https://boteric.fr/assets/verif/guildMemberAddIntent.mp4
+
+Ce que montre la vidéo, dans l'ordre :
+
+1. Un compte de test rejoint le serveur via un lien d'invitation.
+2. Le bot publie aussitôt la demande de vérification dans le salon
+   prévu, en mentionnant nommément le compte qui vient d'arriver, et
+   indique l'emoji avec lequel réagir pour obtenir le rôle d'accès.
+3. À ce stade, la liste des salons visibles par ce compte est réduite :
+   il n'a encore aucun rôle.
+4. Le compte réagit avec l'emoji demandé.
+5. Le rôle d'accès lui est attribué et l'ensemble des salons du serveur
+   devient visible.
+
+Toute cette séquence découle de l'événement guildMemberAdd. Sans le
+Server Members Intent, le bot ne reçoit jamais cet événement : rien de ce
+qui est visible dans la vidéo ne se produit.
+
+
+--- Conserves-tu des données d'API hors plateforme ? ---
+
+RÉPONSE : Oui
+
+Oui, de façon minimale et strictement fonctionnelle.
+
+Nous stockons dans une base de données MongoDB, hébergée sur notre
+propre serveur : les identifiants Discord (ID utilisateur, ID serveur,
+ID salon, ID rôle, ID message), les compteurs d'XP et de niveau, les
+avertissements de modération (auteur, motif, date), la configuration
+choisie par les administrateurs du serveur (salons, rôles, langue, mots
+filtrés) et les cartes de profil personnalisées.
+
+Nous ne stockons PAS le contenu des messages, ni les adresses e-mail, ni
+les listes de membres complètes.
+
+Ces données sont nécessaires pour que la configuration du serveur et la
+progression des membres persistent entre les redémarrages du bot.
+
+CONSERVATION APRÈS LE RETRAIT DU BOT
+Nous ne supprimons pas automatiquement les données lorsque le bot est
+retiré d'un serveur, et ce choix est volontaire. Un retrait est très
+souvent temporaire : maintenance du serveur, retrait accidentel par un
+administrateur, migration, ou changement d'équipe de modération. Une
+suppression automatique détruirait dans ces cas la progression et les
+niveaux accumulés par tous les membres sur parfois plusieurs années,
+ainsi que l'intégralité de la configuration du serveur, sans possibilité
+de restauration. Conserver les données permet à un serveur qui réinvite
+le bot de retrouver immédiatement ses réglages et la progression de ses
+membres, ce qui correspond à l'attente de nos utilisateurs.
+
+Les données conservées restent strictement les mêmes que celles
+énumérées ci-dessus : des identifiants et des compteurs, aucun contenu
+de message.
+
+Cette conservation est documentée dans notre politique de
+confidentialité. Toute donnée est supprimée sur simple demande, adressée
+par un administrateur du serveur concerné ou par un utilisateur pour ses
+propres données, via notre serveur de support ou notre adresse de
+contact. L'accès à la base est restreint par authentification et les
+sauvegardes sont conservées sur le même serveur privé.
+
+
+========================================================================
+SECTION 3 — MESSAGE CONTENT INTENT
+========================================================================
+
+--- Les utilisateurs peuvent-ils choisir de ne pas faire suivre leurs
+    données de Message Content ? ---
+
+RÉPONSE : No
+
+
+--- Stockes-tu des données de contenu de message hors plateforme ? ---
+
+RÉPONSE : No
+
+
+--- Les données de contenu de message seront-elles utilisées pour du
+    machine learning ou pour entraîner une IA ? ---
+
+RÉPONSE : No
+
+Le contenu des messages n'est jamais utilisé pour entraîner, affiner ou
+évaluer un modèle, ni par nous ni par un tiers. Le module d'assistant IA
+transmet uniquement le message adressé au bot à l'API d'OpenAI pour
+générer une réponse immédiate. Cet appel est configuré avec l'option de
+rétention désactivée : la requête n'est pas conservée par le
+fournisseur, et les données transmises via l'API ne sont pas utilisées
+pour entraîner ses modèles. Aucune copie n'est conservée de notre côté.
+
+
+--- Pourquoi as-tu besoin du Message Content Intent ? ---
+
+DÉMONSTRATION VIDÉO :
+https://boteric.fr/assets/verif/messageIntent.mp4
+
+On y voit un membre écrire un message ordinaire dans un salon public,
+sans mentionner le bot et sans utiliser de commande. Le bot détecte un
+terme figurant sur la liste du serveur, enregistre un avertissement et
+publie l'alerte dans le salon de modération, avec le terme ayant
+déclenché la correspondance.
+
+Le contenu des messages est lu en mémoire, au moment de la réception,
+uniquement pour déclencher les fonctionnalités ci-dessous. Il n'est
+jamais écrit en base de données ni conservé.
+
+1) AUTOMODÉRATION PAR MOTS INTERDITS
+Chaque serveur définit sa propre liste de mots ou d'expressions
+interdits. Le bot compare le texte de chaque message à cette liste et,
+en cas de correspondance, avertit automatiquement l'auteur et notifie
+l'équipe de modération dans le salon dédié.
+
+C'est le cœur de notre besoin, et il ne peut être satisfait autrement.
+Une commande d'application ne convient pas : la modération suppose
+d'examiner les messages que personne ne soumet volontairement au bot.
+Il faut donc lire le contenu des messages ordinaires, ceux qui ne
+mentionnent pas le bot et ne sont pas des commandes — précisément ce que
+seul cet intent permet.
+
+Seul le terme interdit ayant déclenché l'alerte, issu de la liste
+configurée par le serveur lui-même, est conservé comme motif de
+l'avertissement dans l'historique de modération. Le message d'origine
+n'est pas conservé.
+
+2) DÉTECTION D'IMAGES À CARACTÈRE EXPLICITE
+Lorsque le module est activé, les images jointes aux messages sont
+analysées par un modèle de vision et celles identifiées comme explicites
+déclenchent une alerte auprès des modérateurs.
+
+Les pièces jointes d'un message relèvent du même intent que son texte :
+sans lui, le bot ne voit aucune image. Et comme pour l'automodération,
+une commande d'application est inopérante — une personne qui publie une
+image explicite ne lancera pas d'elle-même la commande qui la signale.
+
+3) COMMANDES À PRÉFIXE
+Notre bot fonctionne historiquement avec des commandes textuelles à
+préfixe personnalisable par serveur (par exemple *help, *level,
+*classement, *warn, *sondage). Lire le contenu du message est
+indispensable pour reconnaître le préfixe, identifier la commande et en
+extraire ses arguments, notamment les options d'un sondage saisies entre
+guillemets.
+
+Nous avons conscience que les commandes d'application couvrent une partie
+de cet usage, et le bot en propose déjà. Nous ne présentons donc pas ce
+point comme la justification principale : une partie de nos serveurs y
+est attachée, mais les deux besoins précédents sont ceux qu'aucune
+alternative ne remplace.
+
+Dans tous les cas, le traitement est éphémère : le contenu est analysé en
+mémoire puis abandonné. L'automodération et la détection d'images sont
+désactivées par défaut et doivent être explicitement activées par un
+administrateur du serveur.
+
+
+========================================================================
+SECTION 4 — RAPPEL : CONTENU DE LA POLITIQUE DE CONFIDENTIALITÉ
+========================================================================
+
+La page https://boteric.fr/privacy doit couvrir au minimum :
+
+- Les données collectées : identifiants Discord (utilisateur, serveur,
+  salon, rôle, message), XP et niveaux, avertissements de modération,
+  configuration du serveur, cartes de profil personnalisées.
+- Ce qui n'est PAS collecté : contenu des messages non conservé, pas
+  d'adresses e-mail, pas de liste de membres complète.
+- La finalité : faire fonctionner les modules choisis par
+  l'administrateur du serveur.
+- L'hébergement : MongoDB sur serveur privé, accès authentifié,
+  sauvegarde quotidienne automatique.
+- LA DURÉE DE CONSERVATION : les données sont conservées même après le
+  retrait du bot, afin que la configuration et la progression des
+  membres soient restaurées si le bot est réinvité. Ce point doit être
+  écrit explicitement.
+- LE DROIT À LA SUPPRESSION : contact (e-mail ou serveur de support) où
+  un administrateur de serveur ou un utilisateur peut demander
+  l'effacement de ses données, avec un délai d'exécution annoncé.
+- Les services tiers utilisés : OpenAI (assistant IA et analyse
+  d'images, sans rétention ni entraînement), Twitch, Google Cloud
+  Storage (stockage des images de cartes de profil).
+
+========================================================================
