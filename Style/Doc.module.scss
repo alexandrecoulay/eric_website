@@ -388,3 +388,30 @@
 		font-size: 18px;
 	}
 }
+
+/* Raccourcis vers les groupes de commandes. */
+.anchors {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+
+	a {
+		padding: 7px 14px;
+		border: 1px solid #ffffff1f;
+		border-radius: 999px;
+		font-size: 14px;
+		text-decoration: none;
+		color: var(--text-normal-hover);
+		transition: border-color var(--transition), color var(--transition);
+
+		&:hover {
+			border-color: var(--fa-primary);
+			color: var(--fa-primary);
+		}
+	}
+}
+
+/* L'ancre ne doit pas coller au bord haut de la fenetre apres le saut. */
+.tableGroup {
+	scroll-margin-top: 24px;
+}

@@ -32,9 +32,20 @@ function CommandTable({
 
     return (
         <div className={styles.tableGroups}>
+            {/* Raccourcis vers chaque groupe, comme sur l'ancienne page d'aide :
+                la table est longue, et on y vient le plus souvent pour une
+                famille de commandes precise. */}
+            <nav className={styles.anchors}>
+                {
+                    groups.map(group => (
+                        <a key={group.slug} href={`#${group.slug}`}>{group.title}</a>
+                    ))
+                }
+            </nav>
+
             {
                 groups.map(group => (
-                    <div key={group.slug} className={styles.tableGroup}>
+                    <div key={group.slug} id={group.slug} className={styles.tableGroup}>
                         <h3>
                             <Link href={`/help/${group.slug}`}>{group.title}</Link>
                         </h3>
