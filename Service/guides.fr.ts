@@ -113,10 +113,11 @@ export const guidesFr: Doc[] = [
                 ]
             },
             {
-                heading: "Valider les arrivées à la main",
+                heading: "Exiger une action de l'arrivant",
                 paragraphs: [
-                    "Avec le module de vérification d'Eric, chaque arrivée publie une demande de validation dans un salon réservé à l'équipe. Un modérateur réagit pour accepter, et le rôle d'accès est attribué automatiquement.",
-                    "L'intérêt de cette approche est qu'elle ne repose sur aucune heuristique. Les filtres automatiques — ancienneté du compte, absence d'avatar, pseudo au format suspect — se contournent en préparant les comptes à l'avance. Un modérateur qui voit quarante demandes identiques arriver en deux minutes, lui, ne se trompe pas."
+                    "Avec le module de vérification d'Eric, chaque arrivée publie dans le salon de vérification une demande adressée au nouveau membre : réagir avec un emoji précis pour obtenir le rôle d'accès. Le bot ajoute cet emoji ainsi qu'un emoji de refus, et n'accepte la réaction que si elle vient de la personne visée.",
+                    "L'emoji d'acceptation est tiré au hasard à chaque arrivée. C'est ce qui fait le filtre : un script qui réagit à tout, ou qui a appris un emoji fixe, tombe sur celui de refus et se fait expulser. Un compte préparé à l'avance ne contourne rien, puisqu'il n'y a rien à préparer — il faut lire le message au moment où il arrive.",
+                    "Cette approche a un coût qu'il faut connaître : l'expulsion est immédiate et automatique. Un membre légitime qui clique sur la mauvaise réaction se retrouve dehors, et devra être réinvité."
                 ]
             },
             {
@@ -124,7 +125,7 @@ export const guidesFr: Doc[] = [
                 list: [
                     "Un rôle d'accès distinct de @everyone, et des permissions de salon qui en dépendent réellement.",
                     "Le rôle du bot placé au-dessus du rôle d'accès dans la hiérarchie.",
-                    "Un salon de validation visible du seul staff.",
+                    "Un salon de vérification visible de tous, arrivants compris : c'est là qu'ils doivent réagir.",
                     "Le niveau de vérification de Discord réglé au moins sur « moyen ».",
                     "Une consigne écrite pour l'équipe : qui monte le niveau de vérification et à quel moment."
                 ]
@@ -143,7 +144,7 @@ export const guidesFr: Doc[] = [
         faq: [
             {
                 question: "Comment empêcher les faux comptes de rejoindre un serveur Discord ?",
-                answer: "On ne les empêche pas de rejoindre : Discord ne le permet pas. On les empêche d'agir, en retirant au rôle @everyone l'accès aux salons et en n'attribuant le rôle d'accès qu'après validation par un modérateur."
+                answer: "On ne les empêche pas de rejoindre : Discord ne le permet pas. On les empêche d'agir, en retirant au rôle @everyone l'accès aux salons et en n'attribuant le rôle d'accès qu'après une réaction correcte de l'arrivant à un emoji tiré au hasard."
             },
             {
                 question: "Le niveau de vérification de Discord suffit-il contre un raid ?",

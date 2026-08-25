@@ -32,7 +32,7 @@ export async function GET() {
 
     const content = `# Eric — Discord bot
 
-> Eric is a free, bilingual (French and English) Discord bot for community management: auto-moderation, a levelling system with generated profile cards, new member welcome and verification, moderation with warning history, an AI assistant answering on mention, explicit image detection, and Twitch go-live alerts. Operated from ${site_url}. Every module is disabled by default and enabled per server by an administrator.
+> Eric is a free, bilingual (French and English) Discord bot for community management: auto-moderation, a levelling system with generated profile cards, new member welcome and an emoji-challenge verification, moderation with warning history, an AI assistant answering on mention, explicit image detection, and Twitch go-live alerts. Operated from ${site_url}. Every module is disabled by default and enabled per server by an administrator.
 
 ## What Eric is
 
@@ -44,7 +44,7 @@ It is not a music bot, not a ticket bot, and it does not host or relay voice.
 
 - **Auto-moderation** — each server defines its own list of forbidden words. A message matching the list issues an automatic warning to its author and notifies the moderation team in a designated channel. There is no global blocklist: the list is the server's own.
 - **Levelling** — members earn experience by posting. Profile cards are generated as images (avatar, name, level, progress bar); a per-server leaderboard and a global leaderboard are available. Roles can be granted automatically at level thresholds.
-- **Welcome and verification** — a customisable welcome message on arrival, and an optional verification flow where a moderator approves a newcomer by reacting, after which the access role is granted automatically.
+- **Welcome and verification** — a customisable welcome message on arrival, and an optional verification challenge: the bot asks the newcomer to react with one emoji drawn at random from several, grants the access role on the right reaction, and kicks on the wrong one. Only the named member can trigger it.
 - **Moderation** — warnings with author, reason and date kept as history, plus kick, ban and bulk message deletion.
 - **AI assistant** — mentioning the bot in a server where an administrator enabled the module returns a generated answer. Requests are sent to OpenAI with retention disabled and are not used for training.
 - **Explicit image detection** — an optional module analysing posted images and alerting moderators.

@@ -198,11 +198,11 @@ export const modulesEn: Doc[] = [
         slug: "welcome",
         title: "Welcome and member verification",
         metaTitle: "Discord welcome message and verification — onboarding new members",
-        description: "Set up a welcome message and manual verification of newcomers on a Discord server with the Eric bot: moderator approval and automatic access role assignment.",
-        keywords: "discord welcome message, discord member verification, discord anti raid bot, discord auto role on join",
+        description: "Set up a welcome message and newcomer verification on a Discord server with the Eric bot: reacting with a randomly chosen emoji, automatic access role assignment, and a kick on the wrong reaction.",
+        keywords: "discord welcome message, discord member verification, discord captcha, discord anti raid bot, discord auto role on join",
         intro: [
             "On every arrival, the bot posts a personalised welcome message in the channel chosen by the administrator.",
-            "A second, optional mechanism adds a human validation step: a newcomer only gains access once a moderator approves them. It is the most effective filter against waves of automated accounts, because it rests on no heuristic that can be worked around."
+            "A second, optional mechanism sets a challenge on arrival: the newcomer must react with one specific emoji, drawn at random by the bot, to be granted the access role. Reacting with the wrong one gets them kicked from the server."
         ],
         sections: [
             {
@@ -212,19 +212,22 @@ export const modulesEn: Doc[] = [
                 ]
             },
             {
-                heading: "Moderator verification",
+                heading: "Verification by reaction",
                 paragraphs: [
-                    "When verification is enabled, a member's arrival posts a validation request in a staff-only channel. A moderator reacts to accept or refuse.",
-                    "On acceptance, the bot grants the configured access role automatically. Until validation happens the member holds no role and therefore sees only what is open to everyone — the server's permission setup remains what actually determines what they can see."
+                    "When verification is enabled, a member's arrival posts a request in the verification channel, addressed to the newcomer by name. The bot states which emoji to react with, then adds that accept emoji and a reject emoji itself.",
+                    "The accept emoji is drawn at random on each arrival from several, and that is where the filter lies: a script reacting to everything, or one that learned a fixed emoji, lands on the reject one.",
+                    "Only the person named can trigger the action — the bot compares the reacting user against the request's target and ignores anyone else. Right reaction: the access role is granted and the request deleted. Wrong reaction: the member is kicked from the server.",
+                    "Until verification happens the member holds no role and sees only what is open to everyone. The server's permission setup remains what actually determines what they can see."
                 ]
             },
             {
                 heading: "Setting the filter up correctly",
                 list: [
-                    "Remove read access to the server's channels from the @everyone role, except for an optional landing channel.",
+                    "Remove read access to the server's channels from the @everyone role, with the single exception of the verification channel.",
+                    "Leave that verification channel visible to everyone, newcomers included: it is where they must react, and making it private would render the module inoperative.",
                     "Create an access role with normal read and write permissions, and designate it in the dashboard.",
                     "Place the bot's role above the access role in the hierarchy, or Discord will refuse to let it grant the role.",
-                    "Designate a validation channel visible only to the moderation team."
+                    "Give the bot the Kick Members permission: a failed verification ends in a kick."
                 ]
             }
         ],
@@ -235,11 +238,11 @@ export const modulesEn: Doc[] = [
             },
             {
                 question: "How do I protect a Discord server from automated accounts?",
-                answer: "Enable verification: every arrival creates a validation request in a staff-only channel, and the access role is granted only after a moderator approves. Combined with an @everyone role that has no read access, it is the most reliable filter, because it rests on no automatic detection that can be worked around."
+                answer: "Enable verification: every newcomer must react with one specific emoji, drawn at random by the bot from several, to be granted the access role. A wrong reaction kicks them. Because the emoji changes on each arrival, a script reacting to everything or one that learned a fixed emoji is eliminated. Combine it with an @everyone role that has no read access, except on the verification channel."
             },
             {
-                question: "Can a new member see the server before being validated?",
-                answer: "They see whatever the server's permissions open to the @everyone role. For verification to act as a real filter, remove read access from @everyone on the server's channels, except possibly a landing channel."
+                question: "Can a new member see the server before being verified?",
+                answer: "They see whatever the server's permissions open to the @everyone role. For verification to act as a real filter, remove read access from @everyone on the server's channels, leaving only the verification channel visible — that is where the newcomer must react."
             }
         ],
         updated: "2026-08-25"

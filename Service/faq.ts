@@ -33,7 +33,7 @@ export function helpFaq(locale: Locale): { question: string; answer: string }[] 
             },
             {
                 question: "Comment souhaiter la bienvenue aux nouveaux membres ?",
-                answer: "Activez le module d'accueil dans le tableau de bord et choisissez le salon de bienvenue. Vous pouvez aussi activer la vérification : à chaque arrivée, une demande de validation est postée dans un salon réservé au staff, et le rôle d'accès est attribué dès qu'un modérateur l'approuve."
+                answer: "Activez le module d'accueil dans le tableau de bord et choisissez le salon de bienvenue. Vous pouvez aussi activer la vérification : à chaque arrivée, le bot demande au nouveau membre de réagir avec un emoji tiré au hasard, et lui attribue le rôle d'accès s'il réagit correctement."
             },
             {
                 question: "Le bot Eric parle-t-il français ?",
@@ -69,7 +69,7 @@ export function helpFaq(locale: Locale): { question: string; answer: string }[] 
         },
         {
             question: "How do I welcome new members?",
-            answer: "Enable the welcome module in the dashboard and choose the welcome channel. You can also enable verification: on each arrival a validation request is posted in a staff-only channel, and the access role is granted as soon as a moderator approves it."
+            answer: "Enable the welcome module in the dashboard and choose the welcome channel. You can also enable verification: on each arrival the bot asks the new member to react with a randomly chosen emoji, and grants the access role if they react correctly."
         },
         {
             question: "Does the Eric bot speak French?",
