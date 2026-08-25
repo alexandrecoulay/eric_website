@@ -14,7 +14,6 @@ build
 node_modules
 build_sitemap
 
-yarn.lock
 .yarn/cache
 .yarn/unplugged
 .yarn/build-state.yml

@@ -1,20 +1,38 @@
-# Utiliser une image Node.js stable
-FROM node:18
+# ---- Build ----------------------------------------------------------------
+# Node 22 : sass >= 1.103 exige Node >= 20.19, et node-sass (qui plafonnait à
+# Node 18) a été retiré des dépendances.
+FROM node:22-slim AS builder
 
-# Définir le répertoire de travail dans le conteneur
 WORKDIR /app
 
-# Copier tout le code source dans le conteneur
+# Les dépendances d'abord : cette couche n'est reconstruite que si package.json
+# ou le lockfile changent.
+COPY package.json yarn.lock ./
+
+# --frozen-lockfile : le build installe exactement les versions du lockfile.
+# Sans lui, chaque build refaisait une résolution fraîche et pouvait tirer une
+# version incompatible sans qu'aucun fichier du dépôt n'ait changé.
+RUN yarn install --frozen-lockfile
+
 COPY . .
 
-# Installer toutes les dépendances (production et développement)
-RUN yarn install ---production=true
-
-# Construire l'application Next.js
 RUN yarn build
 
-# Exposer le port 3000 (facultatif, mais utile pour documentation)
+# ---- Runtime --------------------------------------------------------------
+FROM node:22-slim AS runner
+
+WORKDIR /app
+
+ENV NODE_ENV=production
+ENV PORT=3000
+ENV HOSTNAME=0.0.0.0
+
+# Sortie standalone : serveur + seules les dépendances atteintes par le build.
+# distDir vaut 'build' (next.config.js), d'où les chemins ci-dessous.
+COPY --from=builder /app/build/standalone ./
+COPY --from=builder /app/build/static ./build/static
+COPY --from=builder /app/public ./public
+
 EXPOSE 3000
 
-# Démarrer l'application
-CMD ["yarn", "start"]
+CMD ["node", "server.js"]

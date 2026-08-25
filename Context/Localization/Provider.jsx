@@ -1,5 +1,4 @@
 import { createContext, useCallback, useEffect, useState } from 'react'
-import memoize from 'lodash/memoize'
 import { EN, languages } from './languages'
 import translations from './translations.json'
 import { LS_KEY, fetchLocale, getLanguageCodeFromLS } from './helpers'
@@ -11,9 +10,19 @@ const initialState = {
 
 const includesVariableRegex = new RegExp(/{{\S+?}}/, 'gm')
 
-const translatedTextIncludesVariable = memoize((translatedText) => {
-  return !!translatedText?.match(includesVariableRegex)
-})
+// Cache local plutot que lodash/memoize : une seule fonction memoisee ne
+// justifie pas la dependance, qui n'etait de toute facon resolue que de facon
+// transitive par un paquet depuis retire.
+const includesVariableCache = new Map()
+
+const translatedTextIncludesVariable = (translatedText) => {
+  if (includesVariableCache.has(translatedText)) return includesVariableCache.get(translatedText)
+
+  const result = !!translatedText?.match(includesVariableRegex)
+  includesVariableCache.set(translatedText, result)
+
+  return result
+}
 
 // Export the translations directly
 export const languageMap = new Map()

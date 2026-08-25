@@ -34,7 +34,7 @@ services:
       - "traefik.http.routers.boteric_web.tls.certresolver=boteric_fr_cert"
       - "traefik.http.routers.boteric_web.service=boteric_web_service"
       - "traefik.http.services.boteric_web_service.loadbalancer.server.port=3000"
-    entrypoint: ["yarn", "start"]  
+    entrypoint: ["node", "server.js"]
 
 networks:
   trenderproxy:

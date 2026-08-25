@@ -1,9 +1,32 @@
 const path = require('path');
-const loaderUtils = require('loader-utils');
+const crypto = require('crypto');
 
-const hashOnlyIdent = (context, _, exportName) => loaderUtils.getHashDigest(Buffer.from(`filePath:${path.relative(context.rootContext, context.resourcePath).replace(/\\+/g, '/')}#className:${exportName}`,), 'md4', 'hex', 8,).replace(/^(-?\d|--)/, 'css-$1');
+/**
+ * Nom de classe CSS Modules réduit à un hash, sans le chemin du fichier.
+ *
+ * Utilisait `loader-utils` avec l'algorithme md4 : OpenSSL 3, embarqué depuis Node 17,
+ * ne l'expose plus et `crypto.createHash('md4')` lève ERR_OSSL_EVP_UNSUPPORTED. On passe
+ * par sha256, disponible partout, tronqué à 8 caractères comme avant.
+ */
+const hashOnlyIdent = (context, _, exportName) => {
+  const filePath = path.relative(context.rootContext, context.resourcePath).replace(/\\+/g, '/');
+  const hash = crypto
+    .createHash('sha256')
+    .update(`filePath:${filePath}#className:${exportName}`)
+    .digest('hex')
+    .slice(0, 8);
+
+  // Un nom de classe ne peut pas commencer par un chiffre ni par deux tirets.
+  return hash.replace(/^(-?\d|--)/, 'css-$1');
+};
 
 module.exports = {
+  // Serveur autonome : l'image de prod n'embarque que les dépendances réellement
+  // atteintes par le build, au lieu de tout node_modules. En Next 12.1 l'option
+  // est encore sous `experimental` ; elle passe à la racine (`output`) en 12.2.
+  experimental: {
+    outputStandalone: true,
+  },
   swcMinify: true,
   reactStrictMode: true,
   webpack(config, { dev }) {
@@ -11,8 +34,7 @@ module.exports = {
       .find((rule) => typeof rule.oneOf === 'object')
       .oneOf.filter((rule) => Array.isArray(rule.use));
 
- 
-    if(!dev)
+    if (!dev) {
       rules.forEach((rule) => {
         rule.use.forEach((moduleLoader) => {
           if (
@@ -22,14 +44,16 @@ module.exports = {
             moduleLoader.options.modules.getLocalIdent = hashOnlyIdent;
         });
       });
-      return config;
+    }
+
+    return config;
   },
   distDir: 'build',
   images: {
     domains: [
       'cdn.boteric.fr',
-      "cdn.discordapp.com",
-      "cdn.trenderapp.com"
+      'cdn.discordapp.com',
+      'cdn.trenderapp.com'
     ],
   }
 };
