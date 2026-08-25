@@ -49,3 +49,29 @@ export function findDoc(docs: DocsByLocale, locale: string, slug: string): Doc |
 export function docSlugs(docs: DocsByLocale): string[] {
     return docs.en.map(doc => doc.slug);
 }
+
+/** Une commande, rattachée au module qui la documente. */
+export interface CommandEntry extends CommandDoc {
+    moduleSlug: string;
+    moduleTitle: string;
+}
+
+/**
+ * Toutes les commandes d'un ensemble de documents, à plat.
+ *
+ * Sert la table de référence de /help. Elle est dérivée des mêmes données que les
+ * pages par module, et non saisie une seconde fois : l'ancienne liste plate était
+ * une copie indépendante, et avait fini par documenter une commande `ms` retirée
+ * du bot depuis longtemps.
+ */
+export function allCommands(docs: DocsByLocale, locale: string): CommandEntry[] {
+    return (docs[locale] ?? docs.en).flatMap(doc =>
+        doc.sections.flatMap(section =>
+            (section.commands ?? []).map(command => ({
+                ...command,
+                moduleSlug: doc.slug,
+                moduleTitle: doc.title
+            }))
+        )
+    );
+}

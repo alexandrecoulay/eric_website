@@ -285,3 +285,106 @@
 		grid-template-columns: 1fr;
 	}
 }
+
+/* ---- Référence plate des commandes, sur /help ---------------------------- */
+
+.legend {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px 24px;
+	margin: 0;
+	font-size: 15px;
+	color: var(--third-color);
+
+	code {
+		font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+		color: var(--fa-primary);
+	}
+}
+
+.tableGroups {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+	width: 100%;
+}
+
+.tableGroup {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+
+	h3 {
+		margin: 0;
+		font-size: 20px;
+
+		a {
+			color: var(--main-color);
+			text-decoration: none;
+			border-bottom: 1px solid transparent;
+			transition: border-color var(--transition);
+
+			&:hover {
+				border-bottom-color: var(--fa-primary);
+			}
+		}
+	}
+}
+
+/* Trois colonnes ne se plient pas sous 400 px : on fait defiler plutot que casser. */
+.tableScroll {
+	width: 100%;
+	overflow-x: auto;
+}
+
+.table {
+	width: 100%;
+	border-collapse: collapse;
+	text-align: left;
+	font-size: 15px;
+
+	th {
+		padding: 8px 14px 8px 0;
+		font-size: 13px;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+		color: var(--third-color);
+		border-bottom: 1px solid #ffffff1f;
+		white-space: nowrap;
+	}
+
+	td {
+		padding: 12px 14px 12px 0;
+		vertical-align: top;
+		line-height: 1.6;
+		color: var(--text-normal-hover);
+		border-bottom: 1px solid #ffffff0d;
+	}
+
+	tr:last-child td {
+		border-bottom: none;
+	}
+
+	/* La syntaxe ne doit jamais se couper au milieu d'un argument. */
+	td:first-child {
+		white-space: nowrap;
+		padding-right: 24px;
+	}
+}
+
+.permissionCell {
+	white-space: nowrap;
+	color: var(--third-color) !important;
+	font-size: 14px;
+}
+
+@media screen and (max-width: 800px) {
+	.table {
+		font-size: 14px;
+	}
+
+	.tableGroup h3 {
+		font-size: 18px;
+	}
+}

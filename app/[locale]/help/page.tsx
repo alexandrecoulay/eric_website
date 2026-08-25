@@ -7,7 +7,9 @@ import NavBar from "../../../Components/App/NavBar";
 import JsonLd from "../../../Components/App/JsonLd";
 import Faq from "../../../Components/App/Faq";
 import DocIndex from "../../../Components/App/DocIndex";
+import CommandTable from "../../../Components/App/CommandTable";
 import modules from "../../../Service/modules";
+import { allCommands } from "../../../Service/docTypes";
 import { pageMetadata } from "../../../Service/seo";
 import { faqPage, breadcrumb } from "../../../Service/structuredData";
 import { helpFaq } from "../../../Service/faq";
@@ -41,6 +43,7 @@ export default async function HelpPage({ params }: Props) {
     const faq = helpFaq(locale);
     const french = locale === "fr";
     const docs = modules[locale] ?? modules.en;
+    const commands = allCommands(modules, locale);
 
     return (
         <>
@@ -63,6 +66,21 @@ export default async function HelpPage({ params }: Props) {
                 </p>
 
                 <DocIndex docs={docs} basePath="/help" />
+
+                <h2>{french ? "Toutes les commandes" : "All commands"}</h2>
+                <p className={styles.legend}>
+                    <span><code>{french ? "<requis>" : "<required>"}</code> {french ? "paramètre obligatoire" : "required parameter"}</span>
+                    <span><code>{french ? "{optionnel}" : "{optional}"}</code> {french ? "paramètre facultatif" : "optional parameter"}</span>
+                </p>
+                <CommandTable
+                    commands={commands}
+                    labels={{
+                        command: french ? "Commande" : "Command",
+                        description: french ? "Description" : "Description",
+                        permission: french ? "Permission requise" : "Permission required",
+                        none: french ? "aucune" : "none"
+                    }}
+                />
 
                 <Faq
                     title={locale === "fr" ? "Questions fréquentes" : "Frequently asked questions"}
