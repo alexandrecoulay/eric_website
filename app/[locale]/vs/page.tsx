@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 
-import styles from "../../../Style/Global.module.scss";
+import styles from "../../../Style/Doc.module.scss";
 import NavBar from "../../../Components/App/NavBar";
 import JsonLd from "../../../Components/App/JsonLd";
 import DocIndex from "../../../Components/App/DocIndex";
@@ -46,9 +46,9 @@ export default async function VsPage({ params }: Props) {
                 ], locale)
             ]} />
             <NavBar />
-            <section className={`${styles.padding_15} ${styles.column} ${styles.align_start}`} style={{ gap: "24px" }}>
-                <h1>{french ? "Comparer Eric aux autres bots Discord" : "Compare Eric with other Discord bots"}</h1>
-                <p className={`${styles.text_left}`} style={{ maxWidth: "820px", lineHeight: 1.7 }}>
+            <section className={styles.page}>
+                <h1 className={styles.indexTitle}>{french ? "Comparer Eric aux autres bots Discord" : "Compare Eric with other Discord bots"}</h1>
+                <p className={styles.lead} style={{ maxWidth: "760px" }}>
                     {
                         french
                             ? "Ces pages n'affirment rien des autres bots au-delà de leur positionnement public : leurs fonctionnalités et leurs tarifs changent sans préavis, et un tableau figé devient faux en quelques mois. Ce qu'elles apportent, ce sont les critères qui décident réellement et le détail vérifiable de ce que fait Eric."

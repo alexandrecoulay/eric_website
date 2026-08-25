@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
-import styles from "../../../../Style/Global.module.scss";
+import styles from "../../../../Style/Doc.module.scss";
 import NavBar from "../../../../Components/App/NavBar";
 import JsonLd from "../../../../Components/App/JsonLd";
 import DocArticle from "../../../../Components/App/DocArticle";
@@ -63,8 +63,8 @@ export default async function ModulePage({ params }: Props) {
                 ], locale)
             ]} />
             <NavBar />
-            <section className={`${styles.padding_15} ${styles.column} ${styles.align_start}`} style={{ gap: "32px" }}>
-                <Link href="/help" className={`${styles.underline}`}>
+            <section className={`${styles.page} ${styles.narrow}`}>
+                <Link href="/help" className={styles.backLink}>
                     ← {french ? "Toute la documentation" : "All documentation"}
                 </Link>
 

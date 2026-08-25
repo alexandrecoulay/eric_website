@@ -2,7 +2,7 @@ import React from "react";
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
-import styles from "../../../Style/Global.module.scss";
+import styles from "../../../Style/Doc.module.scss";
 import NavBar from "../../../Components/App/NavBar";
 import JsonLd from "../../../Components/App/JsonLd";
 import HelpScreen from "../../../Views/help";
@@ -53,9 +53,9 @@ export default async function HelpPage({ params }: Props) {
                 ], locale)
             ]} />
             <NavBar />
-            <section className={`${styles.padding_15}`}>
-                <h1>{french ? "Documentation du bot Eric" : "Eric bot documentation"}</h1>
-                <p className={`${styles.text_left}`} style={{ maxWidth: "820px", lineHeight: 1.7 }}>
+            <section className={styles.page}>
+                <h1 className={styles.indexTitle}>{french ? "Documentation du bot Eric" : "Eric bot documentation"}</h1>
+                <p className={styles.lead} style={{ maxWidth: "760px" }}>
                     {
                         french
                             ? "Chaque module du bot a sa page : ce qu'il fait, comment l'activer, ses commandes avec leur syntaxe exacte et les permissions Discord qu'elles exigent. Le préfixe par défaut est * et se modifie par serveur depuis le tableau de bord."
