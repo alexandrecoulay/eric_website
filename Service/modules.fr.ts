@@ -199,11 +199,11 @@ export const modulesFr: Doc[] = [
         slug: "welcome",
         title: "Accueil et vérification des nouveaux membres",
         metaTitle: "Message de bienvenue et vérification Discord — accueillir les nouveaux membres",
-        description: "Configurer le message de bienvenue et la vérification manuelle des arrivants sur un serveur Discord avec le bot Eric : validation par un modérateur et attribution automatique du rôle d'accès.",
-        keywords: "message de bienvenue discord, vérification membre discord, bot anti raid discord, rôle automatique arrivée discord",
+        description: "Configurer le message de bienvenue et la vérification des arrivants sur un serveur Discord avec le bot Eric : réaction à un emoji tiré au hasard, attribution automatique du rôle d'accès et expulsion en cas de mauvaise réaction.",
+        keywords: "message de bienvenue discord, vérification membre discord, captcha discord, bot anti raid discord, rôle automatique arrivée discord",
         intro: [
             "À chaque arrivée sur le serveur, le bot publie un message de bienvenue personnalisé dans le salon choisi par l'administrateur.",
-            "Un second mécanisme, optionnel, ajoute une étape de validation humaine : le nouvel arrivant n'obtient l'accès au serveur qu'après l'approbation d'un modérateur. C'est le filtre le plus efficace contre les vagues de comptes automatisés, parce qu'il ne repose sur aucune heuristique contournable."
+            "Un second mécanisme, optionnel, ajoute une épreuve à l'arrivée : le nouveau membre doit réagir avec un emoji précis, tiré au hasard par le bot, pour obtenir le rôle d'accès. Réagir avec le mauvais emoji entraîne son expulsion du serveur."
         ],
         sections: [
             {
@@ -213,19 +213,22 @@ export const modulesFr: Doc[] = [
                 ]
             },
             {
-                heading: "La vérification par un modérateur",
+                heading: "La vérification par réaction",
                 paragraphs: [
-                    "Lorsque la vérification est activée, l'arrivée d'un membre déclenche la publication d'une demande de validation dans un salon réservé à l'équipe. Un modérateur réagit pour accepter ou refuser.",
-                    "À l'acceptation, le bot attribue automatiquement le rôle d'accès configuré. Tant que la validation n'a pas eu lieu, le membre reste sans rôle et ne voit donc que les salons ouverts à tous — la configuration des permissions du serveur reste ce qui détermine réellement ce qu'il peut voir."
+                    "Lorsque la vérification est activée, l'arrivée d'un membre déclenche la publication d'une demande dans le salon de vérification, adressée nommément à l'arrivant. Le bot y annonce l'emoji avec lequel réagir, puis ajoute lui-même cet emoji d'acceptation et un emoji de refus.",
+                    "L'emoji d'acceptation est tiré au hasard à chaque arrivée parmi plusieurs, et c'est là que réside le filtre : un script qui réagit à tout, ou qui a appris un emoji fixe, tombe sur celui de refus.",
+                    "Seule la personne visée peut déclencher l'action — le bot compare l'auteur de la réaction à celui de la demande et ignore toute autre. Bonne réaction : le rôle d'accès est attribué et la demande supprimée. Mauvaise réaction : le membre est expulsé du serveur.",
+                    "Tant que la vérification n'a pas eu lieu, le membre reste sans rôle et ne voit que les salons ouverts à tous. La configuration des permissions du serveur reste ce qui détermine réellement ce qu'il peut voir."
                 ]
             },
             {
                 heading: "Mettre en place le filtre correctement",
                 list: [
-                    "Retirer au rôle @everyone l'accès en lecture aux salons du serveur, à l'exception d'un éventuel salon d'accueil.",
+                    "Retirer au rôle @everyone l'accès en lecture aux salons du serveur, à la seule exception du salon de vérification.",
+                    "Laisser ce salon de vérification visible de tous, arrivants compris : c'est là qu'ils doivent réagir, et le rendre privé rendrait le module inopérant.",
                     "Créer un rôle d'accès disposant des permissions de lecture et d'écriture normales, et le désigner dans le tableau de bord.",
                     "Placer le rôle du bot au-dessus du rôle d'accès dans la hiérarchie, faute de quoi Discord lui refusera l'attribution.",
-                    "Désigner un salon de validation visible de la seule équipe de modération."
+                    "Donner au bot la permission d'expulser des membres : un échec de vérification se solde par une expulsion."
                 ]
             }
         ],
@@ -236,11 +239,11 @@ export const modulesFr: Doc[] = [
             },
             {
                 question: "Comment protéger un serveur Discord des comptes automatisés ?",
-                answer: "Activez la vérification : chaque arrivée génère une demande de validation dans un salon réservé au staff, et le rôle d'accès n'est attribué qu'après l'approbation d'un modérateur. Combinée à un rôle @everyone sans accès en lecture, c'est le filtre le plus fiable, car il ne repose sur aucune détection automatique contournable."
+                answer: "Activez la vérification : chaque arrivant doit réagir avec un emoji précis, tiré au hasard par le bot parmi plusieurs, pour obtenir le rôle d'accès. Une mauvaise réaction entraîne l'expulsion. Comme l'emoji change à chaque arrivée, un script qui réagit à tout ou qui a appris un emoji fixe se fait éliminer. Combinez-le à un rôle @everyone sans accès en lecture, sauf sur le salon de vérification."
             },
             {
-                question: "Le nouveau membre voit-il le serveur avant sa validation ?",
-                answer: "Il voit ce que les permissions du serveur ouvrent au rôle @everyone. Pour que la vérification serve réellement de filtre, il faut retirer à @everyone l'accès en lecture aux salons, à l'exception éventuelle d'un salon d'accueil."
+                question: "Le nouveau membre voit-il le serveur avant sa vérification ?",
+                answer: "Il voit ce que les permissions du serveur ouvrent au rôle @everyone. Pour que la vérification serve réellement de filtre, retirez à @everyone l'accès en lecture aux salons, en laissant visible le seul salon de vérification — c'est là que l'arrivant doit réagir."
             }
         ],
         updated: "2026-08-25"

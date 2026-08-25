@@ -108,10 +108,11 @@ export const guidesEn: Doc[] = [
                 ]
             },
             {
-                heading: "Approve arrivals by hand",
+                heading: "Require an action from the newcomer",
                 paragraphs: [
-                    "With Eric's verification module, each arrival posts a validation request in a staff-only channel. A moderator reacts to accept, and the access role is granted automatically.",
-                    "The value of this approach is that it rests on no heuristic. Automatic filters — account age, missing avatar, suspicious username pattern — are worked around by preparing accounts in advance. A moderator watching forty identical requests arrive in two minutes is not fooled."
+                    "With Eric's verification module, each arrival posts a request in the verification channel, addressed to the new member: react with one specific emoji to be granted the access role. The bot adds that emoji plus a reject one, and only accepts the reaction if it comes from the person named.",
+                    "The accept emoji is drawn at random on each arrival. That is what makes the filter: a script reacting to everything, or one that learned a fixed emoji, lands on the reject one and gets kicked. An account prepared in advance works around nothing, because there is nothing to prepare — the message has to be read as it arrives.",
+                    "This approach has a cost worth knowing: the kick is immediate and automatic. A legitimate member who clicks the wrong reaction ends up outside, and will need re-inviting."
                 ]
             },
             {
@@ -119,7 +120,7 @@ export const guidesEn: Doc[] = [
                 list: [
                     "An access role distinct from @everyone, with channel permissions that genuinely depend on it.",
                     "The bot's role placed above the access role in the hierarchy.",
-                    "A validation channel visible to staff only.",
+                    "A verification channel visible to everyone, newcomers included: it is where they must react.",
                     "Discord's verification level set to at least medium.",
                     "A written instruction for the team: who raises the verification level, and when."
                 ]
@@ -138,7 +139,7 @@ export const guidesEn: Doc[] = [
         faq: [
             {
                 question: "How do I stop fake accounts from joining a Discord server?",
-                answer: "You do not stop them joining: Discord does not allow it. You stop them acting, by removing channel access from the @everyone role and granting the access role only after a moderator approves."
+                answer: "You do not stop them joining: Discord does not allow it. You stop them acting, by removing channel access from the @everyone role and granting the access role only after the newcomer reacts correctly to a randomly chosen emoji."
             },
             {
                 question: "Is Discord's verification level enough against a raid?",
