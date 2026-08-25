@@ -37,10 +37,14 @@ export default async function LocaleLayout({
                 <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-icon-180x180.png" />
                 <meta name="theme-color" content="#000000" />
             </head>
-            <body className="body">
-                <NextIntlClientProvider>
-                    {children}
-                </NextIntlClientProvider>
+            <body>
+                {/* `body .body` dans Style/style.scss : c'est un descendant du body,
+                    pas le body lui-meme. */}
+                <div className="body">
+                    <NextIntlClientProvider>
+                        {children}
+                    </NextIntlClientProvider>
+                </div>
                 <Analytics />
             </body>
         </html>

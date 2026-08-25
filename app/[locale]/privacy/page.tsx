@@ -2,7 +2,7 @@ import React from "react";
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 
-import styles from "../../../Style/Global.module.scss";
+import styles from "../../../Style/Doc.module.scss";
 import NavBar from "../../../Components/App/NavBar";
 import PrivacyScreen from "../../../Views/privacy";
 import { pageMetadata } from "../../../Service/seo";
@@ -30,7 +30,7 @@ export default async function PrivacyPage({ params }: Props) {
     return (
         <>
             <NavBar />
-            <section className={`${styles.padding_15}`}>
+            <section className={`${styles.page} ${styles.narrow}`}>
                 <PrivacyScreen />
             </section>
         </>

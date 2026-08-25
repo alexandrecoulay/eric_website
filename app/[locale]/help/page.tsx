@@ -2,13 +2,14 @@ import React from "react";
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
-import styles from "../../../Style/Global.module.scss";
+import styles from "../../../Style/Doc.module.scss";
 import NavBar from "../../../Components/App/NavBar";
 import JsonLd from "../../../Components/App/JsonLd";
-import HelpScreen from "../../../Views/help";
 import Faq from "../../../Components/App/Faq";
 import DocIndex from "../../../Components/App/DocIndex";
+import CommandTable from "../../../Components/App/CommandTable";
 import modules from "../../../Service/modules";
+import { allCommands } from "../../../Service/docTypes";
 import { pageMetadata } from "../../../Service/seo";
 import { faqPage, breadcrumb } from "../../../Service/structuredData";
 import { helpFaq } from "../../../Service/faq";
@@ -42,6 +43,7 @@ export default async function HelpPage({ params }: Props) {
     const faq = helpFaq(locale);
     const french = locale === "fr";
     const docs = modules[locale] ?? modules.en;
+    const commands = allCommands(modules, locale);
 
     return (
         <>
@@ -53,20 +55,42 @@ export default async function HelpPage({ params }: Props) {
                 ], locale)
             ]} />
             <NavBar />
-            <section className={`${styles.padding_15}`}>
-                <h1>{french ? "Documentation du bot Eric" : "Eric bot documentation"}</h1>
-                <p className={`${styles.text_left}`} style={{ maxWidth: "820px", lineHeight: 1.7 }}>
+            <section className={styles.page}>
+                <h1 className={styles.indexTitle}>{french ? "Documentation du bot Eric" : "Eric bot documentation"}</h1>
+                <p className={styles.lead} style={{ maxWidth: "760px" }}>
                     {
                         french
-                            ? "Chaque module du bot a sa page : ce qu'il fait, comment l'activer, ses commandes avec leur syntaxe exacte et les permissions Discord qu'elles exigent. Le préfixe par défaut est * et se modifie par serveur depuis le tableau de bord."
-                            : "Every module of the bot has its own page: what it does, how to enable it, its commands with their exact syntax and the Discord permissions they require. The default prefix is * and can be changed per server from the dashboard."
+                            ? "Toutes les commandes du bot, avec leur syntaxe exacte et la permission Discord qu'elles exigent. Le préfixe par défaut est * et se modifie par serveur depuis le tableau de bord ; certaines commandes portent un nom traduit selon la langue du serveur."
+                            : "Every command of the bot, with its exact syntax and the Discord permission it requires. The default prefix is * and can be changed per server from the dashboard; some command names are translated with the server's language."
+                    }
+                </p>
+
+                <p className={styles.legend}>
+                    <span><code>{french ? "<requis>" : "<required>"}</code> {french ? "paramètre obligatoire" : "required parameter"}</span>
+                    <span><code>{french ? "{optionnel}" : "{optional}"}</code> {french ? "paramètre facultatif" : "optional parameter"}</span>
+                </p>
+
+                <CommandTable
+                    commands={commands}
+                    labels={{
+                        command: french ? "Commande" : "Command",
+                        description: french ? "Description" : "Description",
+                        permission: french ? "Permission requise" : "Permission required",
+                        none: french ? "aucune" : "none"
+                    }}
+                />
+
+                <h2>{french ? "Documentation par module" : "Module documentation"}</h2>
+                <p className={styles.lead} style={{ maxWidth: "760px" }}>
+                    {
+                        french
+                            ? "Chaque module a sa page : ce qu'il fait, comment l'activer depuis le tableau de bord, et ce que Discord impose."
+                            : "Every module has its own page: what it does, how to enable it from the dashboard, and what Discord enforces."
                     }
                 </p>
 
                 <DocIndex docs={docs} basePath="/help" />
 
-                <h2>{french ? "Toutes les commandes" : "All commands"}</h2>
-                <HelpScreen pathname="/help" />
                 <Faq
                     title={locale === "fr" ? "Questions fréquentes" : "Frequently asked questions"}
                     entries={faq}

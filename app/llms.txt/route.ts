@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import { site_url, support_server, contact_email } from "../../Service/seo";
 import { helpFaq } from "../../Service/faq";
 import modules from "../../Service/modules";
+import { allCommands } from "../../Service/docTypes";
 import guides from "../../Service/guides";
 import competitors from "../../Service/competitors";
 
@@ -22,6 +23,12 @@ export async function GET() {
     // vers des URLs qu'un moteur n'ouvre pas est un signal negatif.
     const section = (docs: { slug: string; title: string; description: string }[], base: string) =>
         docs.map(doc => `- [${doc.title}](${site_url}${base}/${doc.slug}) — ${doc.description}`).join("\n");
+
+    // Reference plate des commandes, derivee des memes donnees que les pages par
+    // module : c'est la reponse attendue a "quelles sont les commandes du bot".
+    const commands = allCommands(modules, "en")
+        .map(c => `- \`${c.syntax}\` — ${c.description}${c.permission ? ` (${c.permission})` : ""}`)
+        .join("\n");
 
     const content = `# Eric — Discord bot
 
@@ -53,6 +60,12 @@ Data is kept after the bot is removed from a server, deliberately, so that a ser
 ## Common questions
 
 ${faq.map(entry => `### ${entry.question}\n\n${entry.answer}`).join("\n\n")}
+
+## Commands
+
+Default prefix is \`*\`, changeable per server from the dashboard. \`<argument>\` is required, \`{argument}\` is optional. Command names are translated with the server's language: \`*leaderboard\` is \`*classement\` on a French server, \`*clear\` is \`*purge\`, \`*poll\` is \`*sondage\`, \`*server\` is \`*serveur\`, \`*emoji\` is \`*emote\`.
+
+${commands}
 
 ## Module documentation
 

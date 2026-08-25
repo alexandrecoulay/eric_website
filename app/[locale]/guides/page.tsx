@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 
-import styles from "../../../Style/Global.module.scss";
+import styles from "../../../Style/Doc.module.scss";
 import NavBar from "../../../Components/App/NavBar";
 import JsonLd from "../../../Components/App/JsonLd";
 import DocIndex from "../../../Components/App/DocIndex";
@@ -46,9 +46,9 @@ export default async function GuidesPage({ params }: Props) {
                 ], locale)
             ]} />
             <NavBar />
-            <section className={`${styles.padding_15} ${styles.column} ${styles.align_start}`} style={{ gap: "24px" }}>
-                <h1>{french ? "Guides Discord" : "Discord guides"}</h1>
-                <p className={`${styles.text_left}`} style={{ maxWidth: "820px", lineHeight: 1.7 }}>
+            <section className={styles.page}>
+                <h1 className={styles.indexTitle}>{french ? "Guides Discord" : "Discord guides"}</h1>
+                <p className={styles.lead} style={{ maxWidth: "760px" }}>
                     {
                         french
                             ? "Des guides sur l'administration d'un serveur Discord, écrits pour être utiles indépendamment du bot utilisé. Chacun traite un problème concret et donne la méthode plutôt qu'une liste de fonctionnalités."

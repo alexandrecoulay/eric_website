@@ -485,15 +485,26 @@ header {
 	p {
 		font-size: 24px;
 		text-align: center;
-		width: 475px;
-		font-family: Montserrat;
+		max-width: 475px;
 		font-weight: 500;
+		line-height: 1.5;
 	}
 }
 
 .btn_index {
-	width: 200px;
+	/* Largeur minimale plutot que fixe : le libelle le plus long debordait de la
+	   bordure, et il change avec la langue. */
+	min-width: 200px;
 	height: 60px;
+	padding: 0 18px;
+	/* Deux des trois boutons du hero sont des liens : sans display explicite,
+	   width et height n'ont aucun effet sur un element inline. */
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	text-decoration: none;
+	box-sizing: border-box;
 	background: none;
 	border: 4px solid;
 	color: var(--bg-secondary);

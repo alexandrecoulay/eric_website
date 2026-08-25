@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "../../Style/Global.module.scss";
+import styles from "../../Style/Doc.module.scss";
 import { Link } from "../../i18n/navigation";
 import type { Doc } from "../../Service/docTypes";
 
@@ -13,15 +13,12 @@ import type { Doc } from "../../Service/docTypes";
  */
 function DocIndex({ docs, basePath }: { docs: Doc[]; basePath: string }) {
     return (
-        <div className={`${styles.column} ${styles.align_start} ${styles.full_width}`} style={{ gap: "10px" }}>
+        <div className={styles.cards}>
             {
                 docs.map(doc => (
-                    <Link
-                        key={doc.slug}
-                        href={`${basePath}/${doc.slug}`}
-                        className={`${styles.full_width} ${styles.radius_5} ${styles.second_background} ${styles.padding_15} ${styles.column} ${styles.align_start} ${styles.hover}`}>
-                        <span className={`${styles.text_left}`} style={{ fontWeight: 700, fontSize: "18px" }}>{doc.title}</span>
-                        <span className={`${styles.text_left} ${styles.muted}`} style={{ lineHeight: 1.6 }}>{doc.description}</span>
+                    <Link key={doc.slug} href={`${basePath}/${doc.slug}`} className={styles.card}>
+                        <strong>{doc.title}</strong>
+                        <span>{doc.description}</span>
                     </Link>
                 ))
             }
