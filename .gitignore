@@ -30,3 +30,6 @@ build_sitemap
 .env.development
 .env.production
 .env
+
+# typescript
+*.tsbuildinfo

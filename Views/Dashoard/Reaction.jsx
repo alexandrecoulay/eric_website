@@ -6,6 +6,7 @@ import { baseapiurl } from "../../Service/constante";
 import ActivationContainer from "../../Components/Dashboard/ActivationContainer";
 import { useTranslation } from "../../Context/Localization";
 import { Boxe } from "../../Components/Dashboard/Boxes";
+import { Loader } from "../../Components/Others";
 
 function DashboardReaction({ guild_id, user }) {
 

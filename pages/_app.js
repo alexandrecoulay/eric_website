@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import Alert from "../Components/Others/Alert";
+import Analytics from "../Components/Analytics";
 
 import { UserContextProvider, AlertContextProvider } from "../Context/AppContext";
 import { baseapiurl, discordcdnurl } from "../Service/constante";
@@ -59,6 +60,7 @@ function MyApp({ Component, pageProps }) {
         <LanguageProvider>
           <Alert />
           <Component {...pageProps} />
+          <Analytics />
         </LanguageProvider>
       </UserContextProvider>
     </AlertContextProvider>
