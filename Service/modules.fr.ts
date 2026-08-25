@@ -426,6 +426,14 @@ export const modulesFr: Doc[] = [
                         description: "Génère une couleur et l'affiche sous forme d'image."
                     },
                     {
+                        syntax: "*face",
+                        description: "Envoie un visage en ASCII."
+                    },
+                    {
+                        syntax: "*compatibilite <prénom> <prénom>",
+                        description: "Calcule un score de compatibilité entre deux prénoms. Commande fantaisiste, sans autre usage."
+                    },
+                    {
                         syntax: "*bug <description>",
                         description: "Transmet un rapport de bug à l'équipe du bot."
                     }

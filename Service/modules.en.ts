@@ -418,6 +418,8 @@ export const modulesEn: Doc[] = [
                 commands: [
                     { syntax: "*help", description: "Links to this documentation." },
                     { syntax: "*color", description: "Generates a colour and shows it as an image." },
+                    { syntax: "*face", description: "Sends an ASCII face." },
+                    { syntax: "*compatibilite <name> <name>", description: "Computes a compatibility score between two first names. A novelty command, nothing more." },
                     { syntax: "*bug <description>", description: "Sends a bug report to the bot's team." }
                 ]
             }

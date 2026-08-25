@@ -5,7 +5,6 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import styles from "../../../Style/Doc.module.scss";
 import NavBar from "../../../Components/App/NavBar";
 import JsonLd from "../../../Components/App/JsonLd";
-import HelpScreen from "../../../Views/help";
 import Faq from "../../../Components/App/Faq";
 import DocIndex from "../../../Components/App/DocIndex";
 import modules from "../../../Service/modules";
@@ -65,8 +64,6 @@ export default async function HelpPage({ params }: Props) {
 
                 <DocIndex docs={docs} basePath="/help" />
 
-                <h2>{french ? "Toutes les commandes" : "All commands"}</h2>
-                <HelpScreen pathname="/help" />
                 <Faq
                     title={locale === "fr" ? "Questions fréquentes" : "Frequently asked questions"}
                     entries={faq}
