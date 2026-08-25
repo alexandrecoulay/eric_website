@@ -133,8 +133,8 @@ function DashboardModeration({ guild_id, user }) {
                     }} name="circle-plus" /></span>}>
                         <div className={`${styles.column} ${styles.full_width}`}>
                             {
-                                settings.words.map(words => 
-                                    <LittleListBoxe key={words.word} title={<span className={`${styles.row}`}><Svg className={`${styles.pointer} ${styles.hover}`} onClick={() => {
+                                settings.words.map((words, words_index) => 
+                                    <LittleListBoxe key={words_index} title={<span className={`${styles.row}`}><Svg className={`${styles.pointer} ${styles.hover}`} onClick={() => {
                                         return setChange("words", settings.words.filter(w => w.word !== words.word))
                                     }} size={18} name="circle-close" /><input onChange={(e) => changeWordsInput(words.word, e.target.value, "word")} type="text" value={words.word} /></span>} input={<input placeholder={t("research")} type="text" onChange={(e) => setFilter(e.target.value)} />} text={"Warn"}>
                                         <div onClick={() => {

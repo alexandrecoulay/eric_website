@@ -137,8 +137,8 @@ function DashboardLevel({ guild_id, user }) {
                     }} name="circle-plus" /></span>}>
                         <div className={`${styles.column} ${styles.full_width}`}>
                             {
-                                settings.roles.map(role => 
-                                    <LittleListBoxe key={role.level} title={<span className={`${styles.row}`}><Svg className={`${styles.pointer} ${styles.hover}`} onClick={() => {
+                                settings.roles.map((role, role_index) => 
+                                    <LittleListBoxe key={role_index} title={<span className={`${styles.row}`}><Svg className={`${styles.pointer} ${styles.hover}`} onClick={() => {
                                         return setChange("roles", settings.roles.filter(r => r.level !== role.level))
                                     }} size={18} name="circle-close" /><input onChange={(e) => changeInput(role.level, e.target.value, "level")} type="number" value={role.level} /></span>} input={<input placeholder={t("research")} type="text" onChange={(e) => setFilter(e.target.value)} />} text={<span className={`${styles.row}`}><Svg size={10} name="circle" color={settings.guild_roles.find(c => c.id === role.role_id)?.color} /> {settings.guild_roles.find(c => c.id === role.role_id)?.name ?? ""}</span>}>
                                         {
