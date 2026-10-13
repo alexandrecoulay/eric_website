@@ -60,9 +60,9 @@ Documentation et démonstration : https://boteric.fr
 
 Démonstrations vidéo :
 - Arrivée d'un membre et vérification :
-  https://boteric.fr/assets/verif/guildMemberAddIntent.mp4
+  https://boteric.fr/assets/verif/guild_member_add_intent.mp4
 - Automodération par mots interdits :
-  https://boteric.fr/assets/verif/messageIntent.mp4
+  https://boteric.fr/assets/verif/message_intent.mp4
 
 Serveur de support : https://discord.gg/p3Sj432
 
@@ -125,7 +125,7 @@ du serveur où elles sont déclenchées.
 
 --- Liens vers captures d'écran / vidéos ---
 
-https://boteric.fr/assets/verif/guildMemberAddIntent.mp4
+https://boteric.fr/assets/verif/guild_member_add_intent.mp4
 
 Ce que montre la vidéo, dans l'ordre :
 
@@ -219,7 +219,7 @@ pour entraîner ses modèles. Aucune copie n'est conservée de notre côté.
 --- Pourquoi as-tu besoin du Message Content Intent ? ---
 
 DÉMONSTRATION VIDÉO :
-https://boteric.fr/assets/verif/messageIntent.mp4
+https://boteric.fr/assets/verif/message_intent.mp4
 
 On y voit un membre écrire un message ordinaire dans un salon public,
 sans mentionner le bot et sans utiliser de commande. Le bot détecte un
